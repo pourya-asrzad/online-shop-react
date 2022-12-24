@@ -1,0 +1,24 @@
+.dots {
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: d5 1s infinite linear alternate;
+}
+@keyframes d5 {
+    0%  {box-shadow: 20px 0 #EF4056, -20px 0 #0002;background: #EF4056 }
+      33% {box-shadow: 20px 0 #EF4056, -20px 0 #0002;background: #0002}
+      66% {box-shadow: 20px 0 #0002,-20px 0 #EF4056; background: #0002}
+      100%{box-shadow: 20px 0 #0002,-20px 0 #EF4056; background: #EF4056 }
+    }
+    .loading_container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: -moz-fit-content;
+        width: fit-content;
+        background: rgb(255, 255, 255);
+        padding: 52px;
+        box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+        border-radius: 5px;
+  }
