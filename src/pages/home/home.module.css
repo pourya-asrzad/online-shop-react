@@ -1,0 +1,13 @@
+.Slider{
+    max-width: 1952px;
+}
+.kalak{
+    display: flex;
+    justify-content: space-between;
+}
+.productiongroupsrewie{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+}

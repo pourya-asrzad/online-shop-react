@@ -1,1 +1,23 @@
-@import 'reset.scss'
+@import 'reset.scss';
+
+@font-face {
+    font-family: 'vazir';
+    src: url('../font/Vazir-Regular-FD.woff2');
+}
+*{
+    direction:ltr;
+    font-family: 'vazir' !important;
+}
+
+.height-hr{
+    width: 1px;
+    background-color: black;
+    margin: 0 5px;
+}
+
+.flex{
+    display: flex;
+}
+.a-c{
+    align-items: center;
+}

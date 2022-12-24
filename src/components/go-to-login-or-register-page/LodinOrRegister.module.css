@@ -1,0 +1,8 @@
+.loginandregister{
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    width: fit-content;
+    padding:0 5px;
+    border-radius: 8px;
+}

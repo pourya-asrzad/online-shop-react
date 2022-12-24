@@ -1,0 +1,27 @@
+.homeproductioncard{
+    display: flex;
+    .imagecontainer{
+        border: 1px solid gray;
+        border-radius: 12px;
+        width: 12rem;
+          height: 12rem;
+          img{
+            border-radius: 12px;
+            width: inherit;
+          }        
+    }
+}
+@font-face {
+    font-family: 'fontyekan';
+    src: url('../../assets/font/IranYekan/woff2/IRANYekanWebLight.woff2');
+}
+.price{
+font-family: 'fontyekan',sans-serif !important;
+}
+.cardleft{
+  display: flex;    
+  margin-right: 12px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
