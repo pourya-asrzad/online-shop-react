@@ -8,3 +8,4 @@ export * from "./home-productions-card/HomeProductionsCard.component";
 export * from "./scroll-btn/ScrollBtn.component";
 export * from "./productions-scroller/ProductionsScroller.component";
 export * from "./category-item/CategoryItem.component";
+export * from "./home-productions-card/HomeProductionsCard.component";

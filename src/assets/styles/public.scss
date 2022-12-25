@@ -56,3 +56,33 @@ body::-webkit-scrollbar {
 .baseyellow{
   background-color: #e6e2c3;
 }
+.categorycontainrproductions{
+display: flex;
+// flex-direction: column;
+}
+.categorycontainr{
+
+
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.7019607843);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.prevcategory{
+  cursor: pointer;
+  width: auto;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 3px 3px 0;
+  -webkit-user-select: none;
+  user-select: none;
+  border: none;
+  background-color: #ffffff00;
+}
