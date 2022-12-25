@@ -10,7 +10,7 @@ height: 100%;
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 55%;
+    top: 50%;
     width: auto;
     padding: 16px;
     margin-top: -22px;

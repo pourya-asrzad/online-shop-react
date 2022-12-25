@@ -1,10 +1,11 @@
 .header{
     padding: 16px;
-    background-color:#66D44A ;
+background-color: #285281;
     display: flex;
     justify-content: space-between;
-    border-bottom-left-radius:1rem ;
-    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius:.5rem ;
+    border-bottom-right-radius: .5rem;
+
 }
 .cartlink{
     display: flex;
@@ -14,7 +15,7 @@
 }
 .headerhref{
 
-    color: #1267E7;
+    color:#e6e2c3 ;
     font-size:20px ;
 }
 
@@ -44,8 +45,7 @@ h2{
     padding: 16px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid;
-    margin-bottom: 10px;
+
 }
 .headercontainer{
     position: fixed;
@@ -54,4 +54,8 @@ h2{
     right: 0;
     background-color: white;
     z-index: 10;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(0 0 0 / 5%);
+}
+.companyname{
+    color:#e6e2c3 ;
 }

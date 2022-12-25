@@ -16,10 +16,10 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space:nowrap;
-   /* position: initial; */
    transition-timing-function: ease-out;
-
-
-   
 }
 
+.category_title{
+    text-align: center;
+    margin-top: 3rem;
+}

@@ -7,3 +7,4 @@ export * from "./change-to-group-production/ChangeGroupProductionPage.component"
 export * from "./home-productions-card/HomeProductionsCard.component";
 export * from "./scroll-btn/ScrollBtn.component";
 export * from "./productions-scroller/ProductionsScroller.component";
+export * from "./category-item/CategoryItem.component";

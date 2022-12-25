@@ -10,9 +10,24 @@
      white-space:nowrap;
     /* position: initial; */
     transition-timing-function: ease-out;
- 
- 
-    
  }
  
- 
+ .show_more{
+  
+  display: flex;
+    align-items: center;
+    color: #1267E7;
+ }
+ .show_more span{
+  margin-left: 10px;
+ }
+ .production_scroller{
+  margin-bottom: 2rem;
+ }
+ .producljfkg{
+  display: flex;
+
+  /* overflow-x: scroll;
+  overflow-y: hidden;
+  white-space:nowrap; */
+ }
