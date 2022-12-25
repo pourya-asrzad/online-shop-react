@@ -1,14 +1,41 @@
+import { animated, useSpring } from "react-spring";
+import { useScroll } from "react-use-gesture";
 import Helmet from "react-helmet";
-import { ChangeGroupProductionPage, HomeProductionsCard, ImageSliderAuto } from "../../components";
+import { useRef } from "react";
+import { ChangeGroupProductionPage, HomeProductionsCard, ImageSliderAuto, ProductionsScroller, ScrollBtn } from "../../components";
 import { dataSlider } from "../../components/image-slider/dataSlider";
 import PageContainer from "../../layouts/pageContainer/pageContainer.layout";
 import Styles from './home.module.css'
-
+import Lbtn from '../../assets/images/Lbtn.png'
+import Rbtn from '../../assets/images/Rbtn.png'
 
 import { getAppTitle } from "../../utils/functions.utils";
 
 const Home = () => {
+
+    const scrollref = useRef()
     const appTitle = getAppTitle()
+
+    function scrollHandlerbartoleft() {
+        scrollref.current.scrollLeft -= 180
+
+    }
+    function scrollHandlerbartorigth() {
+        scrollref.current.scrollLeft += 180
+
+    }
+
+
+
+    const [style, set] = useSpring(() => ({
+        transform: "perspective(400px) rotateY(0deg)"
+    }));
+    const bind = useScroll(event => {
+        set({
+            transform: `perspective(400px) rotateY(${event.scrolling ? event.delta[0] : 0
+                }deg)`
+        });
+    });
     return (
         <>
             <Helmet>
@@ -26,12 +53,7 @@ const Home = () => {
                             <div></div>
                             <ChangeGroupProductionPage>کالا های گروه لبنیات</ChangeGroupProductionPage>
                         </div>
-                        <div className={Styles.productiongroupsrewie}>
-                            <HomeProductionsCard image={"https://dkstatics-public.digikala.com/digikala-products/4db70aee306b776ed6afcfeb58e7be4fc2eaeb85_1650864574.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80"} price={'1258000'} name={"شیر کم چرب کاله - 158 میلی لیتر"} />
-                            <HomeProductionsCard image={"https://dkstatics-public.digikala.com/digikala-products/4db70aee306b776ed6afcfeb58e7be4fc2eaeb85_1650864574.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80"} price={'1258000'} name={"شیر کم چرب کاله - 158 میلی لیتر"} />
-                            <HomeProductionsCard image={"https://dkstatics-public.digikala.com/digikala-products/4db70aee306b776ed6afcfeb58e7be4fc2eaeb85_1650864574.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80"} price={'1258000'} name={"شیر کم چرب کاله - 158 میلی لیتر"} />
-                            <HomeProductionsCard image={"https://dkstatics-public.digikala.com/digikala-products/4db70aee306b776ed6afcfeb58e7be4fc2eaeb85_1650864574.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80"} price={'1258000'} name={"شیر کم چرب کاله - 158 میلی لیتر"} />
-                        </div>
+                        <ProductionsScroller />
                     </section>
                 </main>
             </PageContainer>

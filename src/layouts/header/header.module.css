@@ -52,6 +52,6 @@ h2{
     top: 0;
     left: 0;
     right: 0;
-background-color: white;
-z-index: 10;
+    background-color: white;
+    z-index: 10;
 }

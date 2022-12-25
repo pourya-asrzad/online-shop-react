@@ -5,9 +5,21 @@
     display: flex;
     justify-content: space-between;
 }
-.productiongroupsrewie{
+
+.productiongroupsrewiedd::-webkit-scrollbar {
+   display: none;
+  }
+  
+  .productiongroupsrewiedd{
+    margin: 0 5rem;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space:nowrap;
+   /* position: initial; */
+   transition-timing-function: ease-out;
+
+
+   
 }
+

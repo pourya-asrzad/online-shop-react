@@ -21,3 +21,23 @@
 .a-c{
     align-items: center;
 }
+
+body::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

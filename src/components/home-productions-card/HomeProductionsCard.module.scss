@@ -1,10 +1,16 @@
 .homeproductioncard{
     display: flex;
+    background-color: rgb(235, 237, 235);
+    padding: 7px 10px;
+    border-radius: 12px;
+    margin: 0 8px;
+    width: 18rem;
+    justify-content: space-between;
     .imagecontainer{
         border: 1px solid gray;
         border-radius: 12px;
-        width: 12rem;
-          height: 12rem;
+        width: 8rem;
+          height: 8rem;
           img{
             border-radius: 12px;
             width: inherit;
@@ -13,10 +19,11 @@
 }
 @font-face {
     font-family: 'fontyekan';
-    src: url('../../assets/font/IranYekan/woff2/IRANYekanWebLight.woff2');
+    src: url('../../assets/font/IranYekan/woff2/IRANYekanWebExtraBold.woff2');
 }
 .price{
 font-family: 'fontyekan',sans-serif !important;
+margin-right: 8px;
 }
 .cardleft{
   display: flex;    
@@ -24,4 +31,14 @@ font-family: 'fontyekan',sans-serif !important;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
+}
+/*
+*/
+.name{
+  vertical-align: baseline;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 8rem;
+   direction: rtl;
 }

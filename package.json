@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.5",
+    "@react-spring/web": "^9.6.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +16,8 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.6.1",
+    "react-use-gesture": "^9.1.3",
     "sass": "^1.57.1",
     "web-vitals": "^2.1.4"
   },
@@ -22,8 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "custom-start":"env-cmd -f ./src/environments/.env.development env-cmd -f ./src/environments/.env.local react-scripts start",
-    "custom-build":"env-cmd -f ./src/environments/.env.production env-cmd -f ./src/environments/.env.local react-scripts build"
+    "custom-start": "env-cmd -f ./src/environments/.env.development env-cmd -f ./src/environments/.env.local react-scripts start",
+    "custom-build": "env-cmd -f ./src/environments/.env.production env-cmd -f ./src/environments/.env.local react-scripts build"
   },
   "eslintConfig": {
     "extends": [

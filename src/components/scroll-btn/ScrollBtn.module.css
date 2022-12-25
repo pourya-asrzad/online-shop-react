@@ -1,0 +1,28 @@
+.Lbtn{
+    height: 10rem;
+    /* background: white; */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 2px;
+    /* background: border-box; */
+    top: 35rem;
+    background: #e3ddddc9;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    z-index: 20;
+    }
+.Rbtn{
+    height: 10rem;
+    /* background: white; */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+    /* background: border-box; */
+    top: 35rem;
+    background: #e3ddddc9;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    z-index: 20;
+}
