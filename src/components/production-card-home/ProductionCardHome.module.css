@@ -2,11 +2,14 @@
     display: flex;
     flex-direction: column;
     width: 8rem;
+    height: 10rem;
     align-items: center;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #e7e7e763;
     padding: 10px 15px;
  cursor: pointer;
     font-size: 14px;
+    background-color: rgb(255, 253, 253);
+    justify-content: space-between;
 }
 .imagecontainer{
 height: 5rem;
@@ -27,7 +30,7 @@ img{
     width: inherit;
 }
 .name{
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-weight: 700;
 vertical-align: baseline;
 text-overflow: ellipsis;
@@ -36,3 +39,9 @@ overflow: hidden;
 width: 8rem;
 direction: rtl;
 }
+
+  
+  .ProductionCardHome:hover {
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }

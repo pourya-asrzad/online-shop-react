@@ -1,0 +1,54 @@
+.scrollercontainer{
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+.slideclick{
+    opacity: .5;
+    cursor: pointer;
+    display: block;
+    vertical-align: middle;
+}
+.slideclick :hover{
+    opacity: 100;
+}
+.scrollitemscontainet{
+white-space: nowrap;
+scroll-behavior: smooth;
+overflow-x: scroll;
+overflow-y: hidden;
+width: 100%;
+height: 100%;
+display: flex;
+}
+.scrollerheader{
+    align-items: center;
+    margin: 1rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+font-size: 24px;
+font-weight: 700;
+position: relative;
+}
+
+
+.scrollitemscontainet::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Track */
+  .scrollitemscontainet::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

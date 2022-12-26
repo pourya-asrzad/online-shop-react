@@ -7,7 +7,7 @@ export const LodinOrRegister = () => {
             <span>ورود </span>
             <div style={{ height: "35px" }} className="height-hr"></div>
             <span>ثبت نام </span>
-            <img width={30} src={loginicon} alt="login" />
+            <img width={20} src={loginicon} alt="login" />
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import companyicon from '../../assets/images/company.png'
 import Styles from './HomeProductionsCard.module.scss'
-export const HomeProductionsCard = ({ name, price, image }) => {
+export const HomeProductionsCard = ({ name, price, image, className }) => {
 
     return (
-        <div className={Styles.homeproductioncard}>
+        <div className={`${Styles.homeproductioncard} ${className}`}>
             <div className={Styles.cardleft}>
                 <span className={Styles.name}>{name}</span>
                 <div className='flex a-c'>

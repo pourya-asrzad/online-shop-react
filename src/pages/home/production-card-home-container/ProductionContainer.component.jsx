@@ -5,7 +5,7 @@ const ProductionContainer = () => {
         <>
             <div className='categorycontainr'>
                 <div style={{ fontSize: '20px', color: " #1c315e", marginBottom: "1rem", textAlign: 'center' }}>
-                    <span> کالاهای گروه لبنیات</span>
+                    <span> کالاهای  پر فروش</span>
                 </div>
                 <div className='categorycontainrproductions'>
 

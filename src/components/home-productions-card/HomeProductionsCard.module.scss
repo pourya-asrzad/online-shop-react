@@ -1,17 +1,25 @@
 .homeproductioncard{
-    display: flex;
-    background-color: rgb(235, 237, 235);
-    padding: 7px 10px;
-    border-radius: 12px;
-    margin: 0 8px;
-    width: 18rem;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  background-color: rgb(255 253 250 / 78%);
+  padding: 28px 39px;
+  border-radius: 8px;
+  margin: 0 4px;
+  width: 8rem;
+  border: 1px solid #c9c9c9c7;
+  /* width: 16rem; */
+  cursor: pointer;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 13rem;
+  justify-content: space-between;
+
     .imagecontainer{
         border: 1px solid gray;
         border-radius: 12px;
-        width: 8rem;
-          height: 8rem;
+          width: 9rem;
+  height: 9rem;
           img{
             border-radius: 12px;
             width: inherit;
@@ -42,4 +50,11 @@ margin-right: 8px;
       overflow: hidden;
       width: 8rem;
    direction: rtl;
+   margin-bottom: 10px;
+   direction: rtl;
+   margin-top: 10px;
+}
+.homeproductioncard:hover{
+  background-color: #ffffffff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

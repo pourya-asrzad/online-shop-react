@@ -3,7 +3,7 @@ export const dataSlider = [
     ImageNo: "1/4",
     ImageName: "cold-day",
     ImageSrc:
-      "https://dkstatics-public.digikala.com/digikala-adservice-banners/6900b570af0235d476888248aff3c6921c57c73f_1667908658.gif?x-oss-process=image",
+      "https://dkstatics-public.digikala.com/digikala-adservice-banners/12bbf5a2ce13651bb2661485e9261b837ef0cc2c_1671879664.gif?x-oss-process=image",
   },
   {
     ImageNo: "2/4",

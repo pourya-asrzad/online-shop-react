@@ -66,8 +66,8 @@ display: flex;
   display: flex;
   text-align: center;
   justify-content: space-between;
-  padding: 2rem;
-  margin: 1rem;
+  padding: 1rem;
+  margin: 1rem 3rem;
   border: 1px solid rgba(128, 128, 128, 0.7019607843);
   border-radius: 20px;
   display: flex;
@@ -85,4 +85,18 @@ display: flex;
   user-select: none;
   border: none;
   background-color: #ffffff00;
+}
+.home_fire{
+ width:36px;
+ animation-name:homepage_styles_fire__2N58i;
+ animation-duration:1s;
+ animation-iteration-count:infinite;
+ position: absolute;
+ left: 56%;
+}
+
+@keyframes homepage_styles_fire__2N58i{
+  0%{width:36px}
+  50%{width:40px}
+  to{width:36px}
 }
