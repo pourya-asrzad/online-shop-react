@@ -12,3 +12,7 @@ export const convertNumberToPersian = (number) => {
     return persianNumber[+w];
   });
 };
+
+export const getCopyrightMassege = () => {
+  return process.env.REACT_APP_WEBSITE_COPYRIGHT;
+};
