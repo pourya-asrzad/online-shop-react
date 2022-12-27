@@ -1,6 +1,6 @@
 import logo from '../../assets/images/logo.jpeg'
 import { Link } from "react-router-dom";
-import carticon from '../../assets/images/cart.png'
+import carticon from '../../assets/images/noto_shopping-cart.png'
 import { CategoryMenuComponent, HeaderSearchComponent, LodinOrRegister } from "../../components";
 import { INTERNAL_PATHS } from "../../configs/routs.config";
 import Styles from './header.module.css'
@@ -13,7 +13,10 @@ const Header = () => {
                         <div className={Styles.headerleft}>
                             <Link className={Styles.cartlink} to={INTERNAL_PATHS.CART}>
                                 <span className={Styles.headerhref}>سبد خرید</span>
-                                <img src={carticon} alt="carticon" />
+                                <img style={{
+                                    width: ' 28px'
+                                    , margin: '5px'
+                                }} src={carticon} alt="carticon" />
                             </Link>
                             <span className={Styles.headerhref}>مدیریت</span>
                         </div>
