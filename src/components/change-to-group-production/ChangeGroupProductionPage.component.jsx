@@ -5,7 +5,9 @@ export const ChangeGroupProductionPage = (props) => {
     return (
         <div className={Styles.ChangeGroupProductionPage}>
             <img width={50} src={nexticon} alt="nexticon" />
-            <span>{children}</span>
+            <span>
+                {children}
+            </span>
         </div>
     );
 }
