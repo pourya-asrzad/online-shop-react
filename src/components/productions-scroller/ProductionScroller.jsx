@@ -5,12 +5,21 @@ import { HomeProductionsCard } from '../home-productions-card/HomeProductionsCar
 import Styles from './ProductionScroll.module.css'
 function ProductionScroller() {
     const slideLeft = () => {
-        var slider = document.getElementById('slider');
+        const slider = document.getElementById('slider1');
         slider.scrollLeft = slider.scrollLeft - 400;
     };
 
     const slideRight = () => {
-        var slider = document.getElementById('slider');
+        const slider = document.getElementById('slider1');
+        slider.scrollLeft = slider.scrollLeft + 400;
+    };
+    const slideLeft2 = () => {
+        const slider = document.getElementById('slider2');
+        slider.scrollLeft = slider.scrollLeft - 400;
+    };
+
+    const slideRight2 = () => {
+        const slider = document.getElementById('slider2');
         slider.scrollLeft = slider.scrollLeft + 400;
     };
 
@@ -27,7 +36,7 @@ function ProductionScroller() {
                     <MdChevronLeft className={`${Styles.slideclick}`} onClick={slideLeft} size={40} />
                 </div>
                 <div
-                    id='slider'
+                    id='slider1'
                     className={Styles.scrollitemscontainet}
                 >
                     {data.map((item) => (
@@ -41,6 +50,28 @@ function ProductionScroller() {
                 <div>
 
                     <MdChevronRight className={Styles.slideclick} onClick={slideRight} size={40} />
+                </div>
+            </div>
+            <div className={Styles.scrollercontainer}>
+                <div>
+
+                    <MdChevronLeft className={`${Styles.slideclick}`} onClick={slideLeft2} size={40} />
+                </div>
+                <div
+                    id='slider2'
+                    className={Styles.scrollitemscontainet}
+                >
+                    {data.map((item) => (
+                        <HomeProductionsCard
+                            price='20.000'
+                            name={item.productName}
+                            image={item.image}
+                        />
+                    ))}
+                </div>
+                <div>
+
+                    <MdChevronRight className={Styles.slideclick} onClick={slideRight2} size={40} />
                 </div>
             </div>
         </>

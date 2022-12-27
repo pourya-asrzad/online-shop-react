@@ -5,6 +5,7 @@ background-color: #285281;
     justify-content: space-between;
     border-bottom-left-radius:.5rem ;
     border-bottom-right-radius: .5rem;
+    background: linear-gradient(225deg, #131462, #0e62d5) !important;
 
 }
 .cartlink{
@@ -58,6 +59,7 @@ h2{
 }
 .companyname{
     color:#e6e2c3 ;
+    font-family: 'Digikala'!important;
 }
 .logo{
     position: absolute;

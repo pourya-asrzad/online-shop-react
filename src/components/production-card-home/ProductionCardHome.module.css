@@ -1,19 +1,19 @@
 .ProductionCardHome{
     display: flex;
     flex-direction: column;
-    width: 8rem;
-    height: 10rem;
+    width: 9rem;
+    height: 13rem;
     align-items: center;
     border: 1px solid #e7e7e763;
     padding: 10px 15px;
- cursor: pointer;
+    cursor: pointer;
     font-size: 14px;
     background-color: rgb(255, 253, 253);
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .imagecontainer{
-height: 5rem;
-width: 5rem;
+height:6rem;
+width: 6rem;
 border: 1px solid #e7e7e7;
 border-radius: 5px;
 padding: 6px;
@@ -32,13 +32,12 @@ img{
 }
 .name{
     margin-bottom: 15px;
-    font-weight: 700;
-vertical-align: baseline;
-text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
-width: 8rem;
-direction: rtl;
+    vertical-align: baseline;
+    overflow: hidden;
+    direction: rtl;
+    text-align: initial;
+    line-height: 1.5rem;
+    color: #555252;
 }
 
   

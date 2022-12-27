@@ -8,7 +8,7 @@ export const ProductionCardHome = ({ name, price, image }) => {
             </div>
             <div className={Styles.textflex}>
                 <span className={Styles.name} >{name}</span>
-                <span style={{ direction: 'rtl' }}>{price}  تومان </span>
+                <span style={{ direction: 'rtl' }}>{price} <span className='digifont'>تومان</span>  </span>
             </div>
         </div>
     );
