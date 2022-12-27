@@ -4,10 +4,15 @@
     font-family: 'vazir';
     src: url('../font/Vazir-Regular-FD.woff2');
 }
+@font-face {
+  font-family: 'Digikala';
+  src: url('../font/Digikala.woff');
+}
 *{
     direction:ltr;
     font-family: 'vazir' !important;
 }
+
 
 .height-hr{
     width: 1px;

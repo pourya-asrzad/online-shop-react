@@ -1,3 +1,4 @@
+import logo from '../../assets/images/logo.jpeg'
 import { Link } from "react-router-dom";
 import carticon from '../../assets/images/cart.png'
 import { CategoryMenuComponent, HeaderSearchComponent, LodinOrRegister } from "../../components";
@@ -21,6 +22,7 @@ const Header = () => {
                 </header>
                 <div className={Styles.headerbottom}>
                     <LodinOrRegister />
+                    <img className={Styles.logo} src={logo} alt="logo" />
                     <div className={Styles.barserchside}>
                         <HeaderSearchComponent />
                         <div style={{ height: "40px" }} className="height-hr"></div>

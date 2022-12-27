@@ -59,3 +59,8 @@ h2{
 .companyname{
     color:#e6e2c3 ;
 }
+.logo{
+    position: absolute;
+    left: 43%;
+    top: 4.3rem;
+}
