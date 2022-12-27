@@ -4,6 +4,7 @@ import Styles from './HomeProductionsCard.module.scss'
 export const HomeProductionsCard = ({ name, price, image, className }) => {
 
     return (
+
         <div className={`${Styles.homeproductioncard} ${className}`}>
             <div className={Styles.cardleft}>
                 <span className={Styles.name}>{name}</span>
