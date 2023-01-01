@@ -109,3 +109,6 @@ display: flex;
   50%{width:40px}
   to{width:36px}
 }
+html{
+  scroll-behavior: smooth;
+}
