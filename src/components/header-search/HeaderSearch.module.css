@@ -7,3 +7,6 @@
     border: none;
     background-color: #d4d4d47a;
 }
+.headersearchinput:focus-visible{
+border: none;
+}

@@ -7,7 +7,7 @@ const PageContainer = (props) => {
     return (
         <>
             <Header />
-            <div style={{ marginTop: "9rem" }}>
+            <div style={{ marginTop: "8.4rem" }}>
                 {children}
             </div>
             <Footer />

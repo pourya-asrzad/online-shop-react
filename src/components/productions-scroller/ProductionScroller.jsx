@@ -39,8 +39,9 @@ function ProductionScroller() {
                     id='slider1'
                     className={Styles.scrollitemscontainet}
                 >
-                    {data.map((item) => (
+                    {data.map((item, index) => (
                         <HomeProductionsCard
+                            key={index}
                             price='20.000'
                             name={item.productName}
                             image={item.image}
@@ -61,8 +62,9 @@ function ProductionScroller() {
                     id='slider2'
                     className={Styles.scrollitemscontainet}
                 >
-                    {data.map((item) => (
-                        <HomeProductionsCard
+                    {data.map((item, index) => (
+                        < HomeProductionsCard
+                            key={index}
                             price='20.000'
                             name={item.productName}
                             image={item.image}

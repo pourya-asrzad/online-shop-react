@@ -25,7 +25,6 @@ const Header = () => {
                 </header>
                 <div className={Styles.headerbottom}>
                     <LodinOrRegister />
-                    <img className={Styles.logo} src={logo} alt="logo" />
                     <div className={Styles.barserchside}>
                         <HeaderSearchComponent />
                         <div style={{ height: "40px" }} className="height-hr"></div>

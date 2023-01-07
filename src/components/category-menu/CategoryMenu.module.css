@@ -2,4 +2,8 @@
     display: flex;
     align-items:center ;
     cursor: pointer;
+    padding: 11px 3px;
+}
+.menu h2{
+    margin: 0;
 }

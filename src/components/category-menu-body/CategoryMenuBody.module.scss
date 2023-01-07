@@ -1,0 +1,28 @@
+.menu{
+    
+    width: 19rem;
+    position: fixed;
+    top: 7.8rem;
+    right: 0;
+    z-index: 10;
+    border-radius: 18px;
+    padding: 14px 0px;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    background-color: white;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    bottom: 9px;
+    bottom: 0px;
+    padding-bottom: 0;
+    padding-left: 4px;
+}
+.shadow{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #19151570;
+}

@@ -15,15 +15,15 @@ export const ImageSliderAuto = (props) => {
     const [count, setCount] = useState(0);
 
 
-    const [animationCls, setAnimationCls] = useState('displayBlock fade');
+    const [animationCls, setAnimationCls] = useState('displayBlock fader');
 
 
 
     const NextClick = () => {
 
-        setAnimationCls(() => ('displayNone fade'));
+        setAnimationCls(() => ('displayNone fader'));
         const myTimeout = setTimeout(() => {
-            setAnimationCls('displayBlock fade')
+            setAnimationCls('displayBlock fader')
         }, 100);
 
         if (count <= props.ImageData.length - 1) {
@@ -58,9 +58,9 @@ export const ImageSliderAuto = (props) => {
 
     const PreClick = () => {
 
-        setAnimationCls(() => ('displayNone fade'));
+        setAnimationCls(() => ('displayNone fader'));
         setTimeout(() => {
-            setAnimationCls('displayBlock fade')
+            setAnimationCls('displayBlock fader')
         }, 100);
 
         if (count > 0) {
