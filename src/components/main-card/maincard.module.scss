@@ -1,0 +1,63 @@
+.card_header{
+    display: flex;
+}
+.image_container{
+img{
+    width: inherit;
+}
+    width: 240px;
+    height: 240px;
+}
+.maincard{
+    padding: 12px 8px;
+    width: 282.5px;
+    height: 415px;
+    background-color: transparent;
+    border: 0.2px solid rgb(14 13 13 / 7%)
+
+}
+.card_title{
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 15px;
+    direction: rtl;
+    width: 282px;
+    height: 52px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 2.17;
+
+}
+.card_price{
+    font-size: 15px;
+    direction: rtl;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.price_discount_coontainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.discount{
+    background-color: #ef394e;
+    color: white;
+    padding: 2px 9px;
+    border-radius: 17px;
+}
+.maincard:hover{
+    box-shadow: rgb(99 99 99 / 22%) 1px 1px 8px 1px;
+    background-color: white;
+}
+.score{
+    display: flex;
+    font-size: 12px;
+    flex-direction: row-reverse;
+    direction: rtl;
+    align-items: center;
+    margin-bottom: 5px;
+}

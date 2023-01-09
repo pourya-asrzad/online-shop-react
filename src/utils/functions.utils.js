@@ -16,3 +16,7 @@ export const convertNumberToPersian = (number) => {
 export const getCopyrightMassege = () => {
   return process.env.REACT_APP_WEBSITE_COPYRIGHT;
 };
+
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

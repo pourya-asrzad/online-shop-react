@@ -1,0 +1,26 @@
+.categoryheader{
+    display: block;
+
+    font-size: 15px;
+    color: #555252;
+}
+.filter_side{
+    width: 268px;
+}
+.cards_contaier{
+    display: flex;
+    flex-wrap: wrap;
+}
+.categorys_main{
+    display: flex;
+    margin: 0 16px;
+}
+.category_top{
+ margin-top:145px;
+ margin-left:16px;
+ margin-bottom: 10px;
+ margin-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}

@@ -5,6 +5,8 @@ import { PublicRoutes } from './public.routes'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
 const LazyCart = React.lazy(() => import('../pages/cart/cart.page'))
 const LazyNotFound = React.lazy(() => import('../pages/Error/not-found.page'))
+const Category = React.lazy(() => import('../pages/category/category.page'))
+
 export const AppRouting = () => {
     return (
         <BrowserRouter>
@@ -12,6 +14,7 @@ export const AppRouting = () => {
                 <Route element={<PublicRoutes />}>
                     <Route path={INTERNAL_PATHS.HOME} element={<LazyHome />} />
                     <Route path={INTERNAL_PATHS.CART} element={<LazyCart />} />
+                    <Route path={INTERNAL_PATHS.CATEGORYS} element={<Category />} />
                     <Route path={INTERNAL_PATHS.PAGE404} element={<LazyNotFound />} />
                 </Route>
             </Routes>
