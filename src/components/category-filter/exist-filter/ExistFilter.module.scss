@@ -1,0 +1,25 @@
+.radio_input{
+    accent-color: #1c315e;
+}
+.exist_filter_header{
+    h3{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+    display: flex;
+}
+.ExistFilter{
+  
+        background-color: rgb(232 243 255);
+        padding: 23px;
+        box-shadow: rgb(99 99 99 / 22%) 1px 1px 8px 1px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.radiosParent{
+    display: flex;
+    justify-content: space-around;
+    
+}

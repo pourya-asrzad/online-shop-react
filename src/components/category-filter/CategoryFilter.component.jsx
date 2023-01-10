@@ -1,22 +1,21 @@
 import React, { useState } from "react";
+import ExistFilter from "./exist-filter/ExistFilter.component";
 import PriceFilter from "./price-filter/PriceFilter.component";
-
+import Styles from './CategoryFilter.module.scss'
 const CategoryFilter = () => {
-    const [price, setPrice] = useState(40);
-    // Triggered when the value gets updated while scrolling the slider:
-
-    const handleInput = (e) => {
-        setPrice(e.target.value);
+    const [isEnd, setIsEnd] = useState("filters_parent");
+    window.onscroll = function () {
+        if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
+            setIsEnd('filters_parentended')
+        } else {
+            setIsEnd("filters_parent")
+        }
     }
-    const hotels = [
-        { name: "A", price: 40 },
-        { name: "B", price: 50 },
-        { name: "C", price: 60 }
-    ];
     return (
-        <>
+        <div className={`${Styles[isEnd]}`}>
+            <ExistFilter />
             <PriceFilter />
-        </>
+        </div>
     );
 }
 

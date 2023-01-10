@@ -22,9 +22,9 @@ const CategoryMenuBody = () => {
                         <Accordion.Header>{item.name}</Accordion.Header>
                         <Accordion.Body>
                             <ol>
-                                {item.items.map((item) => {
+                                {item.items.map((item, index) => {
                                     return (<>
-                                        <li>{item}</li>
+                                        <li key={index}>{item}</li>
                                     </>)
                                 })}
                             </ol>
