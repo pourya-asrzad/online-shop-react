@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import CategoryFilter from '../../components/category-filter/CategoryFilter.component';
 import MainCard from '../../components/main-card/MainCard.component';
 import { data } from '../../database/db.exampel';
 import PageContainer from '../../layouts/pageContainer/pageContainer.layout';
@@ -29,7 +30,7 @@ const Category = () => {
                         })}
                     </div>
                     <div className={Styles.filter_side}>
-
+                        <CategoryFilter />
                     </div>
                 </div>
             </PageContainer>

@@ -1,0 +1,28 @@
+.range_input{
+    width: 14rem;
+    height: 6px;
+}
+.price_text{
+    display: flex;
+    justify-content: space-between;
+}
+.price{
+    span{
+        margin-right: 5px;
+    }
+    display: flex;
+}
+.price_filter_header{
+    h3{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+    display: flex;
+}
+.PriceFilter{
+    background-color: rgb(232 243 255);
+    padding: 23px;
+    box-shadow: rgb(99 99 99 / 22%) 1px 1px 8px 1px;
+}
