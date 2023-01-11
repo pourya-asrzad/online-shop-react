@@ -103,6 +103,16 @@ display: flex;
  position: absolute;
  left: 56%;
 }
+@media (max-width:1442px) {
+  .home_fire{
+    left: 58%;
+  }
+}
+@media (max-width:1094px) {
+  .home_fire{
+    left: 59%;
+  }
+}
 
 @keyframes homepage_styles_fire__2N58i{
   0%{width:36px}

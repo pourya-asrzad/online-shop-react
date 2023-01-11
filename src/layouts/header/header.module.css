@@ -1,5 +1,5 @@
 .header{
-    padding: 7px 15px;
+    padding: 1px 15px;
 background-color: #285281;
     display: flex;
     justify-content: space-between;
@@ -43,9 +43,10 @@ h2{
     align-items: center;
 }
 .headerbottom{
-    padding: 12px;
+    padding: 5px 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
 }
 .headercontainer{

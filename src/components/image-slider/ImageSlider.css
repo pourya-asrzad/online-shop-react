@@ -3,6 +3,11 @@
     position: relative;
     height: 350px;
 }
+@media (max-width:1231px) {
+    .slideshow-container{
+        height: 305px;
+    }
+}
 .imageStyle{
 width: 100%;
 height: 100%;

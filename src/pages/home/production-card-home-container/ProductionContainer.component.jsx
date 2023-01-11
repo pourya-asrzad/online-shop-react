@@ -1,11 +1,15 @@
 import React from 'react';
 import { ProductionCardHome } from '../../../components/production-card-home/ProductionCardHome.component';
+import './ProductionContainer.scss'
 const ProductionContainer = () => {
     return (
         <>
             <div className='categorycontainr'>
                 <div style={{ fontSize: '20px', color: " #1c315e", marginBottom: "1rem", textAlign: 'center' }}>
-                    <span> کالاهای  پر فروش</span>
+                    <span style={{
+                        fontSize: "22px",
+                        fontWeight: 600
+                    }}> کالاهای  پر فروش</span>
                 </div>
                 <div className='categorycontainrproductions'>
 

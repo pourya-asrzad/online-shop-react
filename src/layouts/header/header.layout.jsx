@@ -27,7 +27,7 @@ const Header = () => {
                     <LodinOrRegister />
                     <div className={Styles.barserchside}>
                         <HeaderSearchComponent />
-                        <div style={{ height: "40px" }} className="height-hr"></div>
+                        <div style={{ height: "32px" }} className="height-hr"></div>
                         <CategoryMenuComponent />
                     </div>
                 </div>
