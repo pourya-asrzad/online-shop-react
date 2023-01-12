@@ -12,7 +12,7 @@ const Category = () => {
         <div>
             <Helmet>
                 <title>
-                    {appTitle}
+                    {appTitle} | لیست محصولات
                 </title>
             </Helmet>
             <PageContainer>
