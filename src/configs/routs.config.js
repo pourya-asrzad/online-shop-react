@@ -3,7 +3,7 @@ export const INTERNAL_PATHS = {
   PAGE404: "*",
   CART: "/cart",
   CATEGORYS: "/categorys",
-  SINGLEPRODUCT: "/singleproduct",
+  SINGLEPRODUCT: "/product",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",

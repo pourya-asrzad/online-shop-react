@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Styles from './imageslider.module.scss'
 const ImageSlider = () => {
     return (
-        <div>
+        <>
             <Carousel variant="dark" className={Styles.Carousel}>
                 <Carousel.Item>
                     <div className={Styles.imagecontainer}>
@@ -36,7 +36,7 @@ const ImageSlider = () => {
                     </div>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </>
     );
 }
 
