@@ -1,0 +1,46 @@
+.Strip{
+    width: 14rem;
+    background-color: #e0e0e6;
+    height: 9px;
+    border-radius: 12px;
+}
+.Rate{
+    background-color: rgba(227, 250, 252, 0.831372549);
+    width: 15rem;
+    height: 14rem;
+    padding-left: 20px;
+    border-radius: 9px;
+    border: 1px solid #8080806b;
+    h4{
+        font-size: 18px;
+        font-weight: 600;
+        color: #050505a8;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 12px;
+        padding-top: 10px;
+    }
+    span{
+        font-size: 13px;
+        font-weight: bold;
+        color: #000000d4;
+    }
+}
+.rate_items{
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+}
+.rate_text{
+    display: flex;
+    justify-content: flex-end;
+}
+.RateItem{
+    width: 14rem;
+    margin-bottom: 15px;
+
+}
+.strip_filler{
+    height: 100%;
+    border-radius: 12px;
+}

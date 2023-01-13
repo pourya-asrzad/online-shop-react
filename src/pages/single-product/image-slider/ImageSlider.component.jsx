@@ -25,6 +25,15 @@ const ImageSlider = () => {
                         />
                     </div>
                 </Carousel.Item>
+                <Carousel.Item>
+                    <div className={Styles.imagecontainer}>
+                        <img
+                            className="d-block w-100 "
+                            src="https://dkstatics-public.digikala.com/digikala-products/fa5961b7d2a4efb180d686f6f69dd45381a4d3dd_1649056488.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
+                            alt="Third slide"
+                        />
+                    </div>
+                </Carousel.Item>
             </Carousel>
         </>
     );

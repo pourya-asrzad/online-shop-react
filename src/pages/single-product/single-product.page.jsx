@@ -5,9 +5,14 @@ import { getAppTitle } from '../../utils/functions.utils';
 import ImageSlider from './image-slider/ImageSlider.component';
 import Styles from './single-product.module.scss'
 import Discription from './discription/discription.component'
+import Rate from './rate/Rate.component';
+const fillStrip = {
+    pricevalue: 50,
+    quality: 70,
+    packing: 15
+}
 const SingleProduct = () => {
     const appTitle = getAppTitle()
-
     return (
         <>
             <Helmet>
@@ -19,6 +24,7 @@ const SingleProduct = () => {
                 <div className={Styles.sides_parent}>
                     <div>
                         <h1 >گوشی موبایل اپل مدل iPhone 11 تک سیم‌ کارت ظرفیت 128 گیگابایت و رم 4 گیگابایت</h1>
+                        <Rate fillStrip={fillStrip} />
                         <Discription />
                     </div>
                     <div className={Styles.image_slider}>
