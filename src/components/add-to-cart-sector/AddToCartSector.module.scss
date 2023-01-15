@@ -1,0 +1,73 @@
+.AddToCartSector{
+    width: 331px;
+    height: 360px;
+    background: linear-gradient(0deg, hsla(240deg, 3%, 94%, 0.5), hsla(240deg, 3%, 94%, 0.5)), #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 27px;
+    border-radius: 8px;
+    border: 1px solid #c3c3c3;
+}
+.saler{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+    margin-right: 19px;
+}
+.storeicon{
+    width: 31px;
+    display: block;
+    height: 36px;
+    color: #ff003e;
+}
+.store_Name{
+    display: flex;
+    width: 6rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 67%;
+    margin-top: 15px;
+}
+.hr{
+    background-color: gainsboro;
+    margin-left: 10px;
+    width: 90%;
+    margin: 15px 14px;
+}
+.span_icon{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 22px;
+}
+.checkedicon{
+    
+    font-size: 20px;
+    stroke-width: 0.5px;
+    color: blue;
+}
+.span{
+    margin-right: 18px;
+
+}
+.checkedicon2{
+    @extend .checkedicon;
+color: black;
+}
+.addToCartBtn{
+    border: 0;
+    background-color: #ef4056;
+    color: white;
+    width: 90%;
+    border-radius: 6px;
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+    margin-left: 14px;
+}
+.cardpricepart{
+    display: flex;
+    margin: 10px 19px;
+    justify-content: space-between;
+}

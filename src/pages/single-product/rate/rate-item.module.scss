@@ -5,9 +5,9 @@
     border-radius: 12px;
 }
 .Rate{
-    background-color: rgba(227, 250, 252, 0.831372549);
+    background-color: rgb(227 250 252 / 30%);
     width: 15rem;
-    height: 14rem;
+    height: 18rem;
     padding-left: 20px;
     border-radius: 9px;
     border: 1px solid #8080806b;
@@ -30,6 +30,11 @@
     display: flex;
     flex-direction: column;
     margin-top: 28px;
+    height: 10rem;
+    justify-content: space-between;
+    span{
+        margin-bottom: 2px;
+    }
 }
 .rate_text{
     display: flex;

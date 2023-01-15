@@ -6,9 +6,10 @@ import ImageSlider from './image-slider/ImageSlider.component';
 import Styles from './single-product.module.scss'
 import Discription from './discription/discription.component'
 import Rate from './rate/Rate.component';
+import AddToCartSector from '../../components/add-to-cart-sector/AddToCartSector.component';
 const fillStrip = {
     pricevalue: 50,
-    quality: 70,
+    quality: 90,
     packing: 15
 }
 const SingleProduct = () => {
@@ -24,8 +25,11 @@ const SingleProduct = () => {
                 <div className={Styles.sides_parent}>
                     <div>
                         <h1 >گوشی موبایل اپل مدل iPhone 11 تک سیم‌ کارت ظرفیت 128 گیگابایت و رم 4 گیگابایت</h1>
-                        <Rate fillStrip={fillStrip} />
                         <Discription />
+                        <div className={Styles.sectors_container}>
+                            <AddToCartSector />
+                            <Rate fillStrip={fillStrip} />
+                        </div>
                     </div>
                     <div className={Styles.image_slider}>
                         <ImageSlider />

@@ -40,3 +40,24 @@
     display: flex;
     align-items: center;
 }
+
+
+.normal::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  .normal::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
