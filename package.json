@@ -18,6 +18,7 @@
     "react-helmet": "^6.1.0",
     "react-horizontal-scrolling-menu": "^3.2.3",
     "react-icons": "^4.7.1",
+    "react-image-magnify": "^2.7.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
@@ -51,8 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-
   }
 }

@@ -7,6 +7,7 @@ import Styles from './single-product.module.scss'
 import Discription from './discription/discription.component'
 import Rate from './rate/Rate.component';
 import AddToCartSector from '../../components/add-to-cart-sector/AddToCartSector.component';
+import ShowZoom from './show-zoom/ShowZoom.component';
 const fillStrip = {
     pricevalue: 50,
     quality: 90,
@@ -35,6 +36,7 @@ const SingleProduct = () => {
                         <ImageSlider />
                     </div>
                 </div>
+                <ShowZoom />
             </PageContainer>
         </>
     );

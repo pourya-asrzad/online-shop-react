@@ -1,12 +1,15 @@
 .imagecontainer{
-    width: 31rem;
-    height:31rem;
+    width: 28rem;
+    height: 30rem;
     display: flex;
     justify-content: center;
- align-items: center;
- padding-left:15px ;
+    align-items: center;
+    padding-left: 31px;
 }
 .Carousel{
     width: 32rem;
     height: 34rem;
+}
+.imagezoomer{
+    background-color: aliceblue;
 }

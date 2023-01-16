@@ -22,6 +22,7 @@ const Discription = () => {
             {showCloseBtn ? <Discriptionshowingbtn onClick={showLess}>
                 بستن
             </Discriptionshowingbtn> : ''}
+
         </div>
     );
 }
