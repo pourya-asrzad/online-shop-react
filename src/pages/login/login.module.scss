@@ -1,3 +1,84 @@
 .Login{
-margin-top: 10rem;
+padding: 32px;
+width: 334px;
+height: 374px;
+border:1px solid  #e0e0e6;
+border-radius: 8px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+.input:focus-visible{
+outline:none;
+}
+.input{
+    background-color: #fcfcfc;
+    padding: 8px;
+    width: 300px;
+    height: 32px;
+    border-radius: 8px;
+    caret-color: rgb(0, 85, 255);
+    font-size: 1rem;
+}
+.CompanyName{
+    display: flex;
+    justify-content: center;
+}
+.wellcome{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    span{
+        font-size: 14px;
+    color: #000000d4;
+    }
+}
+.loginmassege{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: 19px;
+    margin-bottom: 19px;
+    margin: 19px 0;
+}
+.form{
+    input{
+        direction: rtl;
+    }
+}
+.input_parent{
+    display: flex;
+    height: 8.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.validation_message{
+    display: flex;
+    margin-right: 21px;
+    justify-content: flex-end;
+    font-size: 13px;
+    margin-bottom: 9px;
+    position: absolute;
+    right: 0;
+    color: #d90000;
+}
+.btns_parent{
+    display: flex;
+    justify-content: space-between;
+    width: 316px;
+    margin-top: 41px;
+}
+.navigatetosignup{
+    border: 0;
+    background-color: #ef4056;
+    color: white;
+    width: 90%;
+    border-radius: 6px;
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+}
+.inputcontainer{
+    position: relative;
 }

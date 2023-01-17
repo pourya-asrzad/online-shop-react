@@ -1,12 +1,14 @@
 import React from 'react';
 import Styles from './FormInput.module.scss'
-const FormInput = ({ isvalid, name, type = 'text', placeholder, value, onBlur, onChange }) => {
+const FormInput = ({ autoFocus = false, id, className = Styles.FormInput, isvalid, name, type = 'text', placeholder, value, onBlur, onChange }) => {
+
     return (
         <input
-            className={Styles.FormInput}
-            style={isvalid ? { border: '1px solid red' } : null}
+            autoFocus={autoFocus}
+            className={className}
+            style={isvalid ? { border: '1px solid red' } : { border: '1px solid rgb(0, 85, 255)' }}
             name={name}
-            id="email"
+            id={id}
             type={type}
             placeholder={placeholder}
             value={value}

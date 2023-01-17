@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { INTERNAL_PATHS } from '../configs/routs.config'
 import Login from '../pages/login/login.page'
+import SignUp from '../pages/sign-up/sign-up.page'
 import { PrivateRoutes } from './private.routes'
 import { PublicRoutes } from './public.routes'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
@@ -22,6 +23,7 @@ export const AppRouting = () => {
                 </Route>
                 <Route element={<PrivateRoutes />}>
                     <Route path={INTERNAL_PATHS.LOGIN} element={<Login />} />
+                    <Route path={INTERNAL_PATHS.SIGNUP} element={<SignUp />} />
                 </Route>
             </Routes>
         </BrowserRouter>

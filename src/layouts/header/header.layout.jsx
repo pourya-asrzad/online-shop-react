@@ -4,6 +4,7 @@ import carticon from '../../assets/images/noto_shopping-cart.png'
 import { CategoryMenuComponent, HeaderSearchComponent, LodinOrRegister } from "../../components";
 import { INTERNAL_PATHS } from "../../configs/routs.config";
 import Styles from './header.module.css'
+import CompanyName from '../../components/company-name/CompanyName.component';
 const Header = () => {
     return (
         <>
@@ -20,11 +21,13 @@ const Header = () => {
                             </Link>
                             <span className={Styles.headerhref}>مدیریت</span>
                         </div>
-                        <h1 className={Styles.companyname}>پوریا کالا </h1>
+                        <CompanyName />
                     </div>
                 </header>
                 <div className={Styles.headerbottom}>
-                    <LodinOrRegister />
+                    <Link style={{ color: 'black', textDecoration: "none" }} to={INTERNAL_PATHS.LOGIN}>
+                        <LodinOrRegister />
+                    </Link>
                     <div className={Styles.barserchside}>
                         <HeaderSearchComponent />
                         <div style={{ height: "32px" }} className="height-hr"></div>
