@@ -42,14 +42,28 @@ const ImageSlider = () => {
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div className={Styles.imagecontainer}>
-
-                        <img
+                    <div onMouseOver={zoomInImage} onMouseLeave={notZoomInImage} className={Styles.imagecontainer}>
+                        {!showZoom ? <img
                             className="d-block w-100 "
                             src="https://dkstatics-public.digikala.com/digikala-products/6e25f9b57c920efd55f980d129614b18f83bd451_1670074732.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
                             alt="Third slide"
-                        />
+                        /> :
+                            <ReactImageMagnify  {...{
+                                smallImage: {
+                                    alt: 'Wristwatch by Ted Baker London',
+                                    isFluidWidth: true,
+                                    src: "https://dkstatics-public.digikala.com/digikala-products/6e25f9b57c920efd55f980d129614b18f83bd451_1670074732.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
+                                    ,
+                                },
+                                largeImage: {
+                                    src: "https://dkstatics-public.digikala.com/digikala-products/6e25f9b57c920efd55f980d129614b18f83bd451_1670074732.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90",
+                                    width: 900,
+                                    height: 900
+                                },
+                                enlargedImagePortalId: "myPortal"
+                            }} />}
                     </div>
+
                 </Carousel.Item>
                 <Carousel.Item>
                     <div className={Styles.imagecontainer}>

@@ -4,6 +4,7 @@ export const INTERNAL_PATHS = {
   CART: "/cart",
   CATEGORYS: "/categorys",
   SINGLEPRODUCT: "/product",
+  LOGIN: "/login",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",
