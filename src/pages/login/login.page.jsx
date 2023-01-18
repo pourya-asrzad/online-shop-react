@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import Styles from './login.module.scss'
 import FormInput from '../../components/form-input/FormInput.component';
 import CompanyName from '../../components/company-name/CompanyName.component';
@@ -8,6 +9,7 @@ import { Link } from 'react-router-dom';
 import BaseBtn from '../../components/buttons/AddToCartBtn.component'
 import { INTERNAL_PATHS } from '../../configs/routs.config';
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false)
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -21,6 +23,12 @@ const Login = () => {
         }
     })
 
+    function showpasswordhandler() {
+        setShowPassword(true)
+    }
+    function hidePasswordHandler() {
+        setShowPassword(false)
+    }
     return (
         <div>
             <div className={Styles.Login}>
@@ -35,7 +43,6 @@ const Login = () => {
 
                         <div className={Styles.inputcontainer}>
                             <FormInput
-                                autoFocus={true}
                                 className={Styles.input}
                                 name={'email'}
                                 type='email'
@@ -53,6 +60,7 @@ const Login = () => {
                                 className={Styles.input}
                                 name="password"
                                 id="password"
+                                type={showPassword ? 'text' : 'password'}
                                 placeholder='رمز خود را وارد نمایید'
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
@@ -60,6 +68,7 @@ const Login = () => {
                                 isvalid={formik.touched.password && formik.errors.password ? true : false}
                             />
                             {formik.touched.password && formik.errors.password ? <span className={Styles.validation_message}>{formik.errors.password}</span> : ''}
+                            {showPassword ? <AiFillEyeInvisible className={Styles.eyeIcon} onClick={hidePasswordHandler} /> : <AiFillEye onClick={showpasswordhandler} className={Styles.eyeIcon} />}
                         </div>
                     </div>
                     <div className={Styles.btns_parent}>
