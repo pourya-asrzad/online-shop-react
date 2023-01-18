@@ -1,0 +1,17 @@
+.cartbill{
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 13rem;
+    width: 20rem;
+    border-radius: 9px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+justify-content: space-around;
+border: 1px solid rgba(128, 128, 128, 0.708);
+}
+.pricetot{
+    width: 90%;
+    margin: 12px 0;
+    justify-content: space-between;
+}

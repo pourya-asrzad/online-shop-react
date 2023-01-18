@@ -1,11 +1,16 @@
 .carthead{
     display: flex;
     justify-content: space-between;
-    margin: 0 17px;
+    margin: 0 75px;
     margin-top: 125px;
 }
 .cart_icon{
     width: 39px;
     height: 31px;
     color: #247ce8;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 70px;
 }

@@ -39,11 +39,13 @@
     margin-top: 15px;
 }
 .cartcard{
-    border: 1px solid gray;
+    border: 1px solid rgba(128, 128, 128, 0.708);
     width: 51rem;
     padding: 18px;
     border-radius: 9px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    margin-bottom: 20px;
 }
 .pricecou{
     display: flex;
