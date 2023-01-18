@@ -1,0 +1,70 @@
+.image{
+    width: inherit;
+}
+.imageContainer{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+}
+.card_right_side{
+    display: flex;
+}
+.productinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .productinfoiter{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 7rem;
+    justify-content: space-around;
+    }
+    h2{
+        font-weight: 600;
+        font-size: 22px;
+    }
+}
+.counter_container{
+    width: 7rem;
+}
+.cardfooter{
+    display: flex;
+    width: 16rem;
+    justify-content: space-between;
+    margin-right: 27px;
+    margin-top: 15px;
+}
+.cartcard{
+    border: 1px solid gray;
+    width: 51rem;
+    padding: 18px;
+    border-radius: 9px;
+    position: relative;
+}
+.pricecou{
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000c9;
+}
+.cartcardchild{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.deleteicon{
+    color: rgb(0 0 0);
+    width: 30px;
+    height: 30px;
+}
+.deletebtn{
+   border: none;
+   background-color: white;
+    position: absolute;
+    top: 11px;
+    left: 17px;
+}
