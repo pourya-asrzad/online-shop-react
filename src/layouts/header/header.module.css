@@ -67,3 +67,12 @@ h2{
     left: 43%;
     top: 4.3rem;
 }
+.panel_header_text{
+    font-size: 23px;
+}
+.controlpanelheader{
+    justify-content: space-between;
+    padding: 0px 23px;
+    padding-top: 12px;
+    background-color: #ffe6e6;
+}

@@ -31,6 +31,12 @@
 .j-c{
 justify-content: center;
 }
+.j-sp{
+  justify-content: space-between;
+}
+.j-ar{
+  justify-content: space-around;
+}
 body::-webkit-scrollbar {
     width: 5px;
   }

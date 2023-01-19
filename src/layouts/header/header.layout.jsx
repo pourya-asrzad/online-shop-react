@@ -19,7 +19,9 @@ const Header = () => {
                                     , margin: '5px'
                                 }} src={carticon} alt="carticon" />
                             </Link>
-                            <span className={Styles.headerhref}>مدیریت</span>
+                            <Link className={Styles.cartlink} to={INTERNAL_PATHS.CONTROLPANEL}>
+                                <span className={Styles.headerhref}>مدیریت</span>
+                            </Link>
                         </div>
                         <CompanyName />
                     </div>
