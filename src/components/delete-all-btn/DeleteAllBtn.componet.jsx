@@ -1,8 +1,9 @@
 import React from 'react';
 import { RiDeleteBinLine } from 'react-icons/ri'
 const DeleteAllBtn = () => {
+
     return (
-        <div className='flex a-c' style={{ cursor: 'pointer' }}>
+        <div className={`flex a-c `} style={{ cursor: 'pointer' }}>
             <RiDeleteBinLine style={{
                 width: "22px",
                 height: "24px",

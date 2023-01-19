@@ -6,6 +6,9 @@ export const INTERNAL_PATHS = {
   SINGLEPRODUCT: "/product",
   LOGIN: "/login",
   SIGNUP: "/signup",
+  CONTROLPANEL: "controlPanel",
+  ORDERS: "orders",
+  INVENTORY_PRICE: "Inventory&Price",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",

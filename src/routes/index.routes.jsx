@@ -1,9 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { INTERNAL_PATHS } from '../configs/routs.config'
+import Goods from '../pages/control-panel/goods/goods.page'
+import InventoryPrice from '../pages/control-panel/Inventory-and-price/inventory-price.page'
+import Orders from '../pages/control-panel/orders/orders.page'
 import Login from '../pages/login/login.page'
 import SignUp from '../pages/sign-up/sign-up.page'
 import { PrivateRoutes } from './private.routes'
+import { ProtectedRoutes } from './protected.routes'
 import { PublicRoutes } from './public.routes'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
 const LazyCart = React.lazy(() => import('../pages/cart/cart.page'))
@@ -24,6 +28,13 @@ export const AppRouting = () => {
                 <Route element={<PrivateRoutes />}>
                     <Route path={INTERNAL_PATHS.LOGIN} element={<Login />} />
                     <Route path={INTERNAL_PATHS.SIGNUP} element={<SignUp />} />
+                </Route>
+                <Route element={<ProtectedRoutes />}>
+                    <Route path={INTERNAL_PATHS.CONTROLPANEL} >
+                        <Route index element={<Goods />} />
+                        <Route path={INTERNAL_PATHS.ORDERS} element={<Orders />} />
+                        <Route path={INTERNAL_PATHS.INVENTORY_PRICE} element={<InventoryPrice />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
