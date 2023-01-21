@@ -1,0 +1,16 @@
+.GoodsCard{
+    display: flex;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px;
+    border: 1px solid rgba(128, 128, 128, 0.708);
+    justify-content: space-between;
+}
+.card_rigth_side{
+    display: flex;
+}
+.imagecontainer{
+    width: 9rem;
+    height: 11rem;
+    img{
+        width: inherit;
+    }
+}

@@ -1,0 +1,36 @@
+
+.goodspageHeader{
+    display: flex;
+    margin: 10px 49px;
+    justify-content: space-between;
+}
+.righttoptext{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftthings{
+    display: flex;
+    justify-content: space-between;
+    width: 27rem;
+}
+.filter{
+    display: flex;
+    align-items: center;
+}
+.filterlabel{
+    display: flex;
+    align-items: center;
+    label{
+        display: block;
+        width: max-content;
+    }
+}
+.addgoodbtn{
+  
+    width: 8rem;
+    height: 1.1rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
