@@ -6,22 +6,28 @@ import Styles from './GoodsCard.module.scss'
 const GoodsCard = ({ img, title, category }) => {
     return (
         <div className={Styles.GoodsCard}>
-            <div>
-                <GoodsCardBtn icon={<RiFileEditFill />}>
+            <div className={Styles.btns_container}>
+                <GoodsCardBtn variant={"primary"} icon={<RiFileEditFill />}>
                     ویرایش
                 </GoodsCardBtn>
-                <GoodsCardBtn icon={<AiTwotoneDelete />}>
+                <GoodsCardBtn variant={"danger"} icon={<AiTwotoneDelete />}>
                     حذف
                 </GoodsCardBtn>
             </div>
             <div className={Styles.card_rigth_side}>
-                <div>
-                    <span>
-                        نام کالا:{title}
-                    </span>
-                    <span>
-                        دسته بندی:{category}
-                    </span>
+                <div className={Styles.detailsparent}>
+                    <div className={Styles.detailscontainer}>
+                        <span>{title}</span>
+                        <h5>:نام کالا </h5>
+                    </div>
+                    <div className={Styles.detailscontainer}>
+                        <span>
+                            {category}
+                        </span>
+                        <h5 >
+                            :   دسته بندی
+                        </h5>
+                    </div>
                 </div>
                 <div className={Styles.imagecontainer}>
                     <img src={img} alt={title} />

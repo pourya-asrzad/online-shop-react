@@ -76,3 +76,12 @@ h2{
     padding-top: 12px;
     background-color: #ffe6e6;
 }
+.controllpanelheadertag{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.headerghost{
+    height: 3.25rem;
+}

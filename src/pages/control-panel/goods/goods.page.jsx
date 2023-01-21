@@ -3,11 +3,11 @@ import { AiTwotoneFilter } from 'react-icons/ai'
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { getAppTitle } from '../../../utils/functions.utils'
-import { GrStatusGoodSmall } from 'react-icons/gr'
 import Button from 'react-bootstrap/Button';
 import Styles from './goods.module.scss'
 import { data } from '../../../database/db.exampel';
 import GoodsCard from '../../../components/goods-card/GoodsCard.component';
+import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 const Goods = () => {
     const appTittle = getAppTitle()
     return (
@@ -31,16 +31,17 @@ const Goods = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={Styles.righttoptext}>
-                        <h2>مدیریت کالا ها</h2>
-                        <GrStatusGoodSmall style={{ color: '#b90e0e' }} />
-                    </div>
+
+                    <PanelTopTitle color={"#b90e0e"}>
+                        مدیریت کالا ها
+                    </PanelTopTitle>
                 </div>
-                <section>
+                <div className={Styles.goodsghoest}></div>
+                <section className={Styles.cardscontainer}>
                     {data.map((element) => {
                         return <GoodsCard img={element.image} title={element.productName} key={element.id} />
                     })}
-                </section>
+                </section >
             </main>
         </div>
     );

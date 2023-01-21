@@ -1,8 +1,14 @@
 
 .goodspageHeader{
     display: flex;
-    margin: 10px 49px;
+    padding: 10px 49px;
     justify-content: space-between;
+    padding-top: 34px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(0 0 0 / 5%);
 }
 .righttoptext{
     display: flex;
@@ -33,4 +39,10 @@
     display: flex !important;
     align-items: center;
     justify-content: center;
+}
+.cardscontainer{
+    margin: 10px 49px;
+}
+.goodsghoest{
+    height: 4rem;
 }
