@@ -8,8 +8,12 @@ import Styles from './goods.module.scss'
 import { data } from '../../../database/db.exampel';
 import GoodsCard from '../../../components/goods-card/GoodsCard.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
+import GoodsModal from '../../../components/modals/GoodsModal.component';
+
 const Goods = () => {
     const appTittle = getAppTitle()
+    const [modalShow, setModalShow] = React.useState(false);
+
     return (
         <div>
             <Helmet>
@@ -18,7 +22,7 @@ const Goods = () => {
             <main>
                 <div className={Styles.goodspageHeader} >
                     <div className={Styles.leftthings}>
-                        <Button variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
+                        <Button onClick={() => setModalShow(true)} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
                         <div className={Styles.filter}>
                             <Form.Select id='filtercategory' size="sm">
                                 <option>Small select</option>
@@ -39,10 +43,14 @@ const Goods = () => {
                 <div className={Styles.goodsghoest}></div>
                 <section className={Styles.cardscontainer}>
                     {data.map((element) => {
-                        return <GoodsCard img={element.image} title={element.productName} key={element.id} />
+                        return <GoodsCard onShowModal={setModalShow} img={element.image} title={element.productName} key={element.id} />
                     })}
                 </section >
             </main>
+            <GoodsModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </div>
     );
 }

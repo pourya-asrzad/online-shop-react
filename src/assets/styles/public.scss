@@ -135,3 +135,35 @@ html{
   height: 1px;
   background-color: gray;
 }
+
+/*file adder styles*/
+.filechooser img{
+  position: absolute;
+  bottom: -1px;
+  right: -2px;
+}
+input[type="file"] { 
+  z-index: -1;
+  position: absolute;
+  opacity: 0;
+}
+
+input:focus + label {
+  outline: 2px solid;
+}
+.Profile-picture{
+  position: absolute;
+  left: 43%;
+  bottom: -59px;
+}
+.profileimg{
+  overflow: hidden;
+  width: 124px;
+  height: 124px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid blue;
+}
