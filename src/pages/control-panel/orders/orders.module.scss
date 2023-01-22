@@ -1,10 +1,19 @@
 .ordersheader{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 17px 20px;
     background-color: white; 
     box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(0 0 0 / 5%);
 position: fixed;
 right: 0;
 left: 0;
+}
+.radiosparent{
+    display: flex;
+    align-items: center;
+}
+.inputscontainer{
+    display: flex;
+    flex-direction: row-reverse;
+    accent-color: black;
 }
