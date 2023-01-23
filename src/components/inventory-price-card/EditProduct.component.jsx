@@ -1,10 +1,11 @@
 import React from 'react';
 import TitleTextGroup from './TitleTextGroup.component';
 import Button from 'react-bootstrap/Button';
+import Styles from './InventoryPriceCard.module.scss'
 
 const EditProduct = ({ inventory, price }) => {
     return (
-        <div>
+        <div className={Styles.EditProduct}>
             <div>
                 <TitleTextGroup title={":قیمت"}>
                     {price}

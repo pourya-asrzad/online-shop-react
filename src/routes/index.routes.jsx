@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { INTERNAL_PATHS } from '../configs/routs.config'
+import AdminLogin from '../pages/admin-login/admin-login.page'
 import Goods from '../pages/control-panel/goods/goods.page'
 import InventoryPrice from '../pages/control-panel/Inventory-and-price/inventory-price.page'
 import Orders from '../pages/control-panel/orders/orders.page'
@@ -28,6 +29,7 @@ export const AppRouting = () => {
                 <Route element={<PrivateRoutes />}>
                     <Route path={INTERNAL_PATHS.LOGIN} element={<Login />} />
                     <Route path={INTERNAL_PATHS.SIGNUP} element={<SignUp />} />
+                    <Route path={INTERNAL_PATHS.ADMIN_LOGIN} element={<AdminLogin />} />
                 </Route>
                 <Route element={<ProtectedRoutes />}>
                     <Route path={INTERNAL_PATHS.CONTROLPANEL} >
