@@ -8,7 +8,9 @@ const FileInput = () => {
                 <img width={120} src={imageSrc} alt={imageSrc} />
             </div>
             <label htmlFor="filechoose" className="filechooser">
-                <img width={40} src={plusicon} alt="plus.png" />
+                <div style={{ width: '40px' }}>
+                    <img width={40} src={plusicon} alt="plus.png" />
+                </div>
             </label>
             <input type="file" id="filechoose" />
         </div>
