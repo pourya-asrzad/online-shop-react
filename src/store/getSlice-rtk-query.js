@@ -7,7 +7,13 @@ const fetchProducts = createApi({
   tagTypes: ["Posts"],
   endpoints: (builder) => ({
     fetchProducts: builder.query({
-      query: (page) => `products?category=${page.filter}&_page=${page.page}`,
+      query: (page) => {
+        if (page.filter == "null") {
+          return `products?_page=${page.page}`;
+        } else {
+          return `products?category=${page.filter}&_page=${page.page}`;
+        }
+      },
       providesTags: ["Posts"],
     }),
     fetchsubcategory: builder.query({

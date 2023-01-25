@@ -16,6 +16,7 @@ const FormSelect = ({ pagenum, handelSelectChange }) => {
     return (
         <form >
             <Form.Select onChange={handelSelectChangeh} style={{ width: '6rem' }} id='filtercategory' size="sm">
+                <option value={"null"}>همه</option>
                 {catrgory.map((element) => {
                     return <option value={element.id} id={element.id} key={element.id}>{element.name}</option>
                 })}
