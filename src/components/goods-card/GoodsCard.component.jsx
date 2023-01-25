@@ -6,31 +6,32 @@ import Styles from './GoodsCard.module.scss'
 import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/getSlice-rtk-query';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { callFluidObserver } from '@react-spring/shared';
 const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
-    const [category, setCategory] = useState()
-    const [subcategory, setsubCategory] = useState()
+    const [category, setCategory] = useState('')
+    const [subcategory, setsubCategory] = useState('')
     const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
     const { data: categorydata = [] } = useFetchcategoryQuery()
     // console.log(subcategoryId);
-    const sub = subcategorydata.filter((element) => {
-        return element.id == subcategoryId
-    })
-    const cat = categorydata.filter((element) => {
-        return element.id == categoryId
-    })
 
-    console.log(sub);
+    // console.log(sub);
     useEffect(() => {
-        sub.map((ele) => {
-            setsubCategory(ele.name)
-        })
-    }, [subcategoryId])
-    useEffect(() => {
-        cat.map((ele) => {
-            setCategory(ele.name)
-        })
-    }, [categoryId])
+        if (subcategorydata.length !== 0) {
+            const sub = subcategorydata.filter((element) => {
+                return element.id == subcategoryId
+            })
+            const cat = categorydata.filter((element) => {
+                return element.id == categoryId
+            })
+            sub.map((ele) => {
+                setsubCategory(ele.name)
+            })
+            cat.map((ele) => {
+                setCategory(ele.name)
+            })
+        }
 
+    }, [categorydata, subcategorydata])
     return (
         <div className={Styles.GoodsCard}>
             <div className={Styles.btns_container}>
