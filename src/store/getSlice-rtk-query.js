@@ -20,6 +20,16 @@ const fetchProducts = createApi({
       query: () => "subcategory",
       providesTags: ["Posts"],
     }),
+    fetchOrders: builder.query({
+      query: (page) => {
+        if (page.filter == "null") {
+          return `orders?_page=${page.page}&_limit=7`;
+        } else {
+          return `orders?category=${page.filter}&_page=${page.page}&_limit=7`;
+        }
+      },
+      providesTags: ["Posts"],
+    }),
     fetchcategory: builder.query({
       query: () => "category",
       providesTags: ["Posts"],
@@ -39,5 +49,6 @@ export const {
   useCreateProductMutation,
   useFetchsubcategoryQuery,
   useFetchcategoryQuery,
+  useFetchOrdersQuery,
 } = fetchProducts;
 export default fetchProducts;

@@ -2,7 +2,8 @@ import React from 'react';
 import Styles from './Tabel.module.scss'
 import Button from 'react-bootstrap/Button';
 import TrComponent from './Tr.component';
-const TabelComponent = () => {
+const TabelComponent = ({ orders }) => {
+
     return (
         <table className={Styles.styled_table}>
             <thead>
@@ -14,13 +15,13 @@ const TabelComponent = () => {
                 </tr>
             </thead>
             <tbody>
-                <TrComponent />
-                <TrComponent />
-                <TrComponent />
-                <TrComponent />
-                <TrComponent />
-                <TrComponent />
-                <TrComponent />
+                {orders.map((element) => {
+                    return <TrComponent prices={element.prices}
+                        key={element.id} username={element.username}
+                        OrderRegistrationTime={element.createdAt}
+                        lastname={element.lastname}
+                    />
+                })}
             </tbody>
         </table>
     );
