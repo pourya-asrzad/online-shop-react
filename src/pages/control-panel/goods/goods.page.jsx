@@ -1,19 +1,23 @@
 import Form from 'react-bootstrap/Form';
 import { AiTwotoneFilter } from 'react-icons/ai'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { getAppTitle } from '../../../utils/functions.utils'
+import { getAppTitle, parseJwt } from '../../../utils/functions.utils'
 import Button from 'react-bootstrap/Button';
 import Styles from './goods.module.scss'
-import { data } from '../../../database/db.exampel';
 import GoodsCard from '../../../components/goods-card/GoodsCard.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import GoodsModal from '../../../components/modals/GoodsModal.component';
-
+import { useCreateProductMutation, useFetchProductsQuery } from '../../../store/getSlice-rtk-query';
 const Goods = () => {
+    const [createProduct, { isLoading: postloading }] = useCreateProductMutation()
+    const { data: products = [], isLoading, error } = useFetchProductsQuery()
     const appTittle = getAppTitle()
     const [modalShow, setModalShow] = React.useState(false);
-
+    if (localStorage.login) {
+        const storageParse = JSON.parse(localStorage.login)
+        const userInfo = parseJwt(storageParse.token)
+    }
     return (
         <div>
             <Helmet>
@@ -22,7 +26,11 @@ const Goods = () => {
             <main>
                 <div className={Styles.goodspageHeader} >
                     <div className={Styles.leftthings}>
-                        <Button onClick={() => setModalShow(true)} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
+                        <Button onClick={() => {
+                            setModalShow(true)
+                            createProduct({ name: 'hoshang' })
+
+                        }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
                         <div className={Styles.filter}>
                             <Form.Select id='filtercategory' size="sm">
                                 <option>Small select</option>
@@ -42,8 +50,8 @@ const Goods = () => {
                 </div>
                 <div className={Styles.goodsghoest}></div>
                 <section className={Styles.cardscontainer}>
-                    {data.map((element) => {
-                        return <GoodsCard onShowModal={setModalShow} img={element.image} title={element.productName} key={element.id} />
+                    {products.map((element) => {
+                        return <GoodsCard onShowModal={setModalShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
                     })}
                 </section >
             </main>
@@ -51,6 +59,7 @@ const Goods = () => {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
+
         </div>
     );
 }

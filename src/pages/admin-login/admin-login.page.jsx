@@ -23,16 +23,14 @@ const AdminLogin = () => {
             password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد')
         }),
         onSubmit: (value) => {
-            const email = value.userName
+            const username = value.userName
             const password = value.password
-            // localStorage.setItem('loggedIn', 'fg')
-            console.log(email, password);
             axios.post("http://localhost:5000/api/auth/login", {
-                email,
+                username,
                 password,
             })
                 .then((response) => {
-                    console.log("response", response);
+
                     localStorage.setItem(
                         "login",
                         JSON.stringify({
@@ -41,7 +39,7 @@ const AdminLogin = () => {
                         })
                     );
 
-                    navigate('/controlPanel')
+                    navigate(INTERNAL_PATHS.CONTROLPANEL)
                 })
                 .catch((error) => setError(error.response.data.message));
             // console.log(value);

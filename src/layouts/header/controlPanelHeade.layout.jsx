@@ -6,7 +6,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const ControlPanelHeader = () => {
     const location = useLocation()
-    console.log(location);
+
     return (
         <>
             <header className={Styles.controllpanelheadertag}>

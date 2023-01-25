@@ -3,7 +3,7 @@ import RateItem from './rate-item/RateItem.component';
 import Styles from './rate-item.module.scss'
 
 const Rate = ({ fillStrip }) => {
-    console.log(fillStrip)
+
     return (
         <div className={Styles.Rate}>
             <h4>ارزش گذاری </h4>

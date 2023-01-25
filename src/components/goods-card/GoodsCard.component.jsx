@@ -3,7 +3,33 @@ import GoodsCardBtn from './goods-card-btn/GoodsCardBtn.component';
 import { RiFileEditFill } from 'react-icons/ri'
 import { AiTwotoneDelete } from 'react-icons/ai'
 import Styles from './GoodsCard.module.scss'
-const GoodsCard = ({ img, title, category, onShowModal }) => {
+import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/getSlice-rtk-query';
+import { useState } from 'react';
+import { useEffect } from 'react';
+const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
+    const [category, setCategory] = useState()
+    const [subcategory, setsubCategory] = useState()
+    const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
+    const { data: categorydata = [] } = useFetchcategoryQuery()
+    // console.log(subcategoryId);
+    const sub = subcategorydata.filter((element) => {
+        return element.id == subcategoryId
+    })
+    const cat = categorydata.filter((element) => {
+        return element.id == categoryId
+    })
+
+    console.log(sub);
+    useEffect(() => {
+        sub.map((ele) => {
+            setsubCategory(ele.name)
+        })
+    }, [subcategoryId])
+    useEffect(() => {
+        cat.map((ele) => {
+            setCategory(ele.name)
+        })
+    }, [categoryId])
 
     return (
         <div className={Styles.GoodsCard}>
@@ -23,7 +49,7 @@ const GoodsCard = ({ img, title, category, onShowModal }) => {
                     </div>
                     <div className={Styles.detailscontainer}>
                         <span>
-                            {category}
+                            {`${category}  /  ${subcategory}`}
                         </span>
                         <h5 >
                             :   دسته بندی
