@@ -20,7 +20,7 @@ const Goods = () => {
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
-        filter: null
+        filter: "null"
     })
     const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
     const appTittle = getAppTitle()

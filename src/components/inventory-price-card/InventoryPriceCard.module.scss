@@ -13,6 +13,7 @@
 }
 .invenbuttom{
     display: flex;
+    
 }
 .inventorydetailparent{
     display: flex;
@@ -40,4 +41,9 @@
     button{
         width: 63%;
     }
+}
+.golam{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }

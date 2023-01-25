@@ -2,7 +2,9 @@ import React from 'react';
 import EditProduct from './EditProduct.component';
 import TitleTextGroup from './TitleTextGroup.component';
 import Styles from './InventoryPriceCard.module.scss'
+import { numberWithCommas } from '../../utils/functions.utils';
 const InventoryPriceCard = ({ img, title, price, inventory }) => {
+    const pricewithcomma = numberWithCommas(price)
     return (
         <div className={Styles.inventCard} >
             <EditProduct price={price} inventory={inventory}></EditProduct>
@@ -13,7 +15,7 @@ const InventoryPriceCard = ({ img, title, price, inventory }) => {
                     </TitleTextGroup>
                     <div className={Styles.invenbuttom}>
                         <TitleTextGroup title={":قیمت"}>
-                            {price}
+                            {pricewithcomma}
                         </TitleTextGroup>
                         <div className='height-hr'></div>
                         <TitleTextGroup title={":موجودی"}>
