@@ -97,7 +97,7 @@ const Goods = () => {
                 <section className={Styles.cardscontainer}>
                     {products.length >= 1 ? products.map((element) => {
                         return <GoodsCard onShowModal={setModalShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
-                    }) : <video className='notDataanimation' width="320" height="240" autoPlay={"true"} loop>
+                    }) : <video className='notDataanimation' width="320" height="240" autoPlay={true} loop>
                         <source src="https://cdnl.iconscout.com/lottie/premium/thumb/no-result-4957988-4133894.mp4" type="video/mp4" />
                     </video>
                     }

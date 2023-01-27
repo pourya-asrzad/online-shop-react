@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Loading } from '../../../components/Loading/Loading.component';
 import Pagination from '../../../components/pagination/Pagination.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import TabelComponent from '../../../components/tabel/Tabel.component';
@@ -18,7 +19,7 @@ const Orders = () => {
     })
     const { data: itemslengh } = useFetchOrdersLengthQuery(ordersfillterAndPageNubmer)
     console.log(itemslengh);
-    const { data: orders = [], error } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
+    const { data: orders = [], isLoading, error } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
     const ordersError = useLogoutadmin(error)
     function handelPageHangeback() {
         setOrdersfillterAndPageNubmer(state => {
@@ -89,6 +90,7 @@ const Orders = () => {
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
+                {isLoading && <Loading />}
                 <TabelComponent orders={orders} />
             </main>
             <div style={{

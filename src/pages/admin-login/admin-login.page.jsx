@@ -35,7 +35,8 @@ const AdminLogin = () => {
                 dispatch(setCredentials({ ...res }));
                 navigate('/' + INTERNAL_PATHS.CONTROLPANEL);
             } catch (error) {
-                console.log('golam')
+                if (error.originalStatus === 401)
+                    setError("هیچ کاربری با این اطلاعات یافت نشد")
             }
         }
     })

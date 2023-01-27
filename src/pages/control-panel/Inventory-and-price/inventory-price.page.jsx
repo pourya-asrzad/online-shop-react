@@ -9,6 +9,7 @@ import { useFetchProductsQuery } from '../../../store/products/productsApiSlice'
 import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
+import { Loading } from '../../../components/Loading/Loading.component';
 const InventoryPrice = () => {
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
@@ -55,6 +56,7 @@ const InventoryPrice = () => {
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
+                {isLoading && <Loading />}
                 {products.map((element) => {
                     return (
                         <InventoryPriceCard
