@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import Pagination from '../../../components/pagination/Pagination.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import TabelComponent from '../../../components/tabel/Tabel.component';
+import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { useFetchOrdersLengthQuery, useFetchOrdersQuery, useFetchTestQuery } from '../../../store/products/productsApiSlice';
 import { getAppTitle } from '../../../utils/functions.utils';
 import Styles from './orders.module.scss'
@@ -17,7 +18,8 @@ const Orders = () => {
     })
     const { data: itemslengh } = useFetchOrdersLengthQuery(ordersfillterAndPageNubmer)
     console.log(itemslengh);
-    const { data: orders = [] } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
+    const { data: orders = [], error } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
+    const ordersError = useLogoutadmin(error)
     function handelPageHangeback() {
         setOrdersfillterAndPageNubmer(state => {
             if (state.page > 1)

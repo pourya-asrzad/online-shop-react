@@ -8,6 +8,7 @@ import InventoryPriceCard from '../../../components/inventory-price-card/Invento
 import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
+import { useLogoutadmin } from '../../../hooks/logoutadmin';
 const InventoryPrice = () => {
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
@@ -15,6 +16,7 @@ const InventoryPrice = () => {
         filter: "null"
     })
     const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
+    const inventoryError = useLogoutadmin(error)
     function handelPageHangeback() {
         setpageNumberAndpage(state => {
             if (state.page > 1)

@@ -14,6 +14,7 @@ import { useState } from 'react';
 import Pagination from '../../../components/pagination/Pagination.component';
 import FormSelect from '../../../components/Form-select/FormSelect.component';
 import { useEffect } from 'react';
+import { useLogoutadmin } from '../../../hooks/logoutadmin';
 
 const Goods = () => {
 
@@ -24,11 +25,11 @@ const Goods = () => {
     })
     const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
     const appTittle = getAppTitle()
+    const goodsError = useLogoutadmin(error)
+
     const [modalShow, setModalShow] = React.useState(false);
-    if (localStorage.login) {
-        const storageParse = JSON.parse(localStorage.login)
-        const userInfo = parseJwt(storageParse.token)
-    }
+
+    // console.log(error.data)
     useEffect(() => {
         if (products.length < 10) {
             setpaginationStop(true)
