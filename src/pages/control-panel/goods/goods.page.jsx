@@ -8,7 +8,7 @@ import Styles from './goods.module.scss'
 import GoodsCard from '../../../components/goods-card/GoodsCard.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import GoodsModal from '../../../components/modals/GoodsModal.component';
-import { useFetchProductsQuery } from '../../../store/getSlice-rtk-query';
+import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import { Loading } from '../../../components/Loading/Loading.component';
 import { useState } from 'react';
 import Pagination from '../../../components/pagination/Pagination.component';

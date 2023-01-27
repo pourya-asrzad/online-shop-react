@@ -5,7 +5,7 @@ import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.com
 import Styles from './inventory-price.module.scss'
 import { data } from '../../../database/db.exampel';
 import InventoryPriceCard from '../../../components/inventory-price-card/InventoryPriceCard.component';
-import { useFetchProductsQuery } from '../../../store/getSlice-rtk-query';
+import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
 const InventoryPrice = () => {

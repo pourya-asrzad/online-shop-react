@@ -3,7 +3,7 @@ import GoodsCardBtn from './goods-card-btn/GoodsCardBtn.component';
 import { RiFileEditFill } from 'react-icons/ri'
 import { AiTwotoneDelete } from 'react-icons/ai'
 import Styles from './GoodsCard.module.scss'
-import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/getSlice-rtk-query';
+import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/products/productsApiSlice'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { callFluidObserver } from '@react-spring/shared';

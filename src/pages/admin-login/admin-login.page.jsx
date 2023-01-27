@@ -9,11 +9,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import BaseBtn from '../../components/buttons/AddToCartBtn.component'
 import { INTERNAL_PATHS } from '../../configs/routs.config';
 import axios from 'axios';
+import { setCredentials } from '../../store/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { useLoginMutation } from '../../store/auth/authApiSlice';
 const AdminLogin = () => {
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     const [error, setError] = useState('')
+    const [login, { isLoading }] = useLoginMutation();
     const formik = useFormik({
         initialValues: {
             userName: '',
@@ -22,27 +26,17 @@ const AdminLogin = () => {
             userName: Yup.string().required('این فیلد نباید خالی باشد'),
             password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد')
         }),
-        onSubmit: (value) => {
+        onSubmit: async (value) => {
             const username = value.userName
             const password = value.password
-            axios.post("http://localhost:5000/api/auth/login", {
-                username,
-                password,
-            })
-                .then((response) => {
-
-                    localStorage.setItem(
-                        "login",
-                        JSON.stringify({
-                            userLogin: true,
-                            token: response.data.access_token,
-                        })
-                    );
-
-                    navigate(INTERNAL_PATHS.CONTROLPANEL)
-                })
-                .catch((error) => setError(error.response.data.message));
-            // console.log(value);
+            try {
+                const res = await login({ username, password }).unwrap();
+                console.log(res)
+                dispatch(setCredentials({ ...res }));
+                navigate('/' + INTERNAL_PATHS.CONTROLPANEL);
+            } catch (error) {
+                console.log('golam')
+            }
         }
     })
 

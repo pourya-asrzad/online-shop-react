@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { useFetchcategoryQuery, useFetchProductsQuery } from '../../store/getSlice-rtk-query';
+import { useFetchcategoryQuery, useFetchProductsQuery } from '../../store/products/productsApiSlice';
 
 const FormSelect = ({ pagenum, handelSelectChange }) => {
 

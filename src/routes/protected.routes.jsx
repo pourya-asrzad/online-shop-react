@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { INTERNAL_PATHS } from '../configs/routs.config'
 import ControlPanelHeader from '../layouts/header/controlPanelHeade.layout'
 export const ProtectedRoutes = () => {
-    if (localStorage.login) {
+    if (localStorage.getItem('token')) {
         return (
             <>
                 <ControlPanelHeader />
@@ -10,6 +10,6 @@ export const ProtectedRoutes = () => {
             </>
         )
     } else {
-        return <Navigate to={INTERNAL_PATHS.ADMIN_LOGIN} />
+        return <Navigate to={INTERNAL_PATHS.ADMIN_LOGIN} replace />
     }
 }
