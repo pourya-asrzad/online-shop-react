@@ -23,6 +23,12 @@ const uiSlice = createSlice({
     hideZoom(state) {
       state.showZoom = false;
     },
+    editOnClick(state, action) {
+      state.editBtnToggle_id = {
+        btnshow: true,
+        dataId: action.payload,
+      };
+    },
   },
 });
 

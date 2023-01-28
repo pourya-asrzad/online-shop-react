@@ -12,6 +12,7 @@ import axios from 'axios';
 import { setCredentials } from '../../store/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../store/auth/authApiSlice';
+import { IoReturnDownBack } from 'react-icons/io5'
 const AdminLogin = () => {
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
@@ -93,7 +94,17 @@ const AdminLogin = () => {
 
                     </div>
                     <div className={Styles.btns_parent}>
-                        <BaseBtn style={{ width: "100%" }} type={'submit'}>ورود</BaseBtn>
+                        <Link to={INTERNAL_PATHS.HOME}>
+                            <div>
+                                <IoReturnDownBack />
+                                <span>
+
+                                    بازگشت به سایت
+                                </span>
+                            </div>
+
+                        </Link>
+                        <BaseBtn style={{ width: "55%" }} type={'submit'}>ورود</BaseBtn>
                     </div>
 
                 </form>

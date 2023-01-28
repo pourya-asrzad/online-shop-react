@@ -47,3 +47,19 @@
     flex-direction: column;
     align-items: flex-end;
 }
+.inputparent{
+display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    input{
+        
+    width: 90%;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid;
+
+    }
+}
+.priceparent{
+    display: flex;
+}

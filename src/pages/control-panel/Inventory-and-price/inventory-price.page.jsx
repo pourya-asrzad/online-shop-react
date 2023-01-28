@@ -12,7 +12,10 @@ import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { Loading } from '../../../components/Loading/Loading.component';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 import SaveBtnComponent from '../../../components/buttons/SaveBtn.component';
+import { useSelector } from 'react-redux';
 const InventoryPrice = () => {
+    const saveBtn = useSelector(state => state.ui.editBtnToggle_id)
+
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
@@ -72,8 +75,8 @@ const InventoryPrice = () => {
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | موجودی و قیمت</title>
             </Helmet>
-            <div className={Styles.inventory_header}>
-                <SaveBtnComponent />
+            <div style={!saveBtn.btnshow ? { justifyContent: 'flex-end' } : null} className={Styles.inventory_header}>
+                {saveBtn.btnshow ? <SaveBtnComponent /> : ''}
                 <PanelTopTitle color={'blue'}>
                     مدیریت موجودی و قیمت ها
                 </PanelTopTitle>
