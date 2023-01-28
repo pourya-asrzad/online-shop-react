@@ -20,7 +20,7 @@ const Orders = () => {
     })
     const { data: itemslengh } = useFetchOrdersLengthQuery(ordersfillterAndPageNubmer)
     console.log(itemslengh);
-    const { data: orders = [], isLoading, error } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
+    const { data: orders = [], isLoading, error, isSuccess } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
     const ordersError = useLogoutadmin(error)
     function handelPageHangeback() {
         setOrdersfillterAndPageNubmer(state => {
@@ -61,6 +61,20 @@ const Orders = () => {
             })
         }
     }
+    if (error) {
+        alert(error.message)
+    }
+    //request answer setting 
+    let requestAsnwer = null
+    if (orders.length > 0) {
+        requestAsnwer = <TabelComponent orders={orders} />
+    }
+    if (isLoading) {
+        requestAsnwer = <Loading />
+    }
+    if (orders.length === 0 && isSuccess) {
+        requestAsnwer = <EmptyDataAnimation />
+    }
     return (
         <>
             <Helmet>
@@ -86,8 +100,7 @@ const Orders = () => {
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
-                {isLoading && <Loading />}
-                {orders.length >= 1 ? <TabelComponent orders={orders} /> : <EmptyDataAnimation />}
+                {requestAsnwer}
             </main>
             <div style={{
                 position: " absolute",

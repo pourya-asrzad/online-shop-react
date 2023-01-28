@@ -11,13 +11,14 @@ import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { Loading } from '../../../components/Loading/Loading.component';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
+import SaveBtnComponent from '../../../components/buttons/SaveBtn.component';
 const InventoryPrice = () => {
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
         filter: "null"
     })
-    const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
+    const { data: products = [], isLoading, error, isSuccess } = useFetchProductsQuery(pageNumberAndpage)
     const inventoryError = useLogoutadmin(error)
     function handelPageHangeback() {
         setpageNumberAndpage(state => {
@@ -45,29 +46,41 @@ const InventoryPrice = () => {
         }
     }, [products.length]);
     const appTittle = getAppTitle()
+    let requestAnswer = null
+    if (products.length > 0) {
+        requestAnswer = products.map((element) => {
+            return (
+                <InventoryPriceCard
+                    id={element.id}
+                    price={element.price}
+                    title={element.name}
+                    inventory={element.quantity}
+                    img={element.image[0]} key={element.id} />
+
+            )
+        })
+    }
+    if (isLoading) {
+        requestAnswer = <Loading />
+    }
+    if (products.length === 0 && isSuccess) {
+        requestAnswer = <EmptyDataAnimation />
+    }
+
     return (
         <>
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | موجودی و قیمت</title>
             </Helmet>
             <div className={Styles.inventory_header}>
+                <SaveBtnComponent />
                 <PanelTopTitle color={'blue'}>
                     مدیریت موجودی و قیمت ها
                 </PanelTopTitle>
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
-                {isLoading && <Loading />}
-                {products.length >= 1 ? products.map((element) => {
-                    return (
-                        <InventoryPriceCard
-
-                            price={element.price}
-                            title={element.name}
-                            inventory={element.quantity}
-                            img={element.image[0]} key={element.id} />
-                    )
-                }) : <EmptyDataAnimation />}
+                {requestAnswer}
                 {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{pageNumberAndpage.page}</Pagination>}
             </main>
         </>

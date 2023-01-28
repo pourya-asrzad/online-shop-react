@@ -3,11 +3,11 @@ import EditProduct from './EditProduct.component';
 import TitleTextGroup from './TitleTextGroup.component';
 import Styles from './InventoryPriceCard.module.scss'
 import { numberWithCommas } from '../../utils/functions.utils';
-const InventoryPriceCard = ({ img, title, price, inventory }) => {
+const InventoryPriceCard = ({ img, title, price, inventory, id }) => {
     const pricewithcomma = numberWithCommas(price)
     return (
         <div className={Styles.inventCard} >
-            <EditProduct price={price} inventory={inventory}></EditProduct>
+            <EditProduct id={id} price={price} inventory={inventory}></EditProduct>
             <div className={Styles.cardimageside}>
                 <div className={Styles.inventorydetailparent}>
                     <TitleTextGroup title={":نام کالا"}>

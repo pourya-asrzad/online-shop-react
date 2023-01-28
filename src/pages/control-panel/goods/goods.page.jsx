@@ -25,7 +25,7 @@ const Goods = () => {
         page: 1,
         filter: "null"
     })
-    const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
+    const { data: products = [], isLoading, error, isSuccess } = useFetchProductsQuery(pageNumberAndpage)
     const appTittle = getAppTitle()
     const goodsError = useLogoutadmin(error)
 
@@ -71,14 +71,26 @@ const Goods = () => {
     }
 
     //delete modal showing
-
     const handleShow = () => setShowDeleteModal(true);
+
+    //request answer setting
+    let requestAsnwer = null
+    if (products.length > 0) {
+        requestAsnwer = products.map((element) => {
+            return <GoodsCard onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
+        })
+    }
+    if (isLoading) {
+        requestAsnwer = <Loading />
+    }
+    if (products.length === 0 && isSuccess) {
+        requestAsnwer = <EmptyDataAnimation />
+    }
     return (
         <div>
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | کالا ها </title>
             </Helmet>
-            {isLoading && <Loading />}
             <main>
                 <div className={Styles.goodspageHeader} >
                     <div className={Styles.leftthings}>
@@ -100,10 +112,7 @@ const Goods = () => {
                 </div>
                 <div className={Styles.goodsghoest}></div>
                 <section className={Styles.cardscontainer}>
-                    {products.length >= 1 ? products.map((element) => {
-                        return <GoodsCard onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
-                    }) : <EmptyDataAnimation />
-                    }
+                    {requestAsnwer}
                 </section >
             </main>
             <section>

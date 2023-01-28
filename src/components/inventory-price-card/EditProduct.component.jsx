@@ -3,7 +3,7 @@ import TitleTextGroup from './TitleTextGroup.component';
 import Button from 'react-bootstrap/Button';
 import Styles from './InventoryPriceCard.module.scss'
 import { numberWithCommas } from '../../utils/functions.utils'
-const EditProduct = ({ inventory, price }) => {
+const EditProduct = ({ inventory, price, id }) => {
     const pricewithcomma = numberWithCommas(price)
     return (
         <div className={Styles.EditProduct}>
@@ -15,7 +15,7 @@ const EditProduct = ({ inventory, price }) => {
                     {inventory}
                 </TitleTextGroup>
             </div>
-            <Button variant="danger"> ویرایش</Button>
+            <Button variant="danger" id={id}> ویرایش</Button>
         </div>
     );
 }

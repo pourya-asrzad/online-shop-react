@@ -2,6 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showMenu: false,
   showZoom: false,
+  editBtnToggle_id: {
+    btnshow: false,
+    dataId: null,
+  },
 };
 const uiSlice = createSlice({
   name: "ui",
