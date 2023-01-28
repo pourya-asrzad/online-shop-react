@@ -7,7 +7,7 @@ import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/pro
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { callFluidObserver } from '@react-spring/shared';
-const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
+const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal }) => {
     const [category, setCategory] = useState('')
     const [subcategory, setsubCategory] = useState('')
     const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
@@ -38,7 +38,7 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
                 <GoodsCardBtn onclick={() => onShowModal(true)} variant={"primary"} icon={<RiFileEditFill />}>
                     ویرایش
                 </GoodsCardBtn>
-                <GoodsCardBtn variant={"danger"} icon={<AiTwotoneDelete />}>
+                <GoodsCardBtn variant={"danger"} onclick={onShowDeleteModal} icon={<AiTwotoneDelete />}>
                     حذف
                 </GoodsCardBtn>
             </div>

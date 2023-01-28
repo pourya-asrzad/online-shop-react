@@ -10,6 +10,7 @@ import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { Loading } from '../../../components/Loading/Loading.component';
+import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 const InventoryPrice = () => {
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
@@ -57,7 +58,7 @@ const InventoryPrice = () => {
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
                 {isLoading && <Loading />}
-                {products.map((element) => {
+                {products.length >= 1 ? products.map((element) => {
                     return (
                         <InventoryPriceCard
 
@@ -66,7 +67,7 @@ const InventoryPrice = () => {
                             inventory={element.quantity}
                             img={element.image[0]} key={element.id} />
                     )
-                })}
+                }) : <EmptyDataAnimation />}
                 {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{pageNumberAndpage.page}</Pagination>}
             </main>
         </>

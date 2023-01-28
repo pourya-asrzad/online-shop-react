@@ -1,0 +1,98 @@
+.OutlinePicture{
+    width: 100px;
+    height: 100px;
+    /* font-weight: 300; */
+    /* font-size: 41px; */
+    color: gray;
+}
+.FcPlus{
+    display: block;
+    width: 40px;
+    height: 35px;
+}
+.ghost{
+    height: 10rem;
+}
+
+    .input{
+        background-color: #fcfcfc;
+        padding: 8px;
+        width: 300px;
+        height: 20px;
+        border-radius: 8px;
+        caret-color: rgb(0, 85, 255);
+        font-size: 1rem;
+        direction: rtl;
+    }
+.inputparent{
+    display: flex;
+    align-items: center;
+    label{
+        font-size:19px;
+        outline: none;
+    }
+    label:focus-visible,label:focus{
+        outline: none;
+    }
+}
+.inputssection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 4rem;
+}
+.firstRowParent{
+    display: flex;
+    justify-content: space-between;
+    width: 42rem;
+    align-items: center;
+    margin: 0 6px;
+}
+.input:focus-visible{
+    outline:none;
+    }
+    .input:focus{
+        outline:none;
+        }
+     
+.numbersiderow{
+    display: flex;
+    width: 41rem;
+    justify-content: space-between;
+    padding: 10px 18px;
+    margin-top: 15px;
+    display: flex;
+}
+.inputnumber{
+    @extend .input;
+    width: 100px;
+    direction: ltr
+}
+.inputparentnubmer{
+    @extend .inputparent;
+    label{
+        font-size: 16px;
+    }
+}
+.inputnumberprice{
+    @extend .inputnumber;
+    width: 150px;
+}
+.textarea{
+    direction: rtl;
+    
+    width: 94%;
+    border-radius: 8px;
+    border-color: #4c6fe7;
+    margin-right: 9px;
+
+}
+.warningIcon{
+    color: #ff7e06;
+    width: 37px;
+    height: 36px;
+    display: block;
+}
+.deletemodalbody{
+    direction: rtl;
+}

@@ -8,20 +8,15 @@ const FormSelect = ({ pagenum, handelSelectChange }) => {
 
     const { data: catrgory = [] } = useFetchcategoryQuery()
 
-    function handelSelectChangeh(e) {
-        handelSelectChange(e.target.value);
-        console.log(e.target.value)
-    }
-
     return (
         <form >
-            <Form.Select onChange={handelSelectChangeh} style={{ width: '6rem' }} id='filtercategory' size="sm">
+            <Form.Select onChange={(e) => handelSelectChange(e.target.value)} style={{ width: '6rem' }} id='filtercategory' size="sm">
                 <option value={"null"}>همه</option>
                 {catrgory.map((element) => {
                     return <option value={element.id} id={element.id} key={element.id}>{element.name}</option>
                 })}
             </Form.Select>
-        </form>
+        </form >
 
     );
 }

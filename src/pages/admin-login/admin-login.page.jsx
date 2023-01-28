@@ -23,8 +23,8 @@ const AdminLogin = () => {
             userName: '',
             password: ''
         }, validationSchema: Yup.object({
-            userName: Yup.string().required('این فیلد نباید خالی باشد'),
-            password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد')
+            userName: Yup.string().required('این فیلد نباید خالی باشد').min(5, 'ورودی کمتر از حد مجاز است ').matches(/^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/, 'حروف باید حتما لاتین باشند'),
+            password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد').matches(/^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/, 'حروف باید حتما لاتین باشند')
         }),
         onSubmit: async (value) => {
             const username = value.userName

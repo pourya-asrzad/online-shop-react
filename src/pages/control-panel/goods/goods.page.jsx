@@ -15,9 +15,11 @@ import Pagination from '../../../components/pagination/Pagination.component';
 import FormSelect from '../../../components/Form-select/FormSelect.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
+import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
+import DeleteModal from '../../../components/modals/DeleteModal.component';
 
 const Goods = () => {
-
+    const [showDeletemodal, setShowDeleteModal] = useState(false);
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
@@ -68,6 +70,9 @@ const Goods = () => {
 
     }
 
+    //delete modal showing
+
+    const handleShow = () => setShowDeleteModal(true);
     return (
         <div>
             <Helmet>
@@ -96,17 +101,19 @@ const Goods = () => {
                 <div className={Styles.goodsghoest}></div>
                 <section className={Styles.cardscontainer}>
                     {products.length >= 1 ? products.map((element) => {
-                        return <GoodsCard onShowModal={setModalShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
-                    }) : <video className='notDataanimation' width="320" height="240" autoPlay={true} loop>
-                        <source src="https://cdnl.iconscout.com/lottie/premium/thumb/no-result-4957988-4133894.mp4" type="video/mp4" />
-                    </video>
+                        return <GoodsCard onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
+                    }) : <EmptyDataAnimation />
                     }
                 </section >
             </main>
-            <GoodsModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+            <section>
+                <GoodsModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
+                <DeleteModal setShow={setShowDeleteModal} show={showDeletemodal} />
+            </section>
+
             <div>
                 {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{pageNumberAndpage.page}</Pagination>}
 

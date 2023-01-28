@@ -154,7 +154,7 @@ input:focus + label {
 .Profile-picture{
   position: absolute;
   left: 43%;
-  bottom: -59px;
+  top: 6px;
 }
 .profileimg{
   overflow: hidden;
@@ -164,8 +164,8 @@ input:focus + label {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  border: 2px solid blue;
+  border-radius: 12%;
+  border: 2px solid #babae7;
 }
 .notDataanimation{
   position: absolute;
@@ -174,4 +174,7 @@ input:focus + label {
   transform: translate(-50%,-50%);
   width: 40rem;
   height: 26rem;
+}
+label{
+  outline: none !important;
 }
