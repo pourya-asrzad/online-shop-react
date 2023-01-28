@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 import { Loading } from '../../../components/Loading/Loading.component';
+import OrdersModal from '../../../components/modals/OrdersModal.component';
 import Pagination from '../../../components/pagination/Pagination.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import TabelComponent from '../../../components/tabel/Tabel.component';
@@ -12,6 +13,7 @@ import { useFetchOrdersLengthQuery, useFetchOrdersQuery, useFetchTestQuery } fro
 import { getAppTitle } from '../../../utils/functions.utils';
 import Styles from './orders.module.scss'
 const Orders = () => {
+    const [modalShow, setModalShow] = React.useState(false);
     const appTittle = getAppTitle()
     const [paginationStop, setpaginationStop] = useState(false)
     const [ordersfillterAndPageNubmer, setOrdersfillterAndPageNubmer] = useState({
@@ -67,7 +69,7 @@ const Orders = () => {
     //request answer setting 
     let requestAsnwer = null
     if (orders.length > 0) {
-        requestAsnwer = <TabelComponent orders={orders} />
+        requestAsnwer = <TabelComponent setModalShow={setModalShow} orders={orders} />
     }
     if (isLoading) {
         requestAsnwer = <Loading />
@@ -109,6 +111,11 @@ const Orders = () => {
             }}>
                 {orders.length >= 1 && itemslengh > 8 ? <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{ordersfillterAndPageNubmer.page}</Pagination> : ''}
             </div>
+
+            <OrdersModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </>
     );
 }

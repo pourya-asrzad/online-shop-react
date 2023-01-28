@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import FormInput from '../form-input/FormInput.component';
 import Styles from './modals.module.scss'
 
-function OrsersModal(props) {
+function OrdersModal(props) {
 
     return (
         <Modal
@@ -28,4 +28,4 @@ function OrsersModal(props) {
 }
 
 
-export default OrsersModal
+export default OrdersModal
