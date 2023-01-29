@@ -2,3 +2,21 @@
     overflow: auto;
     width: 100%;
 }
+.categorycontainrproductions::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+  }
+  
+  /* Track */
+  .categorycontainrproductions::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

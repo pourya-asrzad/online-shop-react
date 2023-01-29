@@ -5,6 +5,8 @@ import { ProductionCardHome } from '../../../components/production-card-home/Pro
 import { useFetchHomecategoryQuery, useFetchHomeProductsQuery } from '../../../store/products/homeProductsApiSlice';
 import './ProductionContainer.scss'
 import Styles from './ProductionCardHome.module.css'
+import { Link } from 'react-router-dom';
+import { INTERNAL_PATHS } from '../../../configs/routs.config';
 const ProductionContainer = ({ categoryId }) => {
     const fakeArray = ['1', '2', '3', '4', '5', '6', '7', '8']
     const { data: someProducts = [], isLoading: someProductLoading, isSuccess } = useFetchHomeProductsQuery(categoryId)
@@ -44,7 +46,9 @@ const ProductionContainer = ({ categoryId }) => {
     }
     if (isSuccess) {
         productAnswer = someProducts.map((element) => {
-            return <ProductionCardHome key={element.id} image={element.image[0]} name={element.name} price={element.price} />
+            return <Link className={Styles.link} to={INTERNAL_PATHS.SINGLEPRODUCT + `/${element.id}`}>
+                <ProductionCardHome key={element.id} image={element.image[0]} name={element.name} price={element.price} />
+            </Link>
 
         })
     }
