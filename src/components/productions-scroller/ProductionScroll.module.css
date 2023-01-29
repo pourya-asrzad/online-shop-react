@@ -14,7 +14,7 @@
     opacity: 100;
 }
 .scrollitemscontainet{
-white-space: nowrap;
+/* white-space: nowrap; */
 scroll-behavior: smooth;
 overflow-x: scroll;
 overflow-y: hidden;

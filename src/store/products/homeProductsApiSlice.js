@@ -12,8 +12,28 @@ export const productsHomeApiSlice = apiSlice.injectEndpoints({
       query: (id) => `category?id=${id}`,
       providesTags: ["Posts"],
     }),
+    categorysInHome: builder.query({
+      query: () => "category",
+      providesTags: ["Posts"],
+    }),
+    productsHasDiscount: builder.query({
+      query: (discount) =>
+        `http://localhost:3001/products?Discount=${discount}&_page=1`,
+      providesTags: ["Posts"],
+    }),
+    subcategoryHome: builder.query({
+      query: () => {
+        return `subcategory`;
+      },
+      providesTags: ["Posts"],
+    }),
   }),
 });
 
-export const { useFetchHomeProductsQuery, useFetchHomecategoryQuery } =
-  productsHomeApiSlice;
+export const {
+  useCategorysInHomeQuery,
+  useFetchHomeProductsQuery,
+  useFetchHomecategoryQuery,
+  useProductsHasDiscountQuery,
+  useSubcategoryHomeQuery,
+} = productsHomeApiSlice;

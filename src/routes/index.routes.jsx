@@ -23,7 +23,9 @@ export const AppRouting = () => {
                 <Route element={<PublicRoutes />}>
                     <Route path={INTERNAL_PATHS.HOME} element={<LazyHome />} />
                     <Route path={INTERNAL_PATHS.CART} element={<LazyCart />} />
-                    <Route path={INTERNAL_PATHS.CATEGORYS} element={<Category />} />
+                    <Route path={INTERNAL_PATHS.CATEGORYS}  >
+                        <Route path=':id' element={<Category />} />
+                    </Route>
                     <Route path={INTERNAL_PATHS.PAGE404} element={<LazyNotFound />} />
                     <Route path={INTERNAL_PATHS.SINGLEPRODUCT}>
                         <Route path=':id' element={<SingleProduct />} />

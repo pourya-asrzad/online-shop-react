@@ -8,7 +8,15 @@ const baseQuery = fetchBaseQuery({
   credentials: "same-origin",
   prepareHeaders: (headers, { getState, endpoint }) => {
     const token = localStorage.getItem("token");
-    if (endpoint === "fetchHomeProducts" || endpoint === "fetchHomecategory") {
+    if (
+      endpoint === "fetchHomeProducts" ||
+      endpoint === "fetchHomecategory" ||
+      endpoint === "fetchCategorysProducts" ||
+      endpoint === "fetchCategoryscategory" ||
+      endpoint === "fetchSubcategory" ||
+      endpoint === "categorysInHome" ||
+      endpoint === "subcategoryHome"
+    ) {
       return headers;
     }
     if (endpoint === REFRESH_TOKEN_URL) {

@@ -1,5 +1,5 @@
 .categoryheader{
-    display: block;
+display: flex;
 
     font-size: 15px;
     color: #555252;
@@ -15,6 +15,7 @@
     display: flex;
     margin: 0 16px;
     position: relative;
+    min-height: 90vh;
 }
 .category_top{
  margin-top:145px;

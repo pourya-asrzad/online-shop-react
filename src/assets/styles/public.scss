@@ -178,3 +178,11 @@ input:focus + label {
 label{
   outline: none !important;
 }
+ //delete dafault link style
+.link-route{
+  color: black;
+  text-decoration: none;
+ }
+ .link-route:hover{
+color: black;
+}

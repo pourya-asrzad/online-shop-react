@@ -15,12 +15,13 @@
   align-items: center;
   height: 13rem;
   justify-content: space-between;
-
+position: relative;
     .imagecontainer{
 
       border-radius: 1px;
       width: 9rem;
       height: 9rem;
+      margin-bottom: 10px;
           img{
             border-radius: 12px;
             width: inherit;
@@ -45,17 +46,51 @@ margin-right: 8px;
 /*
 */
 .name{
+  margin-bottom: 15px;
   vertical-align: baseline;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 8rem;
-   direction: rtl;
-   margin-bottom: 10px;
-   direction: rtl;
-   margin-top: 10px;
+  overflow: hidden;
+  direction: rtl;
+  text-align: initial;
+  line-height: 1.5rem;
+  color: #555252;
+  height: 53px;
+  display: -webkit-box;
+  max-width: 400px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 186px;
 }
 .homeproductioncard:hover{
   background-color: #ffffffff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.discount{
+  top: -4px;
+  right: 12px;
+  width: 2rem;
+  height: 3rem;
+  background-color: #d10a0aeb;
+  clip-path: polygon(50% 0%, 98% 0, 100% 38%, 100% 65%, 79% 91%, 50% 74%, 21% 91%, 0 62%, 0 31%, 0 0);
+  position: absolute;
+color: white;
+font-size: 17px;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.priceWithoutDiscount{
+  position: absolute;
+  bottom: 4px;
+  color: gray;
+  font-size: 14px;
+  right: 40px;
+}
+.priceWithDiscount{
+  span{
+
+    font-size: 17.5px;
+  }
 }
