@@ -8,7 +8,9 @@ const baseQuery = fetchBaseQuery({
   credentials: "same-origin",
   prepareHeaders: (headers, { getState, endpoint }) => {
     const token = localStorage.getItem("token");
-    console.log(endpoint);
+    if (endpoint === "fetchHomeProducts" || endpoint === "fetchHomecategory") {
+      return headers;
+    }
     if (endpoint === REFRESH_TOKEN_URL) {
       const token = localStorage.getItem("refreshToken");
       headers.set("refreshToken", token);

@@ -9,6 +9,7 @@ import SecondCategory from "./second-category/SecondCategory.component";
 import ProductionScroller from "../../components/productions-scroller/ProductionScroller";
 
 
+
 const Home = () => {
 
 
@@ -22,18 +23,21 @@ const Home = () => {
                     {appTitle} | صفحه اصلی
                 </title>
             </Helmet>
-            <PageContainer>
+            <PageContainer >
                 <main>
                     <div className={Styles.Slider}>
                         <ImageSliderAuto ImageData={dataSlider} SlideInterValTime={4000} />
                     </div>
                     <section>
-                        <ProductionContainer />
+                        <ProductionContainer categoryId={'2'} />
                     </section>
                     <section>
                         <FirstDiscountCategory />
                     </section>
-                    <div className={Styles.category_title}><h2>دسته بندی های پوریا کالا</h2></div>
+                    <section>
+                        <ProductionContainer categoryId={'1'} />
+                    </section>
+                    <div className={Styles.category_title}><span className={Styles.categoryTitle}>دسته بندی های پوریا کالا</span></div>
                     <section>
                         <SecondCategory />
                     </section>
