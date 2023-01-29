@@ -6,8 +6,8 @@ import { numberWithCommas } from '../../utils/functions.utils';
 import Styles from './AddToCartSector.module.scss'
 import Hr from '../hr/Hr.component';
 import AddToCartBtn from '../buttons/AddToCartBtn.component';
-const AddToCartSector = () => {
-    const price = numberWithCommas(10000000)
+const AddToCartSector = ({ price }) => {
+    const priceWithComma = numberWithCommas(price)
     return (
         <div className={Styles.AddToCartSector}>
             <div>
@@ -38,7 +38,7 @@ const AddToCartSector = () => {
 
                 <div className={Styles.cardpricepart}>
                     <span>
-                        {price}
+                        {priceWithComma}
                     </span>
                     <div>
                         <span>
