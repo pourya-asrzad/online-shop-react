@@ -48,3 +48,9 @@ export function parseJwt(token) {
 
   return JSON.parse(jsonPayload);
 }
+
+export function findWord(word, str) {
+  return str.split(" ").some(function (w) {
+    return w === word;
+  });
+}

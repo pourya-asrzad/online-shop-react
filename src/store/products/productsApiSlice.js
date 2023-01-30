@@ -5,7 +5,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     fetchProducts: builder.query({
       query: (page) => {
         if (page.filter == "null") {
-          return `products?_page=${page.page}`;
+          return `products?_sort=createdAt&_page=${page.page}&_order=desc`;
         } else {
           return `products?category=${page.filter}&_page=${page.page}`;
         }

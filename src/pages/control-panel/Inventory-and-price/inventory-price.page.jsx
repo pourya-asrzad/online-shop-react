@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { getAppTitle } from '../../../utils/functions.utils'
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import Styles from './inventory-price.module.scss'
-import { data } from '../../../database/db.exampel';
 import InventoryPriceCard from '../../../components/inventory-price-card/InventoryPriceCard.component';
 import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import Pagination from '../../../components/pagination/Pagination.component';
@@ -52,6 +51,7 @@ const InventoryPrice = () => {
     let requestAnswer = null
     if (products.length > 0) {
         requestAnswer = products.map((element) => {
+
             return (
                 <InventoryPriceCard
                     id={element.id}
@@ -70,13 +70,14 @@ const InventoryPrice = () => {
         requestAnswer = <EmptyDataAnimation />
     }
 
+
     return (
         <>
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | موجودی و قیمت</title>
             </Helmet>
             <div style={!saveBtn.btnshow ? { justifyContent: 'flex-end' } : null} className={Styles.inventory_header}>
-                {saveBtn.btnshow ? <SaveBtnComponent /> : ''}
+                {saveBtn.btnshow ? <SaveBtnComponent >ذخیره</SaveBtnComponent> : ''}
                 <PanelTopTitle color={'blue'}>
                     مدیریت موجودی و قیمت ها
                 </PanelTopTitle>

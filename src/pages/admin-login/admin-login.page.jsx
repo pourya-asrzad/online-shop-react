@@ -8,7 +8,6 @@ import CompanyName from '../../components/company-name/CompanyName.component';
 import { Link, useNavigate } from 'react-router-dom';
 import BaseBtn from '../../components/buttons/AddToCartBtn.component'
 import { INTERNAL_PATHS } from '../../configs/routs.config';
-import axios from 'axios';
 import { setCredentials } from '../../store/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../store/auth/authApiSlice';

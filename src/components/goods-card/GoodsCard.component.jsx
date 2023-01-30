@@ -7,6 +7,7 @@ import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/pro
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { callFluidObserver } from '@react-spring/shared';
+import { findWord } from '../../utils/functions.utils';
 const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal }) => {
     const [category, setCategory] = useState('')
     const [subcategory, setsubCategory] = useState('')
@@ -14,6 +15,7 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
     const { data: categorydata = [] } = useFetchcategoryQuery()
     // console.log(subcategoryId);
 
+    const imageHasHttp = img.includes('https')
     // console.log(sub);
     useEffect(() => {
         if (subcategorydata.length !== 0) {
@@ -58,7 +60,7 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
                     </div>
                 </div>
                 <div className={Styles.imagecontainer}>
-                    <img src={img} alt={title} />
+                    <img src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} alt={title} />
                 </div>
             </div>
         </div>

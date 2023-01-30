@@ -96,7 +96,7 @@ const Goods = () => {
                     <div className={Styles.leftthings}>
                         <Button onClick={() => { setModalShow(true) }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
                         <div className={Styles.filter}>
-                            <FormSelect handelSelectChange={handelSelectChange} />
+                            <FormSelect placeholder='همه' handelSelectChange={handelSelectChange} />
                             <div className={Styles.filterlabel}>
                                 <AiTwotoneFilter />
                                 <label htmlFor="filtercategory">
