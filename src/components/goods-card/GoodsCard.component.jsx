@@ -36,7 +36,6 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
 
     }, [categorydata, subcategorydata])
     function deleteModalShowd(id) {
-
         dispatch(uiActions.setSelectedProductId(id))
         onShowDeleteModal()
     }

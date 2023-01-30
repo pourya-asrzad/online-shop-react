@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { TiWarning } from 'react-icons/ti'
+import { useSelector } from 'react-redux';
+import { useDeleteProductMutation } from '../../store/products/productsApiSlice';
 import Styles from './modals.module.scss'
 
 function DeleteModal({ show, setShow }) {
-
+    const [deleteProduct] = useDeleteProductMutation()
+    const productId = useSelector(state => state.ui.selectedProductId)
+    function onDeleteProduct() {
+        deleteProduct(productId)
+        handleClose()
+    }
 
     const handleClose = () => setShow(false);
 
@@ -24,7 +32,7 @@ function DeleteModal({ show, setShow }) {
                     <Button variant="danger" onClick={handleClose}>
                         خیر
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={onDeleteProduct}>
                         بله
                     </Button>
                 </Modal.Footer>

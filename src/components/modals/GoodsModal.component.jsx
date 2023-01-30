@@ -12,6 +12,7 @@ import { API_BASE_URL } from '../../configs/variables.config';
 import axios from 'axios';
 import { useCreateProductMutation } from '../../store/products/productsApiSlice';
 function GoodsModal(props) {
+
     const [file, setFile] = useState(false)
     const [imageIds, setImageId] = useState([])
     const [category, setCategory] = useState(undefined);

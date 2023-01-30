@@ -52,6 +52,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -62,4 +69,5 @@ export const {
   useFetchcategoryQuery,
   useFetchOrdersQuery,
   useFetchOrdersLengthQuery,
+  useDeleteProductMutation,
 } = productsApiSlice;
