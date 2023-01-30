@@ -48,7 +48,7 @@ const Goods = () => {
         })
     }
     function handelSelectChange(value) {
-        console.log(value)
+
         setpageNumberAndpage(state => {
 
             return { ...state, page: 1 }

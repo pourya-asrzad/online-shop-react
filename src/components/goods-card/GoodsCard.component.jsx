@@ -6,14 +6,13 @@ import Styles from './GoodsCard.module.scss'
 import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/products/productsApiSlice'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { callFluidObserver } from '@react-spring/shared';
-import { findWord } from '../../utils/functions.utils';
+
 const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal }) => {
     const [category, setCategory] = useState('')
     const [subcategory, setsubCategory] = useState('')
     const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
     const { data: categorydata = [] } = useFetchcategoryQuery()
-    // console.log(subcategoryId);
+
 
     const imageHasHttp = img.includes('https')
     // console.log(sub);

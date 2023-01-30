@@ -9,6 +9,7 @@ const MainCard = (props) => {
     const colorsArray = [
         "blue", "white", "black", "green"
     ]
+    const imageHasHttp = image.includes('https')
     const numberplit = numberWithCommas(price)
     return (
         <div className={Styles.maincard}>
@@ -16,7 +17,7 @@ const MainCard = (props) => {
             <div className={Styles.card_header}>
                 <ColorsGroup colors={colorsArray} />
                 <div className={Styles.image_container} style={{ width: "240px", height: "240px" }}>
-                    <img src={image} alt={title.toString()} />
+                    <img src={imageHasHttp ? image : `http://localhost:3001/files/${image}`} alt={title.toString()} />
                 </div>
             </div>
             <div

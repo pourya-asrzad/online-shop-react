@@ -27,8 +27,7 @@ const Category = () => {
     const { data: products = [], isLoading, isSuccess } = useFetchCategorysProductsQuery(fetchObj)
     const { data: subcategory = [] } = useFetchSubcategoryQuery(fetchObj)
     const { data: category = [] } = useFetchCategoryscategoryQuery(fetchObj.category)
-    console.log(category);
-    console.log(subcategory.length > 0 ? subcategory[0].name : '');
+
 
     let categoryfetchAnswer = null
     if (isSuccess && products.length > 0) {

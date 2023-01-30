@@ -59,7 +59,6 @@ const InventoryPrice = () => {
                     title={element.name}
                     inventory={element.quantity}
                     img={element.image[0]} key={element.id} />
-
             )
         })
     }

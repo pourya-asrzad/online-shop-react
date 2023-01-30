@@ -5,7 +5,7 @@ import Styles from './InventoryPriceCard.module.scss'
 import { numberWithCommas } from '../../utils/functions.utils';
 
 const InventoryPriceCard = ({ img, title, price, inventory, id }) => {
-
+    const imageHasHttp = img.includes('https')
     const pricewithcomma = numberWithCommas(price)
 
     return (
@@ -21,9 +21,7 @@ const InventoryPriceCard = ({ img, title, price, inventory, id }) => {
                             <div className={Styles.priceparent}>
                                 <span style={{ marginRight: '3px' }}>{"تومان"}</span>
                                 <span>{pricewithcomma}</span>
-
                             </div>
-
                         </TitleTextGroup>
                         <div className='height-hr'></div>
                         <TitleTextGroup title={":موجودی"}>
@@ -32,7 +30,7 @@ const InventoryPriceCard = ({ img, title, price, inventory, id }) => {
                     </div>
                 </div>
                 <div className={Styles.imageContainer}>
-                    <img src={img} alt={title} />
+                    <img src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} alt={title} />
                 </div>
             </div>
         </div>

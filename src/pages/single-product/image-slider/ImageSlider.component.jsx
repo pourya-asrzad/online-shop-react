@@ -13,6 +13,7 @@ const ImageSlider = ({ images, isLoading }) => {
     function notZoomInImage() {
         dispatch(uiActions.hideZoom())
     }
+    const imageHasHttp = images[0].includes('https')
     return (
         <>
 
@@ -25,18 +26,18 @@ const ImageSlider = ({ images, isLoading }) => {
                             <div onMouseOver={zoomInImage} onMouseLeave={notZoomInImage} className={Styles.imagecontainer}>
                                 {!showZoom ? <img
                                     className="d-block w-100 "
-                                    src={image}
+                                    src={imageHasHttp ? image : `http://localhost:3001/files/${image}`}
                                     alt="Third slide"
                                 /> :
                                     <ReactImageMagnify  {...{
                                         smallImage: {
                                             alt: 'Wristwatch by Ted Baker London',
                                             isFluidWidth: true,
-                                            src: image
+                                            src: imageHasHttp ? image : `http://localhost:3001/files/${image}`
                                             ,
                                         },
                                         largeImage: {
-                                            src: image,
+                                            src: imageHasHttp ? image : `http://localhost:3001/files/${image}`,
                                             width: 900,
                                             height: 900
                                         },
