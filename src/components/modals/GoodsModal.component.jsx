@@ -10,8 +10,7 @@ import { BiCategory } from 'react-icons/bi'
 import { useState } from 'react';
 import { API_BASE_URL } from '../../configs/variables.config';
 import axios from 'axios';
-import SaveBtnComponent from '../buttons/SaveBtn.component';
-import { useAddProductMutation } from '../../store/products/addProductApiSlice';
+import { useCreateProductMutation } from '../../store/products/productsApiSlice';
 function GoodsModal(props) {
     const [file, setFile] = useState(false)
     const [imageIds, setImageId] = useState([])
@@ -19,7 +18,7 @@ function GoodsModal(props) {
     const [subcategory, setSubcategory] = useState(undefined);
     const [error, setError] = useState('');
     const REQUIRED_MASSEGE = 'این فیلد نباید خالی باشد'
-    const [addproduct, { isLoading }] = useAddProductMutation()
+    const [addproduct, { isLoading }] = useCreateProductMutation()
 
     const formik = useFormik({
         initialValues: {

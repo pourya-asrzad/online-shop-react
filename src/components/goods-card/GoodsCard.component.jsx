@@ -6,16 +6,18 @@ import Styles from './GoodsCard.module.scss'
 import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/products/productsApiSlice'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../../store/ui-slice';
 
-const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal }) => {
+const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal, dataId }) => {
     const [category, setCategory] = useState('')
     const [subcategory, setsubCategory] = useState('')
     const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
     const { data: categorydata = [] } = useFetchcategoryQuery()
-
+    const dispatch = useDispatch()
 
     const imageHasHttp = img.includes('https')
-    // console.log(sub);
+
     useEffect(() => {
         if (subcategorydata.length !== 0) {
             const sub = subcategorydata.filter((element) => {
@@ -33,13 +35,18 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
         }
 
     }, [categorydata, subcategorydata])
+    function deleteModalShowd(id) {
+
+        dispatch(uiActions.setSelectedProductId(id))
+        onShowDeleteModal()
+    }
     return (
         <div className={Styles.GoodsCard}>
             <div className={Styles.btns_container}>
-                <GoodsCardBtn onclick={() => onShowModal(true)} variant={"primary"} icon={<RiFileEditFill />}>
+                <GoodsCardBtn id={dataId} onclick={() => onShowModal(true)} variant={"primary"} >
                     ویرایش
                 </GoodsCardBtn>
-                <GoodsCardBtn variant={"danger"} onclick={onShowDeleteModal} icon={<AiTwotoneDelete />}>
+                <GoodsCardBtn id={dataId} variant={"danger"} onclick={deleteModalShowd} >
                     حذف
                 </GoodsCardBtn>
             </div>

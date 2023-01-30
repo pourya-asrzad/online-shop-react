@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showMenu: false,
   showZoom: false,
+  selectedProductId: null,
   editBtnToggle_id: {
     btnshow: false,
     dataId: null,
@@ -28,6 +29,9 @@ const uiSlice = createSlice({
         btnshow: true,
         dataId: action.payload,
       };
+    },
+    setSelectedProductId(state, action) {
+      state.selectedProductId = action.payload;
     },
   },
 });

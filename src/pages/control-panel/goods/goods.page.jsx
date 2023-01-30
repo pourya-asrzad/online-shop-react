@@ -77,7 +77,7 @@ const Goods = () => {
     let requestAsnwer = null
     if (products.length > 0) {
         requestAsnwer = products.map((element) => {
-            return <GoodsCard onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
+            return <GoodsCard dataId={element.id} onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
         })
     }
     if (isLoading) {

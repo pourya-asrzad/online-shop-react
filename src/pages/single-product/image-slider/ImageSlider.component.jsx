@@ -20,8 +20,8 @@ const ImageSlider = ({ images, isLoading }) => {
             <Carousel variant="dark" className={Styles.Carousel}>
 
                 {
-                    !isLoading && images.length > 1 && images.map((image, index) => {
-
+                    !isLoading && images.length > 0 && images.map((image, index) => {
+                        console.log(image);
                         return <Carousel.Item key={index}>
                             <div onMouseOver={zoomInImage} onMouseLeave={notZoomInImage} className={Styles.imagecontainer}>
                                 {!showZoom ? <img
