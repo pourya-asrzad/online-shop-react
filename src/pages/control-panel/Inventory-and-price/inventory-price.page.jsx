@@ -4,18 +4,20 @@ import { getAppTitle } from '../../../utils/functions.utils'
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import Styles from './inventory-price.module.scss'
 import InventoryPriceCard from '../../../components/inventory-price-card/InventoryPriceCard.component';
-import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
+import { useEditProductMutation, useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { Loading } from '../../../components/Loading/Loading.component';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 import SaveBtnComponent from '../../../components/buttons/SaveBtn.component';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiActions } from '../../../store/ui-slice';
 const InventoryPrice = () => {
     const saveBtn = useSelector(state => state.ui.editBtnToggle_id)
-
+    const [editProduct] = useEditProductMutation()
     const [paginationStop, setpaginationStop] = useState(false)
+    const dispatch = useDispatch()
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
         filter: "null"
@@ -68,7 +70,17 @@ const InventoryPrice = () => {
     if (products.length === 0 && isSuccess) {
         requestAnswer = <EmptyDataAnimation />
     }
-
+    function saveBtnHandler() {
+        const productInfo = {
+            id: saveBtn.dataId
+            , body: {
+                quantity: saveBtn.inventory,
+                price: saveBtn.price
+            }
+        }
+        editProduct(productInfo)
+        dispatch(uiActions.saveEditHandler())
+    }
 
     return (
         <>
@@ -76,7 +88,7 @@ const InventoryPrice = () => {
                 <title>   پنل مدیریت {appTittle} | موجودی و قیمت</title>
             </Helmet>
             <div style={!saveBtn.btnshow ? { justifyContent: 'flex-end' } : null} className={Styles.inventory_header}>
-                {saveBtn.btnshow ? <SaveBtnComponent >ذخیره</SaveBtnComponent> : ''}
+                {saveBtn.btnshow ? <SaveBtnComponent onClick={saveBtnHandler}>ذخیره</SaveBtnComponent> : ''}
                 <PanelTopTitle color={'blue'}>
                     مدیریت موجودی و قیمت ها
                 </PanelTopTitle>
