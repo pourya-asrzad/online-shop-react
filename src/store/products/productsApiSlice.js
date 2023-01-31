@@ -10,7 +10,6 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           return `products?category=${page.filter}&_page=${page.page}`;
         }
       },
-      keepUnusedDataFor: 2,
       providesTags: ["Posts"],
     }),
     fetchsubcategory: builder.query({
@@ -52,6 +51,10 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    getProduct: builder.query({
+      query: (id) => `products/${id}`,
+      keepUnusedDataFor: 0,
+    }),
     deleteProduct: builder.mutation({
       query: (id) => ({
         url: `products/${id}`,
@@ -79,4 +82,5 @@ export const {
   useFetchOrdersLengthQuery,
   useDeleteProductMutation,
   useEditProductMutation,
+  useGetProductQuery,
 } = productsApiSlice;

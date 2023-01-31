@@ -32,15 +32,13 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result?.error?.originalStatus === 401) {
-    console.log("sending refresh token");
     // send refresh token to get new access token
     const refreshResult = await baseQuery(
       { url: REFRESH_TOKEN_URL, method: "POST" },
       { ...api, endpoint: REFRESH_TOKEN_URL },
       extraOptions
     );
-    console.log(result);
-    console.log(refreshResult);
+
     if (refreshResult?.data) {
       // store the new token
 

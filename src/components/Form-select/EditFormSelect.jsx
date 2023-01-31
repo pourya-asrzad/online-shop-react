@@ -1,17 +1,31 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { useFetchcategoryQuery, useFetchProductsQuery, useFetchsubcategoryQuery } from '../../store/products/productsApiSlice';
 
-const FormSelect = ({ pagenum, handelSelectChange, subcategory = null, placeholder, initialValue, changeSubcategoryid }) => {
+const EditFormSelect = ({ pagenum, handelSelectChange, subcategory = null, placeholder, initialValue,
+    setSubcategory, changeSubcategoryid }) => {
 
     const { data: catrgory = [] } = useFetchcategoryQuery()
     const { data: subcatrgoryData = [] } = useFetchsubcategoryQuery()
     const subcategoryDataFilter = subcatrgoryData.filter((sub) => {
         return sub.category == changeSubcategoryid
     })
+    useEffect(() => {
+        console.log(subcategory);
+        if (subcategory && changeSubcategoryid) {
+            if (document.getElementById('filtercategory')) {
+                setSubcategory(subcategoryDataFilter[0].id)
+                console.log(subcategoryDataFilter[0].id)
+            }
+        }
+    }, [changeSubcategoryid]);
+    // if (document.getElementById('filtercategory')) {
+    //     console.log(document.getElementById('filtercategory').value);
+    // }
     return (
+
         <form >
             <Form.Select value={initialValue} onChange={(e) => handelSelectChange(e.target.value)} style={{ width: '6rem' }} id='filtercategory' size="sm">
                 {!initialValue && <option value={'null'}>{placeholder}</option>}
@@ -26,4 +40,4 @@ const FormSelect = ({ pagenum, handelSelectChange, subcategory = null, placehold
     );
 }
 
-export default FormSelect;
+export default EditFormSelect;

@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 import DeleteModal from '../../../components/modals/DeleteModal.component';
+import EditModal from '../../../components/modals/EditModal.component';
 
 const Goods = () => {
     const [showDeletemodal, setShowDeleteModal] = useState(false);
@@ -29,7 +30,10 @@ const Goods = () => {
     const appTittle = getAppTitle()
     const goodsError = useLogoutadmin(error)
 
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState({
+        show: false,
+        editId: null
+    });
 
     // console.log(error.data)
     useEffect(() => {
@@ -94,7 +98,14 @@ const Goods = () => {
             <main>
                 <div className={Styles.goodspageHeader} >
                     <div className={Styles.leftthings}>
-                        <Button onClick={() => { setModalShow(true) }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
+                        <Button onClick={() => {
+                            setModalShow(state => {
+                                return state = {
+                                    show: true,
+                                    editId: null
+                                }
+                            })
+                        }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
                         <div className={Styles.filter}>
                             <FormSelect placeholder='همه' handelSelectChange={handelSelectChange} />
                             <div className={Styles.filterlabel}>
@@ -116,10 +127,26 @@ const Goods = () => {
                 </section >
             </main>
             <section>
-                <GoodsModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
+                {!modalShow.editId ? <GoodsModal
+                    show={modalShow.show}
+                    onHide={() => setModalShow(state => {
+                        return state = {
+                            ...state,
+                            show: false,
+                        }
+                    })}
+                    handelClose={setModalShow}
+                /> : <EditModal
+                    editid={`${modalShow.editId}`}
+                    show={modalShow.show}
+                    onHide={() => setModalShow(state => {
+                        return state = {
+                            ...state,
+                            show: false,
+                        }
+                    })}
+                    handelClose={setModalShow}
+                />}
                 <DeleteModal setShow={setShowDeleteModal} show={showDeletemodal} />
             </section>
 

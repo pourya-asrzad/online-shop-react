@@ -31,7 +31,7 @@ const AdminLogin = () => {
             const password = value.password
             try {
                 const res = await login({ username, password }).unwrap();
-                console.log(res)
+
                 dispatch(setCredentials({ ...res }));
                 navigate('/' + INTERNAL_PATHS.CONTROLPANEL);
             } catch (error) {

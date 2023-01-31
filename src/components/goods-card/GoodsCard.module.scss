@@ -5,6 +5,10 @@
     justify-content: space-between;
     margin: 23px 0;
     border-radius: 10px;
+    background: #f9fafc;
+}
+.GoodsCard:hover{
+    background-color:white;
 }
 .card_rigth_side{
     display: flex;

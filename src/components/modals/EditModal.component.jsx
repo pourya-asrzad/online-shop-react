@@ -4,23 +4,27 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FormInput from '../form-input/FormInput.component';
 import Styles from './modals.module.scss'
-import FileInput from './FileInput.component';
-import FormSelect from '../Form-select/FormSelect.component';
+import FileInput from './editfileinput';
+import FormSelect from '../Form-select/EditFormSelect';
 import { BiCategory } from 'react-icons/bi'
-import { useState } from 'react';
+import { Children, useState } from 'react';
 import { API_BASE_URL } from '../../configs/variables.config';
 import axios from 'axios';
-import { useCreateProductMutation } from '../../store/products/productsApiSlice';
+import { useEditProductMutation, useGetProductQuery } from '../../store/products/productsApiSlice';
 import { useEffect } from 'react';
-function GoodsModal(props) {
 
+function EditModal(props) {
+    const [imageData, setImageData] = useState(undefined)
     const [file, setFile] = useState(false)
     const [imageIds, setImageId] = useState([])
     const [category, setCategory] = useState(undefined);
     const [subcategory, setSubcategory] = useState(undefined);
     const [error, setError] = useState('');
     const REQUIRED_MASSEGE = 'این فیلد نباید خالی باشد'
-    const [addproduct, { isLoading }] = useCreateProductMutation()
+    const { data: productData, isSuccess, } = useGetProductQuery(props.editid)
+    const [selectTouched, setSelectTouched] = useState(false)
+    const [fileIsTouched, setFileIsTouched] = useState(false)
+    const [editproduct, { isLoading }] = useEditProductMutation()
     const [changeSubcategory, setchangeSubcategory] = useState(null);
     const formik = useFormik({
         initialValues: {
@@ -39,18 +43,20 @@ function GoodsModal(props) {
         }),
         onSubmit: async (value) => {
             try {
-                if (imageIds.length > 0 && category !== 'null' && subcategory !== 'null' && category !== undefined && subcategory !== undefined) {
-                    const res = await addproduct({
-                        category: category,
-                        subcategory: subcategory,
-                        Discount: value.Discount,
-                        name: value.name,
-                        image: imageIds,
-                        description: value.description,
-                        createdAt: Date.now(),
-                        price: value.price,
-                        quantity: value.quantity,
-                        store: "admin"
+                if (imageIds.length > 0 && category && subcategory) {
+                    const res = await editproduct({
+                        id: props.editid,
+                        body: {
+                            category: +category,
+                            subcategory: +subcategory,
+                            Discount: value.Discount,
+                            name: value.name,
+                            description: value.description,
+                            price: value.price,
+                            quantity: value.quantity,
+                            store: "admin",
+                            image: imageIds
+                        }
                     }).unwrap()
                     props.handelClose(state => {
                         return state = {
@@ -58,25 +64,30 @@ function GoodsModal(props) {
                             show: false,
                         }
                     })
-                } else if (imageIds.length === 0) {
-                    setError('عکس  آپلود نشده');
-                } else if (category == undefined || category == 'null') {
+                } else if (!category) {
                     setError('دسته بندی انتخاب نشده');
-
-                } else if (subcategory == undefined || subcategory == 'null') {
+                } else if (!subcategory) {
                     setError('زیر مجموعه دسته بندی انتخاب نشده');
                 }
-
             } catch (e) {
                 alert(e.message)
             }
             // setError('')
         }
     })
+    useEffect(() => {
+        if (productData) {
 
+            setImageId(
+                productData.image
+            )
+
+        }
+    }, [productData])
     function handelSelectChangeCategory(value) {
-        setchangeSubcategory(value)
+        setSelectTouched(true)
         setCategory(value)
+        setchangeSubcategory(value)
     }
     const addProduct = async () => {
         try {
@@ -102,11 +113,41 @@ function GoodsModal(props) {
         }
         setError('')
     }
-
     function handelSelectChangeSubcategory(value) {
         setSubcategory(value)
+        setSelectTouched(true)
 
     }
+
+
+    if (productData && isSuccess == true) {
+        formik.initialValues.name = productData.name
+        formik.initialValues.Discount = productData.Discount
+        formik.initialValues.categoryId = productData.category
+        formik.initialValues.price = productData.price
+        formik.initialValues.description = productData.description
+        formik.initialValues.quantity = productData.quantity
+    }
+
+    useEffect(() => {
+        if (productData && !selectTouched && !fileIsTouched) {
+            setCategory(productData.category)
+            setSubcategory(productData.subcategory)
+            setchangeSubcategory(productData.category)
+        }
+        if (productData) {
+            const imageHasHttp = productData.image[0].includes('https')
+            if (imageHasHttp) {
+                setImageData(productData.image[0])
+            } else if (!imageHasHttp) {
+                setImageData(`http://localhost:3001/files/${productData.image[0]}`)
+
+            }
+
+        }
+    })
+
+
     return (
         <Modal
             {...props}
@@ -121,13 +162,12 @@ function GoodsModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <div className={Styles.uploadBtnParent} >
-                {file ? < Button onClick={addProduct} type='button' style={{ width: '5rem' }} value={'primary'}>آپلود</Button> : ''}
+                {imageData ? < Button onClick={addProduct} type='button' style={{ width: '5rem' }} value={'primary'}>آپلود</Button> : ''}
             </div>
             <form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
-
-
-                    <FileInput setFile={setFile} />
+                    <FileInput setFileIsTouched={setFileIsTouched} imageData={imageData}
+                        setImageData={setImageData} initialFile={file} setFile={setFile} />
 
                     <div className={Styles.ghost}></div>
                     <section className={Styles.inputssection}>
@@ -136,11 +176,11 @@ function GoodsModal(props) {
                                 <div className={Styles.selectparent}>
                                     <div className={Styles.selectionGroup}>
                                         <span>دسته بندی</span>
-                                        <FormSelect placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeCategory} />
+                                        <FormSelect initialValue={category} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeCategory} />
                                     </div>
                                     <div className={Styles.selectionGroup}>
                                         <span>زیرمجموعه</span>
-                                        <FormSelect changeSubcategoryid={changeSubcategory} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeSubcategory} subcategory={true} />
+                                        <FormSelect setSubcategory={setSubcategory} changeSubcategoryid={changeSubcategory} initialValue={subcategory} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeSubcategory} subcategory={true} />
                                     </div>
                                 </div>
 
@@ -202,4 +242,4 @@ function GoodsModal(props) {
 }
 
 
-export default GoodsModal
+export default EditModal

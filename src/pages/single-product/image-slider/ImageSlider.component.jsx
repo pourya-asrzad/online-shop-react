@@ -21,7 +21,7 @@ const ImageSlider = ({ images, isLoading }) => {
 
                 {
                     !isLoading && images.length > 0 && images.map((image, index) => {
-                        console.log(image);
+
                         return <Carousel.Item key={index}>
                             <div onMouseOver={zoomInImage} onMouseLeave={notZoomInImage} className={Styles.imagecontainer}>
                                 {!showZoom ? <img

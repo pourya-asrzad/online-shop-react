@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../../store/ui-slice';
+import { Button } from 'react-bootstrap';
 
 const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal, dataId }) => {
     const [category, setCategory] = useState('')
@@ -34,7 +35,7 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
             })
         }
 
-    }, [categorydata, subcategorydata])
+    }, [categorydata, subcategorydata, categoryId, subcategoryId])
     function deleteModalShowd(id) {
         dispatch(uiActions.setSelectedProductId(id))
         onShowDeleteModal()
@@ -42,9 +43,14 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
     return (
         <div className={Styles.GoodsCard}>
             <div className={Styles.btns_container}>
-                <GoodsCardBtn id={dataId} onclick={() => onShowModal(true)} variant={"primary"} >
+                <Button id={dataId} onClick={(e) => onShowModal(state => {
+                    return state = {
+                        show: true,
+                        editId: e.target.id
+                    }
+                })} variant={"primary"} >
                     ویرایش
-                </GoodsCardBtn>
+                </Button>
                 <GoodsCardBtn id={dataId} variant={"danger"} onclick={deleteModalShowd} >
                     حذف
                 </GoodsCardBtn>
