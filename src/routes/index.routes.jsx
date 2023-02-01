@@ -11,6 +11,7 @@ import { PrivateRoutes } from './private.routes'
 import { ProtectedRoutes } from './protected.routes'
 import { PublicRoutes } from './public.routes'
 import Home from '../pages/home/home.page'
+import SearchPage from '../pages/search/search.page'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
 const LazyCart = React.lazy(() => import('../pages/cart/cart.page'))
 const LazyNotFound = React.lazy(() => import('../pages/Error/not-found.page'))
@@ -23,6 +24,7 @@ export const AppRouting = () => {
                 <Route element={<PublicRoutes />}>
                     <Route path={INTERNAL_PATHS.HOME} element={<LazyHome />} />
                     <Route path={INTERNAL_PATHS.CART} element={<LazyCart />} />
+                    <Route path={INTERNAL_PATHS.SEARCH} element={<SearchPage />} />
                     <Route path={INTERNAL_PATHS.CATEGORYS}  >
                         <Route path=':id' element={<Category />} />
                     </Route>
