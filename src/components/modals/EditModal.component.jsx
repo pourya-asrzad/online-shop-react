@@ -12,9 +12,10 @@ import { API_BASE_URL } from '../../configs/variables.config';
 import axios from 'axios';
 import { useEditProductMutation, useGetProductQuery } from '../../store/products/productsApiSlice';
 import { useEffect } from 'react';
+import { callFluidObserver } from '@react-spring/shared';
 
 function EditModal(props) {
-    const [imageData, setImageData] = useState(undefined)
+    const [imageData, setImageData] = useState("")
     const [file, setFile] = useState(false)
     const [imageIds, setImageId] = useState([])
     const [category, setCategory] = useState(undefined);
@@ -134,20 +135,24 @@ function EditModal(props) {
             setCategory(productData.category)
             setSubcategory(productData.subcategory)
             setchangeSubcategory(productData.category)
+
+
         }
-        if (productData) {
+    })
+
+    useEffect(() => {
+        const checkBase64 = imageData.split(':')[0]
+        console.log(checkBase64)
+        if (productData && checkBase64 !== 'data') {
             const imageHasHttp = productData.image[0].includes('https')
             if (imageHasHttp) {
                 setImageData(productData.image[0])
             } else if (!imageHasHttp) {
                 setImageData(`http://localhost:3001/files/${productData.image[0]}`)
-
+                console.log('hi')
             }
-
         }
-    })
-
-
+    });
     return (
         <Modal
             {...props}

@@ -29,7 +29,7 @@ const ImageSlider = ({ images, isLoading }) => {
                                     src={imageHasHttp ? image : `http://localhost:3001/files/${image}`}
                                     alt="Third slide"
                                 /> :
-                                    <ReactImageMagnify  {...{
+                                    <ReactImageMagnify   {...{
                                         smallImage: {
                                             alt: 'Wristwatch by Ted Baker London',
                                             isFluidWidth: true,
@@ -39,7 +39,8 @@ const ImageSlider = ({ images, isLoading }) => {
                                         largeImage: {
                                             src: imageHasHttp ? image : `http://localhost:3001/files/${image}`,
                                             width: 900,
-                                            height: 900
+                                            height: 900,
+
                                         },
                                         enlargedImagePortalId: "myPortal"
                                     }} />}
