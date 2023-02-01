@@ -4,7 +4,7 @@ import ColorsGroup from '../colors-group/ColorsGroup.component';
 import Styles from './maincard.module.scss'
 import { AiFillStar } from 'react-icons/ai'
 const MainCard = (props) => {
-    const { colors, image, title, price, discount } = props
+    const { colors, image, title, price, discount, quantity } = props
     // {colorsArray} is just a test for ui
     const colorsArray = [
         "blue", "white", "black", "green"
@@ -12,7 +12,7 @@ const MainCard = (props) => {
     const imageHasHttp = image.includes('https')
     const numberplit = numberWithCommas(price)
     return (
-        <div className={Styles.maincard}>
+        <div style={quantity == 0 ? { filter: 'grayscale(100%)' } : { filter: 'none' }} className={Styles.maincard}>
 
             <div className={Styles.card_header}>
                 <ColorsGroup colors={colorsArray} />
@@ -31,10 +31,10 @@ const MainCard = (props) => {
                     <span>2.5</span>
                     <AiFillStar style={{ color: '#f9bc00' }} />
                 </div>
-                <div className={Styles.price_discount_coontainer}>
+                {quantity == 0 ? <span>ناموجود</span> : <div className={Styles.price_discount_coontainer}>
                     <h3 className={Styles.card_price}><span style={{ marginRight: "2px" }}> تومان </span> {numberplit} </h3>
                     <div className={discount ? Styles.discount : ''}> <span>{discount ? discount + "%" : ''}</span></div>
-                </div>
+                </div>}
             </div>
         </div >
     );

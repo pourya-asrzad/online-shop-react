@@ -15,7 +15,7 @@ const ExistFilter = ({ setfilterAsquantity }) => {
                 </div>
 
                 <div className='flex a-c'>
-                    <input onClick={(e) => setfilterAsquantity(e.target.value)} className={Styles.radio_input} type="radio" id="all" name="existfilte" value="1" />
+                    <input defaultChecked={true} onClick={(e) => setfilterAsquantity(e.target.value)} className={Styles.radio_input} type="radio" id="all" name="existfilte" value="1" />
                     <label htmlFor="all">همه</label>
                 </div>
             </div>

@@ -5,9 +5,15 @@ export const productsCategorysApiSlice = apiSlice.injectEndpoints({
     fetchCategorysProducts: builder.query({
       query: (fetchObj) => {
         if (fetchObj.subcategory == 0) {
+          if (fetchObj.filterRange.isFilter) {
+            return `http://localhost:3001/products?category=${fetchObj.category}&_page=${fetchObj.page}&_limit=12&price_gte=0&price_lte=${fetchObj.filterRange.range}`;
+          }
           return `products?category=${fetchObj.category}&_page=${fetchObj.page}&_limit=12`;
         }
         if (fetchObj.subcategory != 0) {
+          if (fetchObj.filterRange.isFilter) {
+            return `http://localhost:3001/products?category=${fetchObj.category}&subcategory=${fetchObj.subcategory}&_page=${fetchObj.page}&_limit=12&price_gte=0&price_lte=${fetchObj.filterRange.range}`;
+          }
           return `products?category=${fetchObj.category}&subcategory=${fetchObj.subcategory}&_page=${fetchObj.page}&_limit=12`;
         }
       },

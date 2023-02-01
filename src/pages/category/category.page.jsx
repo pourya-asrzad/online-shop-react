@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import CategoryFilter from '../../components/category-filter/CategoryFilter.component';
 import EmptyDataAnimation from '../../components/empty-data-animation/EmptyDataAnimation.component';
 import MainCard from '../../components/main-card/MainCard.component';
+import PlaceHolderCard from '../../components/main-card/PlaceHolderCard.component';
 import Pagination from '../../components/pagination/Pagination.component';
 import { INTERNAL_PATHS } from '../../configs/routs.config';
 import { data } from '../../database/db.exampel';
@@ -19,14 +20,15 @@ const Category = () => {
     const paramsData = param.id.split('-')
     const categoryId = paramsData[0]
     const subcategoryId = paramsData[1]
+    const fakeArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     const [paginationStop, setpaginationStop] = useState(false)
     const [fetchObj, setFetchObj] = useState({
         category: categoryId,
         page: 1,
         subcategory: subcategoryId,
         filterRange: {
-            isfilter: false,
-            range: 15000
+            isFilter: false,
+            range: 319000
         }
 
     });
@@ -38,14 +40,19 @@ const Category = () => {
 
 
     let categoryfetchAnswer = null
-
+    if (isLoading) {
+        categoryfetchAnswer = fakeArray.map((num) => {
+            return <PlaceHolderCard key={num} />
+        })
+    }
     if (isSuccess && products.length > 0) {
         if (filterAsquantity == 0) {
             categoryfetchAnswer = products.filter((product) => {
                 return product.quantity > 0
             }).map((product) => {
+
                 return <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
-                    <MainCard title={product.name}
+                    <MainCard quantity={product.quantity} title={product.name}
                         discount={product.Discount} price={product.price} image={product.image[0]} key={product.id} />
                 </Link>
             })
@@ -53,17 +60,17 @@ const Category = () => {
         if (filterAsquantity == 1) {
             categoryfetchAnswer = products.map((product) => {
                 return <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
-                    <MainCard title={product.name}
+                    <MainCard quantity={product.quantity} title={product.name}
                         discount={product.Discount} price={product.price} image={product.image[0]} key={product.id} />
                 </Link>
             })
         }
     }
-    if (products.length === 0) {
+    if (isLoading == false && products.length === 0) {
         categoryfetchAnswer = <EmptyDataAnimation />
     }
     useEffect(() => {
-        if (products.length < 10) {
+        if (products.length < 12) {
             setpaginationStop(true)
         } else {
             setpaginationStop(false)
@@ -105,10 +112,10 @@ const Category = () => {
                         {categoryfetchAnswer}
                     </div>
                     <div className={Styles.filter_side}>
-                        {products.length > 0 ? <CategoryFilter setfilterAsquantity={setfilterAsquantity} /> : ''}
+                        {products.length > 0 ? <CategoryFilter setFetchObj={setFetchObj} setfilterAsquantity={setfilterAsquantity} /> : ''}
                     </div>
                 </div>
-                {products.length >= 12 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{fetchObj.page}</Pagination>}
+                {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{fetchObj.page}</Pagination>}
             </PageContainer>
         </div>
     );
