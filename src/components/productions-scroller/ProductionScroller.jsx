@@ -50,7 +50,7 @@ function ProductionScroller() {
                             <HomeProductionsCard
                                 key={item.id}
                                 price={item.price}
-                                priceWithDiscount={item.price * item.Discount / 100}
+                                priceWithDiscount={item.price - item.price * item.Discount / 100}
                                 name={item.name}
                                 image={item.image[0]}
                                 discount={item.Discount}

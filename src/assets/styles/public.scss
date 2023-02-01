@@ -186,3 +186,32 @@ label{
  .link-route:hover{
 color: black;
 }
+.priceWithoutDiscount{
+
+    position: absolute;
+    bottom: 4px;
+    color: gray;
+    font-size: 14px;
+    right: 40px;
+   .priceWithoutDiscounthr{
+    width: 48px;
+    height: 0.5px;
+    background: #a0a0a0;
+    position: absolute;
+    top: 9px;
+   }
+}
+.priceWithoutDiscountcategory{
+  position: absolute;
+  bottom: -18px;
+  color: gray;
+  font-size: 14px;
+  left: 31px;
+  .priceWithoutDiscounthr{
+    width: 48px;
+    height: 0.5px;
+    background: #a0a0a0;
+    position: absolute;
+    top: 9px;
+   }
+}

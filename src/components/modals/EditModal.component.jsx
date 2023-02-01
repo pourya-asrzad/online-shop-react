@@ -56,7 +56,12 @@ function EditModal(props) {
                             price: value.price,
                             quantity: value.quantity,
                             store: "admin",
-                            image: imageIds
+                            image: imageIds,
+                            "fillStrip": {
+                                "pricevalue": 70,
+                                "quality": 50,
+                                "packing": 60
+                            }
                         }
                     }).unwrap()
                     props.handelClose(state => {

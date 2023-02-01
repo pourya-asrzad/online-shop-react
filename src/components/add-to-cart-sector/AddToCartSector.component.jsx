@@ -37,9 +37,14 @@ const AddToCartSector = ({ price }) => {
 
 
                 <div className={Styles.cardpricepart}>
-                    <span>
-                        {priceWithComma}
-                    </span>
+                    <div style={{ direction: 'rtl' }}>
+                        <span>
+                            {priceWithComma}
+                        </span>
+                        <span>
+                            تومان
+                        </span>
+                    </div>
                     <div>
                         <span>
                             قیمت مصرف کننده

@@ -11,16 +11,18 @@ import ShowZoom from './show-zoom/ShowZoom.component';
 import { useFetchSingleProductQuery } from '../../store/products/singleProductApiSlice';
 import { useParams } from 'react-router-dom';
 import { Loading } from '../../components';
-const fillStrip = {
+let fillStrip = {
     pricevalue: 50,
     quality: 90,
     packing: 15
 }
 const SingleProduct = () => {
     const productId = useParams()
-    const { data: productData, isLoading } = useFetchSingleProductQuery(productId.id)
+    const { data: productData, isLoading, isSuccess } = useFetchSingleProductQuery(productId.id)
     const appTitle = getAppTitle()
-
+    if (isSuccess) {
+        fillStrip = productData[0].fillStrip
+    }
     // we just need object in here
     const productObj = !isLoading && productData.length > 0 ? productData[0] : ''
     return (

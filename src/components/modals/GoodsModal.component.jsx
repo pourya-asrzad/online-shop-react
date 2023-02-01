@@ -50,7 +50,12 @@ function GoodsModal(props) {
                         createdAt: Date.now(),
                         price: value.price,
                         quantity: value.quantity,
-                        store: "admin"
+                        store: "admin",
+                        "fillStrip": {
+                            "pricevalue": 70,
+                            "quality": 50,
+                            "packing": 60
+                        }
                     }).unwrap()
                     props.handelClose(state => {
                         return state = {
