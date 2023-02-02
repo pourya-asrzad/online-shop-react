@@ -41,9 +41,3 @@ const PriceFilter = ({ setFetchObj }) => {
 }
 
 export default PriceFilter;
-/*     <div>
-                {hotels.filter(hotel => { return hotel.price < parseInt(price, 10) }).map(hotel => {
-                    return <p key={hotel.name}>{hotel.name} | {hotel.price} &euro; </p>
-                })}
-            </div>
-            */

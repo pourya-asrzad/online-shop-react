@@ -1,9 +1,11 @@
 import React from 'react';
 import companyicon from '../../assets/images/company.png'
+import { numberWithCommas } from '../../utils/functions.utils';
 import PriceWithDiscountText from '../price-With-Discount-text/priceWithDiscountText.component';
 import Styles from './HomeProductionsCard.module.scss'
 export const HomeProductionsCard = ({ name, price, image, className, discount, priceWithDiscount }) => {
     const imageHasHttp = image.includes('https')
+    const pricenumberWithCommas = numberWithCommas(priceWithDiscount)
     return (
 
         <div className={`${Styles.homeproductioncard} ${className}`}>
@@ -16,7 +18,7 @@ export const HomeProductionsCard = ({ name, price, image, className, discount, p
                 <span className={`flex ${Styles.priceWithDiscount}`}>
                     <span className={Styles.price}>تومان  </span>
                     <span>
-                        {priceWithDiscount}
+                        {pricenumberWithCommas}
                     </span>
                 </span>
             </div>

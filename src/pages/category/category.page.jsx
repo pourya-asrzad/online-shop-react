@@ -51,7 +51,7 @@ const Category = () => {
                 return product.quantity > 0
             }).map((product) => {
 
-                return <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
+                return <Link key={product.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
                     <MainCard quantity={product.quantity} title={product.name}
                         discount={product.Discount} price={product.price} image={product.image[0]} key={product.id} />
                 </Link>
@@ -59,7 +59,7 @@ const Category = () => {
         }
         if (filterAsquantity == 1) {
             categoryfetchAnswer = products.map((product) => {
-                return <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
+                return <Link key={product.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
                     <MainCard quantity={product.quantity} title={product.name}
                         discount={product.Discount} price={product.price} image={product.image[0]} key={product.id} />
                 </Link>
@@ -115,7 +115,12 @@ const Category = () => {
                         {products.length > 0 ? <CategoryFilter setFetchObj={setFetchObj} setfilterAsquantity={setfilterAsquantity} /> : ''}
                     </div>
                 </div>
-                {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{fetchObj.page}</Pagination>}
+                {products.length >= 1 && <div style={{
+                    marginTop: '19px',
+                    marginRight: '32px'
+                }}>
+
+                    <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{fetchObj.page}</Pagination></div>}
             </PageContainer>
         </div>
     );

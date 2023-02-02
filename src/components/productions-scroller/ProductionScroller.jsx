@@ -72,19 +72,21 @@ function ProductionScroller() {
                     id='slider2'
                     className={Styles.scrollitemscontainet}
                 >
-                    {productsHasDiscount10 && productsHasDiscount10.map((item, index) => (
-                        <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
+                    {productsHasDiscount10 && productsHasDiscount10.map((item, index) => {
+                        console.log(item.Discount)
+                        return <Link key={item.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
 
                             <HomeProductionsCard
+
                                 key={item.id}
                                 price={item.price}
-                                priceWithDiscount={item.price * item.Discount / 100}
+                                priceWithDiscount={item.price - item.price * item.Discount / 100}
                                 name={item.name}
                                 image={item.image[0]}
                                 discount={item.Discount}
                             />
                         </Link>
-                    ))}
+                    })}
                 </div>
                 <div>
 

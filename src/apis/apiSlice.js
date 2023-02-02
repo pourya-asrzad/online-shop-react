@@ -17,7 +17,8 @@ const baseQuery = fetchBaseQuery({
       endpoint === "categorysInHome" ||
       endpoint === "subcategoryHome" ||
       endpoint === "productsHasDiscount" ||
-      endpoint === "subcategoryHome"
+      endpoint === "subcategoryHome" ||
+      endpoint === "fetchSingleProduct"
     ) {
       return headers;
     }
