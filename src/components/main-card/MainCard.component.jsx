@@ -6,7 +6,7 @@ import { AiFillStar } from 'react-icons/ai'
 import PriceWithDiscountText from '../price-With-Discount-text/priceWithDiscountText.component';
 import { useState } from 'react';
 const MainCard = (props) => {
-    const { colors, image, title, price, discount, quantity } = props
+    const { colors, image, title, price, discount, quantity, fillStrip } = props
     // {colorsArray} is just a test for ui
     const colorsArray = [
         "blue", "white", "black", "green"
@@ -14,6 +14,7 @@ const MainCard = (props) => {
     const imageHasHttp = image.includes('https')
     let priceWithDiscount = price
     const numberplit = numberWithCommas(price)
+    const productStart = parseFloat((((fillStrip.pricevalue + fillStrip.quality + fillStrip.packing) / 3 * 100) * 5 / 100 / 100).toFixed(1))
     if (discount) {
         const numberplitwithdiscount = numberWithCommas(price - price * discount / 100)
         priceWithDiscount = numberplitwithdiscount
@@ -35,7 +36,7 @@ const MainCard = (props) => {
             <div className={Styles.card_footer}>
                 <h3 className={Styles.card_title}>{title}</h3>
                 <div className={Styles.score}>
-                    <span>2.5</span>
+                    <span>{productStart ? productStart : ''}</span>
                     <AiFillStar style={{ color: '#f9bc00' }} />
                 </div>
                 {quantity == 0 ? <span>ناموجود</span> : <div style={{ position: 'relative' }}> <div className={Styles.price_discount_coontainer}>

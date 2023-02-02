@@ -6,7 +6,7 @@ import { numberWithCommas } from '../../utils/functions.utils';
 import Styles from './AddToCartSector.module.scss'
 import Hr from '../hr/Hr.component';
 import AddToCartBtn from '../buttons/AddToCartBtn.component';
-const AddToCartSector = ({ price }) => {
+const AddToCartSector = ({ price, quantity }) => {
     const priceWithComma = numberWithCommas(price)
     return (
         <div className={Styles.AddToCartSector}>
@@ -38,12 +38,18 @@ const AddToCartSector = ({ price }) => {
 
                 <div className={Styles.cardpricepart}>
                     <div style={{ direction: 'rtl' }}>
-                        <span>
-                            {priceWithComma}
-                        </span>
-                        <span>
-                            تومان
-                        </span>
+                        {quantity == 0 ?
+                            <span>ناموجود</span>
+                            :
+                            <>
+                                <span>
+                                    {priceWithComma}
+                                </span>
+                                <span>
+                                    تومان
+                                </span>
+                            </>
+                        }
                     </div>
                     <div>
                         <span>

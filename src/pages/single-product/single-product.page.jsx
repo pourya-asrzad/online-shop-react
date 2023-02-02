@@ -38,7 +38,7 @@ const SingleProduct = () => {
                         <h1 >{productObj.name}</h1>
                         <Discription description={productObj.description} />
                         <div className={Styles.sectors_container}>
-                            <AddToCartSector price={productObj.price} />
+                            <AddToCartSector quantity={productObj.quantity} price={productObj.price} />
                             <Rate fillStrip={fillStrip} />
                         </div>
                     </div>
