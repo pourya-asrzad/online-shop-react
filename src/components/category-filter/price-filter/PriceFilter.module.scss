@@ -26,5 +26,9 @@
     background-color: rgb(232 243 255);
     padding: 23px;
     box-shadow: rgb(99 99 99 / 22%) 1px 1px 8px 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 10rem;
 }
 

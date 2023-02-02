@@ -27,7 +27,7 @@ const Header = () => {
                     </div>
                 </header>
                 <div className={Styles.headerbottom}>
-                    <Link style={{ color: 'black', textDecoration: "none" }} to={INTERNAL_PATHS.LOGIN}>
+                    <Link style={{ color: 'black', textDecoration: "none" }} to={'#'}>
                         <LodinOrRegister />
                     </Link>
                     <div className={Styles.barserchside}>

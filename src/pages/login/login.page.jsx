@@ -19,7 +19,7 @@ const Login = () => {
             password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد')
         }),
         onSubmit: (value) => {
-            console.log(value);
+
         }
     })
 

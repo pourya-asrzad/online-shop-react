@@ -13,7 +13,7 @@
         direction: rtl;
         font-size: 15px;
     line-height: 2.17;
-        height: 20rem;
+       max-height: 20rem;
         overflow: overlay;
         font-weight: 400;
     }
@@ -30,7 +30,7 @@
         font-size: 15px;
         direction: rtl;
         width: 100%;
-        height: 92px;
+        max-height: 92px;
         font-size: 15px;
         font-weight: 500;
         line-height: 2.17;

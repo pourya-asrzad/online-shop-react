@@ -8,7 +8,20 @@ const baseQuery = fetchBaseQuery({
   credentials: "same-origin",
   prepareHeaders: (headers, { getState, endpoint }) => {
     const token = localStorage.getItem("token");
-    console.log(endpoint);
+    if (
+      endpoint === "fetchHomeProducts" ||
+      endpoint === "fetchHomecategory" ||
+      endpoint === "fetchCategorysProducts" ||
+      endpoint === "fetchCategoryscategory" ||
+      endpoint === "fetchSubcategory" ||
+      endpoint === "categorysInHome" ||
+      endpoint === "subcategoryHome" ||
+      endpoint === "productsHasDiscount" ||
+      endpoint === "subcategoryHome" ||
+      endpoint === "fetchSingleProduct"
+    ) {
+      return headers;
+    }
     if (endpoint === REFRESH_TOKEN_URL) {
       const token = localStorage.getItem("refreshToken");
       headers.set("refreshToken", token);
@@ -22,15 +35,13 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result?.error?.originalStatus === 401) {
-    console.log("sending refresh token");
     // send refresh token to get new access token
     const refreshResult = await baseQuery(
       { url: REFRESH_TOKEN_URL, method: "POST" },
       { ...api, endpoint: REFRESH_TOKEN_URL },
       extraOptions
     );
-    console.log(result);
-    console.log(refreshResult);
+
     if (refreshResult?.data) {
       // store the new token
 

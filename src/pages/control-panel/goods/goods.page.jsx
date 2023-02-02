@@ -15,19 +15,25 @@ import Pagination from '../../../components/pagination/Pagination.component';
 import FormSelect from '../../../components/Form-select/FormSelect.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
+import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
+import DeleteModal from '../../../components/modals/DeleteModal.component';
+import EditModal from '../../../components/modals/EditModal.component';
 
 const Goods = () => {
-
+    const [showDeletemodal, setShowDeleteModal] = useState(false);
     const [paginationStop, setpaginationStop] = useState(false)
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
         filter: "null"
     })
-    const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
+    const { data: products = [], isLoading, error, isSuccess } = useFetchProductsQuery(pageNumberAndpage)
     const appTittle = getAppTitle()
     const goodsError = useLogoutadmin(error)
 
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState({
+        show: false,
+        editId: null
+    });
 
     // console.log(error.data)
     useEffect(() => {
@@ -46,7 +52,7 @@ const Goods = () => {
         })
     }
     function handelSelectChange(value) {
-        console.log(value)
+
         setpageNumberAndpage(state => {
 
             return { ...state, page: 1 }
@@ -68,18 +74,40 @@ const Goods = () => {
 
     }
 
+    //delete modal showing
+    const handleShow = () => setShowDeleteModal(true);
+
+    //request answer setting
+    let requestAsnwer = null
+    if (products.length > 0) {
+        requestAsnwer = products.map((element) => {
+            return <GoodsCard dataId={element.id} onShowModal={setModalShow} onShowDeleteModal={handleShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
+        })
+    }
+    if (isLoading) {
+        requestAsnwer = <Loading />
+    }
+    if (products.length === 0 && isSuccess) {
+        requestAsnwer = <EmptyDataAnimation />
+    }
     return (
         <div>
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | کالا ها </title>
             </Helmet>
-            {isLoading && <Loading />}
             <main>
                 <div className={Styles.goodspageHeader} >
                     <div className={Styles.leftthings}>
-                        <Button onClick={() => { setModalShow(true) }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
+                        <Button onClick={() => {
+                            setModalShow(state => {
+                                return state = {
+                                    show: true,
+                                    editId: null
+                                }
+                            })
+                        }} variant="success" className={Styles.addgoodbtn}>افزودن کالا</Button>
                         <div className={Styles.filter}>
-                            <FormSelect handelSelectChange={handelSelectChange} />
+                            <FormSelect placeholder='همه' handelSelectChange={handelSelectChange} />
                             <div className={Styles.filterlabel}>
                                 <AiTwotoneFilter />
                                 <label htmlFor="filtercategory">
@@ -95,18 +123,33 @@ const Goods = () => {
                 </div>
                 <div className={Styles.goodsghoest}></div>
                 <section className={Styles.cardscontainer}>
-                    {products.length >= 1 ? products.map((element) => {
-                        return <GoodsCard onShowModal={setModalShow} categoryId={element.category} subcategoryId={element.subcategory} img={element.image[0]} title={element.name} key={element.id} />
-                    }) : <video className='notDataanimation' width="320" height="240" autoPlay={"true"} loop>
-                        <source src="https://cdnl.iconscout.com/lottie/premium/thumb/no-result-4957988-4133894.mp4" type="video/mp4" />
-                    </video>
-                    }
+                    {requestAsnwer}
                 </section >
             </main>
-            <GoodsModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+            <section>
+                {!modalShow.editId ? <GoodsModal
+                    show={modalShow.show}
+                    onHide={() => setModalShow(state => {
+                        return state = {
+                            ...state,
+                            show: false,
+                        }
+                    })}
+                    handelClose={setModalShow}
+                /> : <EditModal
+                    editid={`${modalShow.editId}`}
+                    show={modalShow.show}
+                    onHide={() => setModalShow(state => {
+                        return state = {
+                            ...state,
+                            show: false,
+                        }
+                    })}
+                    handelClose={setModalShow}
+                />}
+                <DeleteModal setShow={setShowDeleteModal} show={showDeletemodal} />
+            </section>
+
             <div>
                 {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{pageNumberAndpage.page}</Pagination>}
 

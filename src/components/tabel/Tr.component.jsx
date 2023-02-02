@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { compareAsc, format, newDate } from 'date-fns-jalali'
 
 
-const TrComponent = ({ username, OrderRegistrationTime, prices, lastname }) => {
+const TrComponent = ({ username, OrderRegistrationTime, prices, lastname, setModalShow }) => {
     const unix_timestamp = OrderRegistrationTime
     const date = new Date(unix_timestamp);
 
@@ -17,7 +17,7 @@ const TrComponent = ({ username, OrderRegistrationTime, prices, lastname }) => {
     return (
         <tr>
             <td>
-                <Button variant="primary">بررسی سفارش</Button>
+                <Button onClick={() => setModalShow(true)} variant="primary">بررسی سفارش</Button>
             </td>
             <td>{jalaliDate}</td>
             <td>{prices}</td>

@@ -3,19 +3,26 @@ import { Helmet } from 'react-helmet';
 import { getAppTitle } from '../../../utils/functions.utils'
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import Styles from './inventory-price.module.scss'
-import { data } from '../../../database/db.exampel';
 import InventoryPriceCard from '../../../components/inventory-price-card/InventoryPriceCard.component';
-import { useFetchProductsQuery } from '../../../store/products/productsApiSlice';
+import { useEditProductMutation, useFetchProductsQuery } from '../../../store/products/productsApiSlice';
 import Pagination from '../../../components/pagination/Pagination.component';
 import { useEffect } from 'react';
 import { useLogoutadmin } from '../../../hooks/logoutadmin';
+import { Loading } from '../../../components/Loading/Loading.component';
+import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
+import SaveBtnComponent from '../../../components/buttons/SaveBtn.component';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiActions } from '../../../store/ui-slice';
 const InventoryPrice = () => {
+    const saveBtn = useSelector(state => state.ui.editBtnToggle_id)
+    const [editProduct] = useEditProductMutation()
     const [paginationStop, setpaginationStop] = useState(false)
+    const dispatch = useDispatch()
     const [pageNumberAndpage, setpageNumberAndpage] = useState({
         page: 1,
         filter: "null"
     })
-    const { data: products = [], isLoading, error } = useFetchProductsQuery(pageNumberAndpage)
+    const { data: products = [], isLoading, error, isSuccess } = useFetchProductsQuery(pageNumberAndpage)
     const inventoryError = useLogoutadmin(error)
     function handelPageHangeback() {
         setpageNumberAndpage(state => {
@@ -43,28 +50,52 @@ const InventoryPrice = () => {
         }
     }, [products.length]);
     const appTittle = getAppTitle()
+    let requestAnswer = null
+    if (products.length > 0) {
+        requestAnswer = products.map((element) => {
+
+            return (
+                <InventoryPriceCard
+                    id={element.id}
+                    price={element.price}
+                    title={element.name}
+                    inventory={element.quantity}
+                    img={element.image[0]} key={element.id} />
+            )
+        })
+    }
+    if (isLoading) {
+        requestAnswer = <Loading />
+    }
+    if (products.length === 0 && isSuccess) {
+        requestAnswer = <EmptyDataAnimation />
+    }
+    function saveBtnHandler() {
+        const productInfo = {
+            id: saveBtn.dataId
+            , body: {
+                quantity: saveBtn.inventory,
+                price: saveBtn.price
+            }
+        }
+        editProduct(productInfo)
+        dispatch(uiActions.saveEditHandler())
+    }
+
     return (
         <>
             <Helmet>
                 <title>   پنل مدیریت {appTittle} | موجودی و قیمت</title>
             </Helmet>
-            <div className={Styles.inventory_header}>
+            <div style={!saveBtn.btnshow ? { justifyContent: 'flex-end' } : null} className={Styles.inventory_header}>
+                {saveBtn.btnshow ? <SaveBtnComponent onClick={saveBtnHandler}>ذخیره</SaveBtnComponent> : ''}
                 <PanelTopTitle color={'blue'}>
                     مدیریت موجودی و قیمت ها
                 </PanelTopTitle>
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
-                {products.map((element) => {
-                    return (
-                        <InventoryPriceCard
-
-                            price={element.price}
-                            title={element.name}
-                            inventory={element.quantity}
-                            img={element.image[0]} key={element.id} />
-                    )
-                })}
+                {requestAnswer}
                 {products.length >= 1 && <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{pageNumberAndpage.page}</Pagination>}
             </main>
         </>

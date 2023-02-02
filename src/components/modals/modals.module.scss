@@ -1,0 +1,184 @@
+.OutlinePicture{
+    width: 100px;
+    height: 100px;
+    /* font-weight: 300; */
+    /* font-size: 41px; */
+    color: gray;
+}
+.FcPlus{
+    display: block;
+    width: 40px;
+    height: 35px;
+}
+.ghost{
+    height: 10rem;
+}
+
+    .input{
+        background-color: #fcfcfc;
+        padding: 8px;
+        width: 300px;
+        height: 20px;
+        border-radius: 8px;
+        caret-color: rgb(0, 85, 255);
+        font-size: 1rem;
+        direction: rtl;
+    }
+.inputparent{
+    display: flex;
+    align-items: center;
+    position: relative;
+    label{
+        font-size:19px;
+        outline: none;
+    }
+    label:focus-visible,label:focus{
+        outline: none;
+    }
+}
+.inputssection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 3rem;
+}
+.firstRowParent{
+    display: flex;
+    justify-content: space-between;
+    width: 44rem;
+    align-items: flex-end;
+    margin: 0 6px;
+}
+.input:focus-visible{
+    outline:none;
+    }
+    .input:focus{
+        outline:none;
+        }
+     
+.numbersiderow{
+    display: flex;
+    width: 41rem;
+    justify-content: space-between;
+    padding: 10px 18px;
+    margin-top: 15px;
+    display: flex;
+}
+.inputnumber{
+    @extend .input;
+    width: 100px;
+    direction: ltr
+}
+.inputparentnubmer{
+    @extend .inputparent;
+    label{
+        font-size: 16px;
+    }
+}
+.inputnumberprice{
+    @extend .inputnumber;
+    width: 150px;
+}
+.textarea{
+    direction: rtl;
+    
+    width: 94%;
+    border-radius: 8px;
+    border-color: #4c6fe7;
+    margin-right: 9px;
+
+}
+.warningIcon{
+    color: #ff7e06;
+    width: 37px;
+    height: 36px;
+    display: block;
+}
+.deletemodalbody{
+    direction: rtl;
+}
+.ordermaninfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 39%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+   
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  tr,th,td,tbody,thead{
+    direction: rtl;
+  }
+  .tabelSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tabel{
+    border: 1px solid
+        rgb(159, 159, 159);
+        margin-top: 1rem;
+
+  }
+  .ordermodalfooter{
+
+    justify-content: center !important;
+  }
+  .ordersmodalbody{
+    max-height: 22rem;
+    overflow: overlay;
+  }
+
+  .selectparent{
+    display: flex;
+    justify-content: space-between;
+    width: 19rem;
+  }
+
+  .validation_message{
+    display: flex;
+    margin-right: 21px;
+    justify-content: flex-end;
+    font-size: 11px;
+    margin-bottom: 9px;
+    position: absolute;
+    right: 49px;
+    color: #d90000;
+    bottom: -25px;
+}
+.textareahasError{
+    @extend .textarea;
+    border-color: #d90000;
+}
+.selectionGroup{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.generalerror{
+    position: absolute;
+    top: 10px;
+    color: red;
+    left: 42%;
+    top: 20px;
+}
+.uploadBtnParent{
+    position: absolute;
+    top: 8rem;
+    right: 9rem;
+    z-index: 10;
+}

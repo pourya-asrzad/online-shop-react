@@ -8,10 +8,10 @@ import CompanyName from '../../components/company-name/CompanyName.component';
 import { Link, useNavigate } from 'react-router-dom';
 import BaseBtn from '../../components/buttons/AddToCartBtn.component'
 import { INTERNAL_PATHS } from '../../configs/routs.config';
-import axios from 'axios';
 import { setCredentials } from '../../store/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../store/auth/authApiSlice';
+import { IoReturnDownBack } from 'react-icons/io5'
 const AdminLogin = () => {
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
@@ -23,19 +23,20 @@ const AdminLogin = () => {
             userName: '',
             password: ''
         }, validationSchema: Yup.object({
-            userName: Yup.string().required('این فیلد نباید خالی باشد'),
-            password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد')
+            userName: Yup.string().required('این فیلد نباید خالی باشد').min(5, 'ورودی کمتر از حد مجاز است ').matches(/^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/, 'حروف باید حتما لاتین باشند'),
+            password: Yup.string().max(16, "ورودی بیش از حد مجاز است").min(5, 'ورودی کمتر از حد مجاز است').required('این فیلد نباید خالی باشد').matches(/^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/, 'حروف باید حتما لاتین باشند')
         }),
         onSubmit: async (value) => {
             const username = value.userName
             const password = value.password
             try {
                 const res = await login({ username, password }).unwrap();
-                console.log(res)
+
                 dispatch(setCredentials({ ...res }));
                 navigate('/' + INTERNAL_PATHS.CONTROLPANEL);
             } catch (error) {
-                console.log('golam')
+                if (error.originalStatus === 401)
+                    setError("هیچ کاربری با این اطلاعات یافت نشد")
             }
         }
     })
@@ -92,7 +93,17 @@ const AdminLogin = () => {
 
                     </div>
                     <div className={Styles.btns_parent}>
-                        <BaseBtn style={{ width: "100%" }} type={'submit'}>ورود</BaseBtn>
+                        <Link to={INTERNAL_PATHS.HOME}>
+                            <div>
+                                <IoReturnDownBack />
+                                <span>
+
+                                    بازگشت به سایت
+                                </span>
+                            </div>
+
+                        </Link>
+                        <BaseBtn style={{ width: "55%" }} type={'submit'}>ورود</BaseBtn>
                     </div>
 
                 </form>

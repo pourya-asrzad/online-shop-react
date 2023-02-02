@@ -2,6 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
+import { Loading } from '../../../components/Loading/Loading.component';
+import OrdersModal from '../../../components/modals/OrdersModal.component';
 import Pagination from '../../../components/pagination/Pagination.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import TabelComponent from '../../../components/tabel/Tabel.component';
@@ -10,6 +13,7 @@ import { useFetchOrdersLengthQuery, useFetchOrdersQuery, useFetchTestQuery } fro
 import { getAppTitle } from '../../../utils/functions.utils';
 import Styles from './orders.module.scss'
 const Orders = () => {
+    const [modalShow, setModalShow] = React.useState(false);
     const appTittle = getAppTitle()
     const [paginationStop, setpaginationStop] = useState(false)
     const [ordersfillterAndPageNubmer, setOrdersfillterAndPageNubmer] = useState({
@@ -18,7 +22,7 @@ const Orders = () => {
     })
     const { data: itemslengh } = useFetchOrdersLengthQuery(ordersfillterAndPageNubmer)
     console.log(itemslengh);
-    const { data: orders = [], error } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
+    const { data: orders = [], isLoading, error, isSuccess } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
     const ordersError = useLogoutadmin(error)
     function handelPageHangeback() {
         setOrdersfillterAndPageNubmer(state => {
@@ -50,19 +54,28 @@ const Orders = () => {
     function handelorderfilter(params) {
         if (params.target.id === 'Delivered') {
             setOrdersfillterAndPageNubmer(state => {
-                return { ...state, filter: 'true' }
+                return { ...state, filter: 'true', page: 1 }
             })
         }
         if (params.target.id === 'waiting') {
             setOrdersfillterAndPageNubmer(state => {
-                return { ...state, filter: 'false' }
+                return { ...state, filter: 'false', page: 1 }
             })
         }
-        setOrdersfillterAndPageNubmer(
-            state => {
-                return { ...state, page: 1 }
-            }
-        )
+    }
+    if (error) {
+        alert(error.message)
+    }
+    //request answer setting 
+    let requestAsnwer = null
+    if (orders.length > 0) {
+        requestAsnwer = <TabelComponent setModalShow={setModalShow} orders={orders} />
+    }
+    if (isLoading) {
+        requestAsnwer = <Loading />
+    }
+    if (orders.length === 0 && isSuccess) {
+        requestAsnwer = <EmptyDataAnimation />
     }
     return (
         <>
@@ -89,7 +102,7 @@ const Orders = () => {
             </div>
             <div style={{ height: '64px' }} id="inventgost"></div>
             <main>
-                <TabelComponent orders={orders} />
+                {requestAsnwer}
             </main>
             <div style={{
                 position: " absolute",
@@ -98,6 +111,11 @@ const Orders = () => {
             }}>
                 {orders.length >= 1 && itemslengh > 8 ? <Pagination paginationStop={paginationStop} handelPagenext={handelPageHange} handelPageprev={handelPageHangeback}>{ordersfillterAndPageNubmer.page}</Pagination> : ''}
             </div>
+
+            <OrdersModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </>
     );
 }

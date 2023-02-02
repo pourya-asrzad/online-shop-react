@@ -3,7 +3,7 @@ const TitleTextGroup = ({ title, children }) => {
     return (
 
         <div className='flex'>
-            <span>{children}</span>
+            <span style={{ direction: 'rtl' }}>{children}</span>
             <h5>{title}</h5>
         </div>
 

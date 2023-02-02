@@ -3,11 +3,14 @@ import EditProduct from './EditProduct.component';
 import TitleTextGroup from './TitleTextGroup.component';
 import Styles from './InventoryPriceCard.module.scss'
 import { numberWithCommas } from '../../utils/functions.utils';
-const InventoryPriceCard = ({ img, title, price, inventory }) => {
+
+const InventoryPriceCard = ({ img, title, price, inventory, id }) => {
+    const imageHasHttp = img.includes('https')
     const pricewithcomma = numberWithCommas(price)
+
     return (
         <div className={Styles.inventCard} >
-            <EditProduct price={price} inventory={inventory}></EditProduct>
+            <EditProduct id={id} price={price} inventory={inventory}></EditProduct>
             <div className={Styles.cardimageside}>
                 <div className={Styles.inventorydetailparent}>
                     <TitleTextGroup title={":نام کالا"}>
@@ -15,7 +18,10 @@ const InventoryPriceCard = ({ img, title, price, inventory }) => {
                     </TitleTextGroup>
                     <div className={Styles.invenbuttom}>
                         <TitleTextGroup title={":قیمت"}>
-                            {pricewithcomma}
+                            <div className={Styles.priceparent}>
+                                <span style={{ marginRight: '3px' }}>{"تومان"}</span>
+                                <span>{pricewithcomma}</span>
+                            </div>
                         </TitleTextGroup>
                         <div className='height-hr'></div>
                         <TitleTextGroup title={":موجودی"}>
@@ -24,7 +30,7 @@ const InventoryPriceCard = ({ img, title, price, inventory }) => {
                     </div>
                 </div>
                 <div className={Styles.imageContainer}>
-                    <img src={img} alt={title} />
+                    <img src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} alt={title} />
                 </div>
             </div>
         </div>

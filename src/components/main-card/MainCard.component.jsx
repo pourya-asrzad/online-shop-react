@@ -3,20 +3,28 @@ import { numberWithCommas } from '../../utils/functions.utils';
 import ColorsGroup from '../colors-group/ColorsGroup.component';
 import Styles from './maincard.module.scss'
 import { AiFillStar } from 'react-icons/ai'
+import PriceWithDiscountText from '../price-With-Discount-text/priceWithDiscountText.component';
+import { useState } from 'react';
 const MainCard = (props) => {
-    const { colors, image, title, price, discount } = props
+    const { colors, image, title, price, discount, quantity } = props
     // {colorsArray} is just a test for ui
     const colorsArray = [
         "blue", "white", "black", "green"
     ]
+    const imageHasHttp = image.includes('https')
+    let priceWithDiscount = price
     const numberplit = numberWithCommas(price)
+    if (discount) {
+        const numberplitwithdiscount = numberWithCommas(price - price * discount / 100)
+        priceWithDiscount = numberplitwithdiscount
+    }
     return (
-        <div className={Styles.maincard}>
+        <div style={quantity == 0 ? { filter: 'grayscale(100%)' } : { filter: 'none' }} className={Styles.maincard}>
 
             <div className={Styles.card_header}>
                 <ColorsGroup colors={colorsArray} />
                 <div className={Styles.image_container} style={{ width: "240px", height: "240px" }}>
-                    <img src={image} alt={title.toString()} />
+                    <img src={imageHasHttp ? image : `http://localhost:3001/files/${image}`} alt={title.toString()} />
                 </div>
             </div>
             <div
@@ -30,10 +38,14 @@ const MainCard = (props) => {
                     <span>2.5</span>
                     <AiFillStar style={{ color: '#f9bc00' }} />
                 </div>
-                <div className={Styles.price_discount_coontainer}>
-                    <h3 className={Styles.card_price}><span style={{ marginRight: "2px" }}> تومان </span> {numberplit} </h3>
+                {quantity == 0 ? <span>ناموجود</span> : <div style={{ position: 'relative' }}> <div className={Styles.price_discount_coontainer}>
+                    <h3 className={Styles.card_price}><span style={{ marginRight: "2px" }}> تومان </span> {discount ? priceWithDiscount : numberplit} </h3>
                     <div className={discount ? Styles.discount : ''}> <span>{discount ? discount + "%" : ''}</span></div>
                 </div>
+                    {discount ? <PriceWithDiscountText category={true} price={numberplit} /> : ''}
+
+                </div>
+                }
             </div>
         </div >
     );

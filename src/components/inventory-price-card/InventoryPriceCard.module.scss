@@ -27,6 +27,13 @@
     width: 10rem;
     height: 10rem;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    padding: 0px 7px;
+    border-radius: 7px;
+    overflow: hidden;
     img{
         width: inherit;
     }
@@ -46,4 +53,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+.inputparent{
+display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    input{
+        
+    width: 90%;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid;
+
+    }
+}
+.priceparent{
+    display: flex;
 }

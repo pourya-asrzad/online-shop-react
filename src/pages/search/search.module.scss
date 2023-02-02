@@ -1,0 +1,20 @@
+.cardContainerSection{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+    margin-left: 10px;
+}
+.indexanswer{
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+    font-size: 18px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 2;
+    padding: 10px;
+    top: 7.1rem;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(207 3 3 / 23%);
+}

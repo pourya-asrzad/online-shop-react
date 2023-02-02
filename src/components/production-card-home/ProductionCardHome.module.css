@@ -11,14 +11,35 @@
     background-color: rgb(255, 253, 253);
     justify-content: space-around;
 }
+.ProductionCardHomefake{
+    display: flex;
+    flex-direction: column;
+    width: 8.9rem;
+    height: 13rem;
+    align-items: center;
+    border: 1px solid #e7e7e763;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: rgb(255, 253, 253);
+    justify-content: space-around;
+}
 .imagecontainer{
 height:6rem;
-width: 6rem;
-border: 1px solid #e7e7e7;
+width: 7rem;
+
 border-radius: 5px;
 padding: 6px;
 margin-bottom: 10px;
 }
+.imagecontainerplaceholder{
+    height:6rem;
+    width: 9rem;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    padding: 6px;
+    margin-bottom: 10px;
+    }
 
 .textflex{
     display: flex;
@@ -38,6 +59,13 @@ img{
     text-align: initial;
     line-height: 1.5rem;
     color: #555252;
+    height: 53px;
+    display: -webkit-box;
+    max-width: 400px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
   

@@ -5,12 +5,11 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     fetchProducts: builder.query({
       query: (page) => {
         if (page.filter == "null") {
-          return `products?_page=${page.page}`;
+          return `products?_sort=createdAt&_page=${page.page}&_order=desc`;
         } else {
           return `products?category=${page.filter}&_page=${page.page}`;
         }
       },
-      keepUnusedDataFor: 2,
       providesTags: ["Posts"],
     }),
     fetchsubcategory: builder.query({
@@ -52,6 +51,25 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    getProduct: builder.query({
+      query: (id) => `products/${id}`,
+      keepUnusedDataFor: 0,
+    }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
+    editProduct: builder.mutation({
+      query: (productInfo) => ({
+        url: `products/${productInfo.id}`,
+        method: "PATCH",
+        body: productInfo.body,
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -62,4 +80,7 @@ export const {
   useFetchcategoryQuery,
   useFetchOrdersQuery,
   useFetchOrdersLengthQuery,
+  useDeleteProductMutation,
+  useEditProductMutation,
+  useGetProductQuery,
 } = productsApiSlice;

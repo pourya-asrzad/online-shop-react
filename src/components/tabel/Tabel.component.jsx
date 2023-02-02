@@ -2,7 +2,7 @@ import React from 'react';
 import Styles from './Tabel.module.scss'
 import Button from 'react-bootstrap/Button';
 import TrComponent from './Tr.component';
-const TabelComponent = ({ orders }) => {
+const TabelComponent = ({ orders, setModalShow }) => {
 
     return (
         <table className={Styles.styled_table}>
@@ -16,7 +16,7 @@ const TabelComponent = ({ orders }) => {
             </thead>
             <tbody>
                 {orders.map((element) => {
-                    return <TrComponent prices={element.prices}
+                    return <TrComponent setModalShow={setModalShow} prices={element.prices}
                         key={element.id} username={element.username}
                         OrderRegistrationTime={element.createdAt}
                         lastname={element.lastname}

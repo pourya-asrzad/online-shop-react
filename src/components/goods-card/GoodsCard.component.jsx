@@ -6,15 +6,19 @@ import Styles from './GoodsCard.module.scss'
 import { useFetchcategoryQuery, useFetchsubcategoryQuery } from '../../store/products/productsApiSlice'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { callFluidObserver } from '@react-spring/shared';
-const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../../store/ui-slice';
+import { Button } from 'react-bootstrap';
+
+const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal, dataId }) => {
     const [category, setCategory] = useState('')
     const [subcategory, setsubCategory] = useState('')
     const { data: subcategorydata = [] } = useFetchsubcategoryQuery()
     const { data: categorydata = [] } = useFetchcategoryQuery()
-    // console.log(subcategoryId);
+    const dispatch = useDispatch()
 
-    // console.log(sub);
+    const imageHasHttp = img.includes('https')
+
     useEffect(() => {
         if (subcategorydata.length !== 0) {
             const sub = subcategorydata.filter((element) => {
@@ -31,14 +35,23 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
             })
         }
 
-    }, [categorydata, subcategorydata])
+    }, [categorydata, subcategorydata, categoryId, subcategoryId])
+    function deleteModalShowd(id) {
+        dispatch(uiActions.setSelectedProductId(id))
+        onShowDeleteModal()
+    }
     return (
         <div className={Styles.GoodsCard}>
             <div className={Styles.btns_container}>
-                <GoodsCardBtn onclick={() => onShowModal(true)} variant={"primary"} icon={<RiFileEditFill />}>
+                <Button id={dataId} onClick={(e) => onShowModal(state => {
+                    return state = {
+                        show: true,
+                        editId: e.target.id
+                    }
+                })} variant={"primary"} >
                     ویرایش
-                </GoodsCardBtn>
-                <GoodsCardBtn variant={"danger"} icon={<AiTwotoneDelete />}>
+                </Button>
+                <GoodsCardBtn id={dataId} variant={"danger"} onclick={deleteModalShowd} >
                     حذف
                 </GoodsCardBtn>
             </div>
@@ -58,7 +71,7 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId }) => {
                     </div>
                 </div>
                 <div className={Styles.imagecontainer}>
-                    <img src={img} alt={title} />
+                    <img src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} alt={title} />
                 </div>
             </div>
         </div>

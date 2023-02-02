@@ -3,7 +3,13 @@ import { data } from '../../database/db.exampel'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { HomeProductionsCard } from '../home-productions-card/HomeProductionsCard.component';
 import Styles from './ProductionScroll.module.css'
+import { useProductsHasDiscountQuery } from '../../store/products/homeProductsApiSlice'
+import { Link } from 'react-router-dom';
+import { INTERNAL_PATHS } from '../../configs/routs.config';
 function ProductionScroller() {
+    const { data: productsHasDiscount5 } = useProductsHasDiscountQuery(5)
+    const { data: productsHasDiscount10 } = useProductsHasDiscountQuery(10)
+    console.log(productsHasDiscount5);
     const slideLeft = () => {
         const slider = document.getElementById('slider1');
         slider.scrollLeft = slider.scrollLeft - 400;
@@ -39,13 +45,17 @@ function ProductionScroller() {
                     id='slider1'
                     className={Styles.scrollitemscontainet}
                 >
-                    {data.map((item, index) => (
-                        <HomeProductionsCard
-                            key={index}
-                            price='20.000'
-                            name={item.productName}
-                            image={item.image}
-                        />
+                    {productsHasDiscount5 && productsHasDiscount5.map((item, index) => (
+                        <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
+                            <HomeProductionsCard
+                                key={item.id}
+                                price={item.price}
+                                priceWithDiscount={item.price - item.price * item.Discount / 100}
+                                name={item.name}
+                                image={item.image[0]}
+                                discount={item.Discount}
+                            />
+                        </Link>
                     ))}
                 </div>
                 <div>
@@ -62,14 +72,21 @@ function ProductionScroller() {
                     id='slider2'
                     className={Styles.scrollitemscontainet}
                 >
-                    {data.map((item, index) => (
-                        < HomeProductionsCard
-                            key={index}
-                            price='20.000'
-                            name={item.productName}
-                            image={item.image}
-                        />
-                    ))}
+                    {productsHasDiscount10 && productsHasDiscount10.map((item, index) => {
+                        console.log(item.Discount)
+                        return <Link key={item.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
+
+                            <HomeProductionsCard
+
+                                key={item.id}
+                                price={item.price}
+                                priceWithDiscount={item.price - item.price * item.Discount / 100}
+                                name={item.name}
+                                image={item.image[0]}
+                                discount={item.Discount}
+                            />
+                        </Link>
+                    })}
                 </div>
                 <div>
 

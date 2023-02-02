@@ -10,6 +10,7 @@ export const INTERNAL_PATHS = {
   ORDERS: "orders",
   INVENTORY_PRICE: "Inventory&Price",
   ADMIN_LOGIN: "/admin-login",
+  SEARCH: "/search",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",
