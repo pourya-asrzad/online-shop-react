@@ -53,7 +53,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     getProduct: builder.query({
       query: (id) => `products/${id}`,
-      keepUnusedDataFor: 0,
+      keepUnusedDataFor: 1,
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
@@ -68,6 +68,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: productInfo.body,
       }),
+
       invalidatesTags: ["Posts"],
     }),
   }),

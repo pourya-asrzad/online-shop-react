@@ -13,6 +13,8 @@ import axios from 'axios';
 import { useEditProductMutation, useGetProductQuery } from '../../store/products/productsApiSlice';
 import { useEffect } from 'react';
 import { callFluidObserver } from '@react-spring/shared';
+import { ToastContainer, toast } from 'react-toastify';
+import { BsCheckLg } from 'react-icons/bs';
 
 function EditModal(props) {
     const [imageData, setImageData] = useState("")
@@ -70,11 +72,23 @@ function EditModal(props) {
                             show: false,
                         }
                     })
+                    toast.success('کالا با موفقیت ادیت شد', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+
                 } else if (!category) {
                     setError('دسته بندی انتخاب نشده');
                 } else if (!subcategory) {
                     setError('زیر مجموعه دسته بندی انتخاب نشده');
                 }
+
             } catch (e) {
                 alert(e.message)
             }
@@ -159,95 +173,112 @@ function EditModal(props) {
         }
     });
     return (
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header style={{ position: 'relative' }} closeButton >
-                <span className={Styles.generalerror}>{error}</span>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    افزودن کالا
-                </Modal.Title>
-            </Modal.Header>
-            <div className={Styles.uploadBtnParent} >
-                {imageData ? < Button onClick={addProduct} type='button' style={{ width: '5rem' }} value={'primary'}>آپلود</Button> : ''}
-            </div>
-            <form onSubmit={formik.handleSubmit}>
-                <Modal.Body>
-                    <FileInput setFileIsTouched={setFileIsTouched} imageData={imageData}
-                        setImageData={setImageData} initialFile={file} setFile={setFile} />
+        <>
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header style={{ position: 'relative' }} closeButton >
+                    <span className={Styles.generalerror}>{error}</span>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        افزودن کالا
+                    </Modal.Title>
+                </Modal.Header>
+                <div className={Styles.uploadBtnParent} >
+                    {imageData ? < Button onClick={addProduct} type='button' style={{ width: '5rem' }} value={'primary'}>آپلود</Button> : ''}
+                </div>
+                <form onSubmit={formik.handleSubmit}>
+                    <Modal.Body>
+                        <FileInput setFileIsTouched={setFileIsTouched} imageData={imageData}
+                            setImageData={setImageData} initialFile={file} setFile={setFile} />
 
-                    <div className={Styles.ghost}></div>
-                    <section className={Styles.inputssection}>
-                        <div className={Styles.firstRowParent}>
-                            <div className='flex a-c'>
-                                <div className={Styles.selectparent}>
-                                    <div className={Styles.selectionGroup}>
-                                        <span>دسته بندی</span>
-                                        <FormSelect initialValue={category} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeCategory} />
+                        <div className={Styles.ghost}></div>
+                        <section className={Styles.inputssection}>
+                            <div className={Styles.firstRowParent}>
+                                <div className='flex a-c'>
+                                    <div className={Styles.selectparent}>
+                                        <div className={Styles.selectionGroup}>
+                                            <span>دسته بندی</span>
+                                            <FormSelect initialValue={category} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeCategory} />
+                                        </div>
+                                        <div className={Styles.selectionGroup}>
+                                            <span>زیرمجموعه</span>
+                                            <FormSelect setSubcategory={setSubcategory} changeSubcategoryid={changeSubcategory} initialValue={subcategory} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeSubcategory} subcategory={true} />
+                                        </div>
                                     </div>
-                                    <div className={Styles.selectionGroup}>
-                                        <span>زیرمجموعه</span>
-                                        <FormSelect setSubcategory={setSubcategory} changeSubcategoryid={changeSubcategory} initialValue={subcategory} placeholder="انتخاب نشده" handelSelectChange={handelSelectChangeSubcategory} subcategory={true} />
-                                    </div>
+
                                 </div>
+                                <div className={Styles.inputparent}>
+                                    {formik.touched.name && formik.errors.name ? <span className={Styles.validation_message}>{formik.errors.name}</span> : ''}
+                                    <FormInput
+                                        placeholder={'نام کالا را وارد کنید'}
+                                        className={Styles.input} id={'name'} name={'name'} type='text' onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.name}
+                                        isvalid={formik.touched.name && formik.errors.name ? true : false}
+                                    />
+                                    <label htmlFor="productname">:نام کالا</label>
+                                </div>
+                            </div>
+                            <div className={Styles.numbersiderow}>
 
+                                <div className={Styles.inputparentnubmer}>
+                                    <FormInput placeholder={' درصد'} min={1} max={100} onChange={formik.handleChange}
+                                        value={formik.values.Discount}
+                                        className={Styles.inputnumber} id={'Discount'} name={'Discount'} type='number' />
+                                    <label htmlFor="Discount">: تخفیف(اختیاری)</label>
+                                </div>
+                                <div className={Styles.inputparentnubmer}>
+                                    {formik.touched.quantity && formik.errors.quantity ? <span className={Styles.validation_message}>{formik.errors.quantity}</span> : ''}
+                                    <FormInput min={1} onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.quantity}
+                                        isvalid={formik.touched.quantity && formik.errors.quantity ? true : false} className={Styles.inputnumber} id={'quantity'} name={'quantity'} type='number' />
+                                    <label htmlFor="quantity">: موجودی</label>
+                                </div>
+                                <div className={Styles.inputparentnubmer}>
+                                    {formik.touched.price && formik.errors.price ? <span className={Styles.validation_message}>{formik.errors.price}</span> : ''}
+                                    <FormInput min={1} onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.price}
+                                        isvalid={formik.touched.price && formik.errors.price ? true : false} className={Styles.inputnumberprice} id={'price'} name={'price'} type='number' />
+                                    <label htmlFor="price">: قیمت</label>
+                                </div>
                             </div>
-                            <div className={Styles.inputparent}>
-                                {formik.touched.name && formik.errors.name ? <span className={Styles.validation_message}>{formik.errors.name}</span> : ''}
-                                <FormInput
-                                    placeholder={'نام کالا را وارد کنید'}
-                                    className={Styles.input} id={'name'} name={'name'} type='text' onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.name}
-                                    isvalid={formik.touched.name && formik.errors.name ? true : false}
-                                />
-                                <label htmlFor="productname">:نام کالا</label>
-                            </div>
-                        </div>
-                        <div className={Styles.numbersiderow}>
+                            {formik.touched.description && formik.errors.description ? <span style={{
+                                right: ' 62px',
+                                bottom: '-9px',
+                            }} className={Styles.validation_message}>{formik.errors.description}</span> : ''}
+                            <label htmlFor="descrption" style={{ marginRight: '9px ' }}>:توضیحات</label>
+                            <textarea placeholder={' توضیحات لازم درباره محصول تان را وارد کنید'} onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.description}
+                                className={formik.touched.description && formik.errors.description ? Styles.textareahasError : Styles.textarea} name="description" id="description" cols="40" rows="5"></textarea>
+                        </section>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant='success' type='submit' >افزودن</Button>
+                    </Modal.Footer>
+                </form>
+            </Modal>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            {/* Same as */}
+            <ToastContainer />
 
-                            <div className={Styles.inputparentnubmer}>
-                                <FormInput placeholder={' درصد'} min={1} max={100} onChange={formik.handleChange}
-                                    value={formik.values.Discount}
-                                    className={Styles.inputnumber} id={'Discount'} name={'Discount'} type='number' />
-                                <label htmlFor="Discount">: تخفیف(اختیاری)</label>
-                            </div>
-                            <div className={Styles.inputparentnubmer}>
-                                {formik.touched.quantity && formik.errors.quantity ? <span className={Styles.validation_message}>{formik.errors.quantity}</span> : ''}
-                                <FormInput min={1} onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.quantity}
-                                    isvalid={formik.touched.quantity && formik.errors.quantity ? true : false} className={Styles.inputnumber} id={'quantity'} name={'quantity'} type='number' />
-                                <label htmlFor="quantity">: موجودی</label>
-                            </div>
-                            <div className={Styles.inputparentnubmer}>
-                                {formik.touched.price && formik.errors.price ? <span className={Styles.validation_message}>{formik.errors.price}</span> : ''}
-                                <FormInput min={1} onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.price}
-                                    isvalid={formik.touched.price && formik.errors.price ? true : false} className={Styles.inputnumberprice} id={'price'} name={'price'} type='number' />
-                                <label htmlFor="price">: قیمت</label>
-                            </div>
-                        </div>
-                        {formik.touched.description && formik.errors.description ? <span style={{
-                            right: ' 62px',
-                            bottom: '-9px',
-                        }} className={Styles.validation_message}>{formik.errors.description}</span> : ''}
-                        <label htmlFor="descrption" style={{ marginRight: '9px ' }}>:توضیحات</label>
-                        <textarea placeholder={' توضیحات لازم درباره محصول تان را وارد کنید'} onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.description}
-                            className={formik.touched.description && formik.errors.description ? Styles.textareahasError : Styles.textarea} name="description" id="description" cols="40" rows="5"></textarea>
-                    </section>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant='success' type='submit' >افزودن</Button>
-                </Modal.Footer>
-            </form>
-        </Modal>
+        </>
     );
 }
 
