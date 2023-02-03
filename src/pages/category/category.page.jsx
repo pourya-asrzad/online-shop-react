@@ -104,7 +104,7 @@ const Category = () => {
             <PageContainer>
                 <div className={Styles.category_top}>
                     <span className={Styles.categoryheader} >فروشگاه اینترنتی پوریاکالا/ {category.length > 0 && category[0].name}  {subcategory.length > 0 ? '/' + subcategory[0].name : ''}</span>
-                    <span style={{ direction: 'rtl' }}>{products.length} کالا</span>
+                    <span style={{ direction: 'rtl' }}>{categoryfetchAnswer ? categoryfetchAnswer.length : ''} کالا</span>
                 </div>
                 <div className={Styles.categorys_main}>
 
