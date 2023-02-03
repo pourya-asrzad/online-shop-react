@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { TiWarning } from 'react-icons/ti'
 import { useSelector } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
 import { useDeleteProductMutation } from '../../store/products/productsApiSlice';
 import Styles from './modals.module.scss'
 
@@ -11,7 +12,20 @@ function DeleteModal({ show, setShow }) {
     const [deleteProduct] = useDeleteProductMutation()
     const productId = useSelector(state => state.ui.selectedProductId)
     function onDeleteProduct() {
-        deleteProduct(productId)
+        deleteProduct(productId).then((res) => {
+            if (!res.error) {
+                toast.success('کالا با موفقیت حذف شد', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        })
         handleClose()
     }
 
@@ -37,6 +51,20 @@ function DeleteModal({ show, setShow }) {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            {/* Same as */}
+            <ToastContainer />
         </>
     );
 }
