@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.5",
+    "@mantine/core": "^5.10.3",
+    "@mantine/hooks": "^5.10.3",
     "@react-spring/web": "^9.6.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,6 +16,7 @@
     "date-fns-jalali": "^2.29.3-0",
     "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
+    "mantine-datepicker-jalali": "^1.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
