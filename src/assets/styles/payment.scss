@@ -33,6 +33,12 @@
     padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
+    margin: 10px 45px;
+    input,label{
+        direction: rtl;
+        direction: rtl;
+    }
+    
   }
   
   .paymentinput{
@@ -89,4 +95,7 @@
       margin-bottom: 20px;
     }
   }
-  
+  .paymenttitle{
+    display: flex;
+    justify-content: center;
+  }
