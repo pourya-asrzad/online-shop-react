@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../../store/ui-slice';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { INTERNAL_PATHS } from '../../configs/routs.config';
 
 const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowDeleteModal, dataId }) => {
     const [category, setCategory] = useState('')
@@ -69,6 +71,9 @@ const GoodsCard = ({ img, title, categoryId, onShowModal, subcategoryId, onShowD
                             :   دسته بندی
                         </h5>
                     </div>
+                    <Link to={INTERNAL_PATHS.SINGLEPRODUCT + '/' + dataId}>
+                        <Button>مشاهده کالا در فروشگاه</Button>
+                    </Link>
                 </div>
                 <div className={Styles.imagecontainer}>
                     <img src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} alt={title} />

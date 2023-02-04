@@ -43,7 +43,8 @@
     margin-top: 18px;
 }
 .detailsparent{
- display: flex;
- flex-direction: column;
- align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
 }
