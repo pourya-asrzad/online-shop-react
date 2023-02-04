@@ -1,0 +1,20 @@
+.orderregisterheading{
+    margin-top: 8.5rem;
+    justify-content: flex-end;
+        display: flex;
+    align-items: center;
+    h3{
+        
+        direction: rtl;
+        margin-right: 34px;
+    }
+    svg{
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 5px;
+    }
+}
+.datepicker{
+    width: 16rem;
+    border-color: blue;
+}
