@@ -18,3 +18,47 @@
     width: 16rem;
     border-color: blue;
 }
+.input{
+    background-color: #fcfcfc;
+    padding: 8px;
+    width: 300px;
+    height: 32px;
+    border-radius: 8px;
+    caret-color: rgb(0, 85, 255);
+    font-size: 1rem;
+    direction: rtl;
+
+}
+.input:focus-visible{
+    outline: none;
+}
+.inputَAddress{
+    @extend .input;
+    height: 80px;
+    width: 300px;
+}
+.inputparent{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    position: relative;
+    margin-top: 1rem;
+}
+.inputsparent{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 139px 134px 70px;
+    justify-items: center;
+    align-items: start;
+}
+.validation_message{
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -21px;
+}
+.paymentbtn{
+    display: flex !important;
+    justify-content: center;
+    margin: auto;
+}
