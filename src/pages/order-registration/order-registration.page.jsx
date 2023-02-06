@@ -61,20 +61,6 @@ const OrderRegistrationPage = () => {
             }
             localStorage.setItem('orderData', JSON.stringify(orderData))
             localStorage.setItem('userId', JSON.stringify(userId))
-            // await axios.post(`${API_BASE_URL}orders`, {
-            //     username: value.firstName,
-            //     lastname: value.lastName,
-            //     address: value.address,
-            //     phone: value.phoneNumber,
-            //     expectAt,
-            //     products: userData,
-            //     createdAt,
-            //     delivered: "false",
-            //     prices
-            // })
-            // await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
-            //     cart: []
-            // })
             navigate(INTERNAL_PATHS.PAYMENT)
         }
     })

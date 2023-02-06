@@ -13,7 +13,7 @@ const PaymentResultPage = () => {
     useEffect(() => {
         const result = JSON.parse(localStorage.getItem('paymentResault'))
         seResult(result)
-
+        localStorage.removeItem(' paymentResault')
     }, [])
     return (
         <PageContainer>
