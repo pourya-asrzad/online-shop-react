@@ -2,12 +2,15 @@ import Helmet from "react-helmet";
 import DeleteAllBtn from "../../components/delete-all-btn/DeleteAllBtn.componet";
 import PageContainer from "../../layouts/pageContainer/pageContainer.layout";
 import { getAppTitle } from "../../utils/functions.utils";
-import { BsCart4 } from 'react-icons/bs'
+import { BsCart4, BsCheckLg } from 'react-icons/bs'
 import Styles from './cart.module.scss'
 import CartCard from "../../components/cart-card/CartCard.component";
 import CartBill from "../../components/cart-bill/CartBill.component";
+import { useFetchCartProductQuery } from "../../store/products/cartproductApiSlice";
 const Cart = () => {
     const appTitle = getAppTitle()
+    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery()
+    const userData = data[0].cart
     return (
         <>
             <Helmet>
@@ -29,10 +32,11 @@ const Cart = () => {
                             <CartBill />
                         </section>
                         <section>
-                            <CartCard />
-                            <CartCard />
-                            <CartCard />
-                            <CartCard />
+                            {
+                                userData.map((ele) => {
+                                    return <CartCard img={ele.image} count={ele.count} price={ele.price} name={ele.name} key={ele.id} />
+                                })
+                            }
                         </section>
                     </main>
                 </div>

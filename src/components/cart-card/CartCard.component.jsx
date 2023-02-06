@@ -7,15 +7,15 @@ import TextIcon from './text-icon/TextIcon.component';
 import Counter from '../counter/Counter.component';
 import { numberWithCommas } from '../../utils/functions.utils';
 import { MdDelete } from 'react-icons/md';
-const CartCard = () => {
-    const price = numberWithCommas(12000000)
+const CartCard = ({ img, name, count, productprice = 12000 }) => {
+    const price = numberWithCommas(productprice)
     return (
         <div className={Styles.cartcard}>
             <div className={Styles.cartcardchild}>
 
                 <div className={Styles.card_right_side}>
                     <div className={Styles.productinfo}>
-                        <h2>آیفون 12 پرومکس</h2>
+                        <h2> {name} </h2>
                         <div className={Styles.productinfoiter}>
                             <TextIcon icon={< RiBuilding2Line />}>
                                 پوریا کالا
@@ -30,7 +30,7 @@ const CartCard = () => {
                         </div>
                     </div>
                     <div className={Styles.imageContainer}>
-                        <img className={Styles.image} src="https://dkstatics-public.digikala.com/digikala-products/fa5961b7d2a4efb180d686f6f69dd45381a4d3dd_1649056488.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90" alt="آیفون 11 پرومکس" />
+                        <img className={Styles.image} src={img} />
                     </div>
                 </div>
                 <div className={Styles.cardfooter}>
@@ -39,7 +39,7 @@ const CartCard = () => {
                         <span>{price}</span>
                     </div>
                     <div className={Styles.counter_container}>
-                        <Counter number={1} />
+                        <Counter number={count} />
                     </div>
                 </div>
             </div>
