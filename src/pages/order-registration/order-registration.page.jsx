@@ -11,9 +11,26 @@ import * as Yup from 'yup'
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { INTERNAL_PATHS } from '../../configs/routs.config';
+import { BsCheckLg } from 'react-icons/bs';
+import { useFetchCartProductQuery } from '../../store/products/cartproductApiSlice';
+import axios from 'axios';
+import { API_BASE_URL } from '../../configs/variables.config';
+import { useEffect } from 'react';
 const OrderRegistrationPage = () => {
     const [singleValue, setSingleValue] = useState(null);
     const navigate = useNavigate()
+    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery()
+    const userData = data && data[0].cart
+    const [prices, setPrices] = useState(0);
+    const [userId, setUserId] = useState(null)
+    useEffect(() => {
+        userData && userData.map((element) => {
+            setPrices(state => state + +element.price)
+        })
+        data && setUserId(data[0].id)
+
+    }, [userData])
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -28,9 +45,58 @@ const OrderRegistrationPage = () => {
             address: Yup.string().required('ادرس حتما باید وارد شود').min(5, 'ورودی کمتر از حد مجاز است')
         }),
         onSubmit: async (value) => {
+            console.log(value)
+            const expectAt = singleValue && singleValue.getTime()
+            const createdAt = new Date()
+            const orderData = {
+                username: value.firstName,
+                lastname: value.lastName,
+                address: value.address,
+                phone: value.phoneNumber,
+                expectAt,
+                products: userData,
+                createdAt,
+                delivered: "false",
+                prices
+            }
+            localStorage.setItem('orderData', JSON.stringify(orderData))
+            localStorage.setItem('userId', JSON.stringify(userId))
+            // await axios.post(`${API_BASE_URL}orders`, {
+            //     username: value.firstName,
+            //     lastname: value.lastName,
+            //     address: value.address,
+            //     phone: value.phoneNumber,
+            //     expectAt,
+            //     products: userData,
+            //     createdAt,
+            //     delivered: "false",
+            //     prices
+            // })
+            // await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
+            //     cart: []
+            // })
             navigate(INTERNAL_PATHS.PAYMENT)
         }
     })
+
+    // "username": "پدرام",
+    //   "lastname": "صادقی",
+    //   "address": "تهران میدان آزادی ",
+    //   "phone": "09032855606",
+    //   "expectAt": 1648771200000,
+    //   "products": [
+    //     {
+    //       "id": 4,
+    //       "name": "برس حرارتی جیمی مدل GM-2972",
+    //       "count": "1",
+    //       "price": "10275000",
+    //       "image": "https://dkstatics-public.digikala.com/digikala-products/114188539.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90 "
+    //     }
+    //   ],
+    //   "prices": 10275000,
+    //   "delivered": "true",
+    //   "createdAt": 1646158398160,
+    //   "id": 18
     return (
         <PageContainer>
             <main style={{ marginTop: '8rem' }}>

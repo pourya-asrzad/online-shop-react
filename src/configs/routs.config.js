@@ -13,7 +13,7 @@ export const INTERNAL_PATHS = {
   SEARCH: "/search",
   PAYMENT: "/payment",
   ORDER_REGISTRATIONPAGE: "/order-registration",
-  PAYMENT_RESULT: "payment-result",
+  PAYMENT_RESULT: "/payment-result",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",

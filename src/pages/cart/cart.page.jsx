@@ -7,10 +7,21 @@ import Styles from './cart.module.scss'
 import CartCard from "../../components/cart-card/CartCard.component";
 import CartBill from "../../components/cart-bill/CartBill.component";
 import { useFetchCartProductQuery } from "../../store/products/cartproductApiSlice";
+import { useEffect } from "react";
+import { useState } from "react";
 const Cart = () => {
     const appTitle = getAppTitle()
     const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery()
     const userData = data && data[0].cart
+    // let prices = 0;
+    const [prices, setPrices] = useState(0);
+    useEffect(() => {
+        userData && userData.map((element) => {
+            setPrices(state => state + +element.price)
+        })
+    }, [userData])
+
+    console.log(prices)
     return (
         <>
             <Helmet>
@@ -29,7 +40,7 @@ const Cart = () => {
                     </div>
                     <main className={Styles.main}>
                         <section>
-                            <CartBill />
+                            <CartBill prices={prices} />
                         </section>
                         <section>
                             {
