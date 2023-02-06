@@ -35,7 +35,10 @@ const PaymentPage = () => {
                             </div>
 
                         </div>
-                        <input type="submit" value="پرداخت" className="paymetnbtn" />
+                        <div className='paymentbtnsparent'>
+                            <input type="submit" value="انصراف" className="paymetnbtncancel" />
+                            <input type="submit" value="پرداخت" className="paymetnbtn" />
+                        </div>
                     </form>
                 </div>
             </div>

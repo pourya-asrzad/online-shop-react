@@ -85,3 +85,15 @@ h2{
 .headerghost{
     height: 3.25rem;
 }
+@media(max-width:685px){
+    .dishref{
+        display: none;
+    }
+   
+}
+@media(max-width:330px){
+    .cartlink{
+        margin: 0;
+    }
+   
+}

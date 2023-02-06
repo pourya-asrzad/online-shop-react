@@ -10,3 +10,28 @@
 .headersearchinput:focus-visible{
 border: none;
 }
+@media (max-width:795px){
+.headersearchinput{
+    width: 395px;
+}
+}
+@media (max-width:609px){
+    .headersearchinput{
+        width: 250px;
+    }
+    }
+
+
+    @media (max-width:404px){
+        .headersearchinput{
+            width: 200px;
+        }
+        }
+
+        @media (max-width:340px){
+            .headersearchinput{
+                width: 150px;
+                height: 25px;
+                font-size: 12px;
+            }
+            }

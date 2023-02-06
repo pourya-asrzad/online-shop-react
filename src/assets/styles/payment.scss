@@ -66,15 +66,17 @@
     padding: 12px;
     margin: 10px 0;
     border: none;
-    width: 98%;
+    width: 33%;
     border-radius: 3px;
     cursor: pointer;
     font-size: 17px;
+    margin: auto;
   }
-  
-  .paymetnbtn:hover {
-    background-color: #45a049;
+  .paymetnbtncancel{
+    @extend .paymetnbtn;
+    background-color: #ff3434;
   }
+ 
   
   
   hr {
@@ -98,4 +100,7 @@
   .paymenttitle{
     display: flex;
     justify-content: center;
+  }
+  .paymentbtnsparent{
+    display: flex;
   }

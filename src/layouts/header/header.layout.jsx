@@ -13,7 +13,7 @@ const Header = () => {
                     <div className={Styles.header} >
                         <div className={Styles.headerleft}>
                             <Link className={Styles.cartlink} to={INTERNAL_PATHS.CART}>
-                                <span className={Styles.headerhref}>سبد خرید</span>
+                                <span className={`${Styles.headerhref} ${Styles.dishref}`}>سبد خرید</span>
                                 <img style={{
                                     width: ' 28px'
                                     , margin: '5px'

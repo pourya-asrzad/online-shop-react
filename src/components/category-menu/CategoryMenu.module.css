@@ -7,3 +7,13 @@
 .menu h2{
     margin: 0;
 }
+@media(max-width:795px){
+    .menu h2{
+        display: none;
+    }
+}
+@media(max-width:340px){
+    .menu img{
+    width:23px;    
+    }
+}

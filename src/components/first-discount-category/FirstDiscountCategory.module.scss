@@ -39,5 +39,27 @@
   @media (max-width:1024px) {
     .category{
         gap: 7px;
+
     }
   }
+  @media(max-width:685px){
+    .category{
+      display:grid;
+      grid-template-columns: 1fr ;
+      img{
+        width: 90%;
+        margin: auto;
+        height: 263px;
+     }
+    }
+}
+@media(max-width:472px){
+  .category{
+   
+    img{
+      width: 100%;
+      margin: auto;
+      height: 263px;
+   }
+  }
+}

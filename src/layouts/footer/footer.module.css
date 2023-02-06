@@ -61,3 +61,21 @@ gap: 6px;
     padding-top: 1rem;
     border-top: 1px solid rgb(212 208 208);
 }
+@media(max-width:755px){
+
+        .footercontainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0 1rem;
+            margin-top: 2rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgb(171, 169, 169);
+            align-items: center;
+        }
+        .righttextcontainer{
+            text-align: end;
+            width: 94%;
+         
+        }
+}

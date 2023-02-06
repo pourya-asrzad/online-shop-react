@@ -6,6 +6,8 @@ import { numberWithCommas } from '../../utils/functions.utils';
 import Styles from './AddToCartSector.module.scss'
 import Hr from '../hr/Hr.component';
 import AddToCartBtn from '../buttons/AddToCartBtn.component';
+import Counter from '../counter/Counter.component';
+import CardCounter from '../counter/cartCounter.component';
 const AddToCartSector = ({ price, quantity }) => {
     const priceWithComma = numberWithCommas(price)
     return (
@@ -58,7 +60,8 @@ const AddToCartSector = ({ price, quantity }) => {
                         <AiOutlineExclamationCircle />
                     </div>
                 </div>
-                <AddToCartBtn className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
+                <CardCounter number={1} />
+                {/* <AddToCartBtn className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn> */}
             </div>
         </div>
     );

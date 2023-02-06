@@ -11,3 +11,27 @@
 .loginandregister img{
     width: 26px;
 }
+@media(max-width:685px){
+    .loginandregister img{
+       display: none;
+    }   
+}
+@media(max-width:438px){
+    .loginandregister{
+        display: flex;
+        align-items: center;
+        border: none;
+        width: -moz-fit-content;
+        width: fit-content;
+        padding: 0;
+        border-radius: 8px;
+        height: 2.2rem;
+    }
+}
+
+@media(max-width:420px){
+    .loginandregister{
+       font-size: 12px;
+    }
+}
+
