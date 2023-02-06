@@ -23,9 +23,9 @@ const CategoryMenuBody = () => {
             <Accordion onMouseLeave={hideMenuHandler} className={Styles.menu} defaultActiveKey="0" flush>
                 {category.length > 0 && category.map((category) => {
                     return <Accordion.Item key={category.id} eventKey={category.id}>
-                        <Accordion.Header>{category.name}</Accordion.Header>
-                        <Accordion.Body>
-                            <ol>
+                        <Accordion.Header >{category.name}</Accordion.Header>
+                        <Accordion.Body >
+                            <ol key={category.id} >
                                 {subCategory && subCategory.filter((ele) => ele.category == category.id).map((item, index) => {
                                     return (<a key={item.id} className='link-route' href={INTERNAL_PATHS.CATEGORYS + `/${category.id}-${item.id}`}>
 

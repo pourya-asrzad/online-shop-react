@@ -24,6 +24,7 @@ const SingleProduct = () => {
         fillStrip = productData[0].fillStrip
     }
     // we just need object in here
+
     const productObj = !isLoading && productData.length > 0 ? productData[0] : ''
     return (
         <>
@@ -38,7 +39,9 @@ const SingleProduct = () => {
                         <h1 >{productObj.name}</h1>
                         <Discription description={productObj.description} />
                         <div className={Styles.sectors_container}>
-                            <AddToCartSector quantity={productObj.quantity} price={productObj.price} />
+                            <AddToCartSector
+                                id={productId.id}
+                                quantity={productObj.quantity} price={productObj.price} image={productObj.image[0]} />
                             <Rate fillStrip={fillStrip} />
                         </div>
                     </div>

@@ -10,7 +10,7 @@ import { useFetchCartProductQuery } from "../../store/products/cartproductApiSli
 const Cart = () => {
     const appTitle = getAppTitle()
     const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery()
-    const userData = data[0].cart
+    const userData = data && data[0].cart
     return (
         <>
             <Helmet>
@@ -33,9 +33,9 @@ const Cart = () => {
                         </section>
                         <section>
                             {
-                                userData.map((ele) => {
-                                    return <CartCard img={ele.image} count={ele.count} price={ele.price} name={ele.name} key={ele.id} />
-                                })
+                                userData && isSuccess ? userData.map((ele) => {
+                                    return <CartCard img={ele.image} count={ele.count} productprice={ele.price} name={ele.name} key={ele.id} />
+                                }) : ''
                             }
                         </section>
                     </main>

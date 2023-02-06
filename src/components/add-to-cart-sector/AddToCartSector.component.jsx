@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiBuildingStorefront } from 'react-icons/hi2'
-import { BsShieldCheck } from 'react-icons/bs'
+import { BsCheckLg, BsShieldCheck } from 'react-icons/bs'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { numberWithCommas } from '../../utils/functions.utils';
 import Styles from './AddToCartSector.module.scss'
@@ -8,8 +8,23 @@ import Hr from '../hr/Hr.component';
 import AddToCartBtn from '../buttons/AddToCartBtn.component';
 import Counter from '../counter/Counter.component';
 import CardCounter from '../counter/cartCounter.component';
-const AddToCartSector = ({ price, quantity }) => {
+import { API_BASE_URL, username } from '../../configs/variables.config';
+import axios from 'axios';
+import { useState } from 'react';
+const AddToCartSector = ({ price, quantity, id,
+    image }) => {
     const priceWithComma = numberWithCommas(price)
+    console.log(image)
+    const addToCartHandeling = async () => {
+        let cartData = null
+        await axios.get(`${API_BASE_URL}mockusers?username=${username}`).then(res => {
+            cartData = { cart: res.data[0].cart, id: res.data[0].id }
+        })
+        await axios.patch(`${API_BASE_URL}mockusers/${cartData.id}`, {
+            cart: [...cartData.cart, { id, image, price, count: 1 }]
+        })
+        // console.log(cartData)
+    }
     return (
         <div className={Styles.AddToCartSector}>
             <div>
@@ -60,8 +75,12 @@ const AddToCartSector = ({ price, quantity }) => {
                         <AiOutlineExclamationCircle />
                     </div>
                 </div>
-                <CardCounter number={1} />
-                {/* <AddToCartBtn className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn> */}
+                {quantity == 0 ? '' : <>
+                    <AddToCartBtn onclick={addToCartHandeling} className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
+                    {/* <CardCounter number={1} /> */}
+                </>
+                }
+
             </div>
         </div>
     );

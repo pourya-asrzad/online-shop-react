@@ -46,7 +46,8 @@ function ProductionScroller() {
                     className={Styles.scrollitemscontainet}
                 >
                     {productsHasDiscount5 && productsHasDiscount5.map((item, index) => (
-                        <Link className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
+                        <Link key={item
+                            .id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
                             <HomeProductionsCard
                                 key={item.id}
                                 price={item.price}
