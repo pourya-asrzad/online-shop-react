@@ -11,14 +11,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Cart = () => {
     const appTitle = getAppTitle()
-    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery()
-    // let userData = data && data[0].cart
-    const [userData, setUserData] = useState(data && data[0].cart)
-    // let prices = 0;
     const [afterChange, setAfterChange] = useState()
+    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery(afterChange)
+    // let userData = data && data[0].cart
+    const [userData, setUserData] = useState()
+    // let prices = 0;
     const [prices, setPrices] = useState(0);
     useEffect(() => {
-
         setUserData(state => {
             return state = data && data[0].cart.filter((ele) => {
                 return ele.id != afterChange
@@ -26,10 +25,13 @@ const Cart = () => {
 
         })
     }, [data, afterChange])
+
     useEffect(() => {
+
         userData && userData.map((element) => {
-            setPrices(state => state + +element.price)
+            setPrices(state => { return state + +element.price })
         })
+
     }, [userData])
 
     return (
