@@ -27,12 +27,13 @@ const Cart = () => {
     }, [data, afterChange])
 
     useEffect(() => {
-
+        let sum = 0
         userData && userData.map((element) => {
-            setPrices(state => { return state + +element.price })
+            sum += +element.price
         })
+        setPrices(sum)
 
-    }, [userData])
+    }, [userData, afterChange])
 
     return (
         <>
