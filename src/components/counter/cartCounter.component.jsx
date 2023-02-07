@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import { BsCheckLg } from 'react-icons/bs';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useParams } from 'react-router-dom';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import Styles from './counter.module.scss'
-const CardCounter = ({ number = 1, setAddedToCart }) => {
+const CardCounter = ({ number = 1, setAddedToCart, quantity }) => {
     const [num, setNum] = useState(number);
     const productId = useParams()
+    console.log(quantity)
     const increaseNum = async () => {
         let cartData = null
         let userId = null
@@ -21,12 +23,14 @@ const CardCounter = ({ number = 1, setAddedToCart }) => {
         })
 
         const productObj = cartData[productIndex]
-        productObj.count += 1
-        cartData.splice(productIndex, 1)
-        await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
-            cart: [...cartData, productObj]
-        })
-        setNum(state => state + 1)
+        if (quantity > productObj.count) {
+            productObj.count += 1
+            cartData.splice(productIndex, 1)
+            await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
+                cart: [...cartData, productObj]
+            })
+            setNum(state => state + 1)
+        }
     }
     const decreaseNum = async () => {
         let cartData = null

@@ -4,7 +4,7 @@ import { INTERNAL_PATHS } from '../../configs/routs.config';
 import { numberWithCommas } from '../../utils/functions.utils';
 import BaseBtn from '../buttons/AddToCartBtn.component';
 import Styles from './CartBill.module.scss'
-const CartBill = ({ prices = 0 }) => {
+const CartBill = ({ prices = 0, userData }) => {
 
     const price = numberWithCommas(prices)
     const [isEnd, setIsEnd] = useState(false)
@@ -19,7 +19,7 @@ const CartBill = ({ prices = 0 }) => {
     const navigate = useNavigate()
     return (
         <>
-            {price != 0 && <div className={isEnd ? Styles.cartbillEnded : Styles.cartbill}>
+            {price != 0 && userData.length > 0 ? <div className={isEnd ? Styles.cartbillEnded : Styles.cartbill}>
                 <div className={`flex a-c ${Styles.pricetot}`}>
                     <span>{price && price}</span>
                     <span>قیمت کالاها(2)</span>
@@ -32,7 +32,7 @@ const CartBill = ({ prices = 0 }) => {
                     نهایی کردن سبد خرید
                 </BaseBtn>
 
-            </div>}
+            </div> : ''}
         </>
     );
 }

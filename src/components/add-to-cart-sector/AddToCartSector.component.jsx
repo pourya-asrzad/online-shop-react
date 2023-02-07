@@ -93,7 +93,7 @@ const AddToCartSector = ({ price, quantity, id, name, image }) => {
                     </div>
                 </div>
                 {quantity == 0 ? '' : <>
-                    {isInCart || addedToCart ? <CardCounter setAddedToCart={setAddedToCart} number={count} /> : <AddToCartBtn onclick={addToCartHandeling} className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
+                    {isInCart || addedToCart ? <CardCounter quantity={quantity} setAddedToCart={setAddedToCart} number={count} /> : <AddToCartBtn onclick={addToCartHandeling} className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
                     }
                 </>
                 }

@@ -27,6 +27,11 @@
     h2{
         font-weight: 600;
         font-size: 22px;
+        width: 29rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    direction: rtl;
     }
 }
 .counter_container{

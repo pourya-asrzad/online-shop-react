@@ -7,7 +7,7 @@ export const cartProductSilce = apiSlice.injectEndpoints({
       query: (id) => {
         return `mockusers?username=${username}`;
       },
-      keepUnusedDataFor: 0.0001,
+      keepUnusedDataFor: 0.000000001,
       providesTags: ["Posts"],
     }),
   }),
