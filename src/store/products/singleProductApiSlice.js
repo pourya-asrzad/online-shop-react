@@ -6,6 +6,7 @@ export const productsHomeApiSlice = apiSlice.injectEndpoints({
       query: (categoryID) => {
         return `products?id=${categoryID}`;
       },
+      keepUnusedDataFor: 0.0001,
       providesTags: ["Posts"],
     }),
   }),

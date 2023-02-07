@@ -9,6 +9,7 @@ import { numberWithCommas } from '../../utils/functions.utils';
 import { MdDelete } from 'react-icons/md';
 const CartCard = ({ img, name, count, productprice = 12000 }) => {
     const price = numberWithCommas(productprice)
+    const imageHasHttp = img.includes('https')
     return (
         <div className={Styles.cartcard}>
             <div className={Styles.cartcardchild}>
@@ -30,7 +31,7 @@ const CartCard = ({ img, name, count, productprice = 12000 }) => {
                         </div>
                     </div>
                     <div className={Styles.imageContainer}>
-                        <img className={Styles.image} src={img} />
+                        <img className={Styles.image} src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} />
                     </div>
                 </div>
                 <div className={Styles.cardfooter}>

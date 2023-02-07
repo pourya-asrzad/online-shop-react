@@ -19,9 +19,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     fetchOrders: builder.query({
       query: (page) => {
         if (page.filter == "null") {
-          return `orders?_page=${page.page}&_limit=7`;
+          return `orders?_page=${page.page}&_limit=7&_sort=createdAt&_order=desc`;
         } else {
-          return `orders?delivered=${page.filter}&_page=${page.page}&_limit=7`;
+          return `orders?delivered=${page.filter}&_page=${page.page}&_limit=7&_sort=createdAt&_order=desc`;
         }
       },
       providesTags: ["Posts"],
@@ -33,9 +33,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     fetchOrdersLength: builder.query({
       query: (page) => {
         if (page.filter == "null") {
-          return `orders`;
+          return `orders?_sort=createdAt&_order=desc`;
         } else {
-          return `orders?delivered=${page.filter}`;
+          return `orders?delivered=${page.filter}&_sort=createdAt&_order=desc`;
         }
       },
       transformResponse: (res) => {

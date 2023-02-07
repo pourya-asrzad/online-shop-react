@@ -40,6 +40,7 @@ const SingleProduct = () => {
                         <Discription description={productObj.description} />
                         <div className={Styles.sectors_container}>
                             <AddToCartSector
+                                name={productObj.name}
                                 id={productId.id}
                                 quantity={productObj.quantity} price={productObj.price} image={productObj.image[0]} />
                             <Rate fillStrip={fillStrip} />
