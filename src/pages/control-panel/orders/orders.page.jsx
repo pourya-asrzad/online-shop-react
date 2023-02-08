@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
 import EmptyDataAnimation from '../../../components/empty-data-animation/EmptyDataAnimation.component';
 import { Loading } from '../../../components/Loading/Loading.component';
 import OrdersModal from '../../../components/modals/OrdersModal.component';
@@ -12,7 +13,10 @@ import { useLogoutadmin } from '../../../hooks/logoutadmin';
 import { useFetchOrdersLengthQuery, useFetchOrdersQuery, useFetchTestQuery } from '../../../store/products/productsApiSlice';
 import { getAppTitle } from '../../../utils/functions.utils';
 import Styles from './orders.module.scss'
+import { uiActions } from '../../../store/ui-slice';
 const Orders = () => {
+    const { show } = useSelector(state => state.ui.showOrderMenu_id)
+
     const [modalShow, setModalShow] = React.useState(false);
     const appTittle = getAppTitle()
     const [paginationStop, setpaginationStop] = useState(false)
@@ -20,8 +24,8 @@ const Orders = () => {
         page: 1,
         filter: "null"
     })
+    const dispatch = useDispatch()
     const { data: itemslengh } = useFetchOrdersLengthQuery(ordersfillterAndPageNubmer)
-    console.log(itemslengh);
     const { data: orders = [], isLoading, error, isSuccess } = useFetchOrdersQuery(ordersfillterAndPageNubmer)
     const ordersError = useLogoutadmin(error)
     function handelPageHangeback() {
@@ -113,8 +117,8 @@ const Orders = () => {
             </div>
 
             <OrdersModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                show={show}
+                onHide={() => dispatch(uiActions.hideOrderMenu())}
             />
         </>
     );

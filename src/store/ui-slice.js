@@ -61,6 +61,18 @@ const uiSlice = createSlice({
     setSelectedProductId(state, action) {
       state.selectedProductId = action.payload;
     },
+    showOrderMenu(state, action) {
+      state.showOrderMenu_id = {
+        id: action.payload,
+        show: true,
+      };
+    },
+    hideOrderMenu(state, action) {
+      state.showOrderMenu_id = {
+        ...state.showOrderMenu_id,
+        show: false,
+      };
+    },
   },
 });
 

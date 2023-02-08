@@ -25,7 +25,7 @@ const OrderRegistrationPage = () => {
     const [userId, setUserId] = useState(null)
     useEffect(() => {
         userData && userData.map((element) => {
-            setPrices(state => state + +element.price)
+            setPrices(state => state + +element.price * element.count)
         })
         data && setUserId(data[0].id)
 
@@ -39,7 +39,7 @@ const OrderRegistrationPage = () => {
             phoneNumber: '',
 
         }, validationSchema: Yup.object({
-            firstName: Yup.string().required('این فیلد نباید خالی باشد').min(5, 'ورودی کمتر از حد مجاز است '),
+            firstName: Yup.string().required('این فیلد نباید خالی باشد').min(2, 'ورودی کمتر از حد مجاز است '),
             lastName: Yup.string().required('این فیلد نباید خالی باشد'),
             phoneNumber: Yup.string().required('شماره تلفن همراه اجباری است').max(11, 'ورودی بیش از حد مجاز است').min(10, 'ورودی کمتر از حد مجاز است'),
             address: Yup.string().required('ادرس حتما باید وارد شود').min(5, 'ورودی کمتر از حد مجاز است')
@@ -64,24 +64,6 @@ const OrderRegistrationPage = () => {
         }
     })
 
-    // "username": "پدرام",
-    //   "lastname": "صادقی",
-    //   "address": "تهران میدان آزادی ",
-    //   "phone": "09032855606",
-    //   "expectAt": 1648771200000,
-    //   "products": [
-    //     {
-    //       "id": 4,
-    //       "name": "برس حرارتی جیمی مدل GM-2972",
-    //       "count": "1",
-    //       "price": "10275000",
-    //       "image": "https://dkstatics-public.digikala.com/digikala-products/114188539.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90 "
-    //     }
-    //   ],
-    //   "prices": 10275000,
-    //   "delivered": "true",
-    //   "createdAt": 1646158398160,
-    //   "id": 18
     return (
         <PageContainer>
             <main style={{ marginTop: '8rem' }}>

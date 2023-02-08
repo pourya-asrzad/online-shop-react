@@ -1,55 +1,26 @@
 import React from 'react';
 import Styles from './modals.module.scss'
 
-const OrdersTabel = () => {
+const OrdersTabel = ({ orderData }) => {
     return (
         <table className={Styles.tabel}>
-            <tr>
-                <th>تعداد</th>
-                <th>قیمت </th>
-                <th style={{ display: 'flex' }}>کالا</th>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>روغن سرخ کردنی 12 کیلویی</td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}> غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td> 100000</td>
-                <td style={{ display: 'flex' }}>غلام اب داد غلام ر غلام اب داد غلام رف غلام امد غلام کجایی   </td>
-            </tr>
+            <tbody>
 
+                <tr>
+                    <th>تعداد</th>
+                    <th>قیمت </th>
+                    <th style={{ display: 'flex' }}>کالا</th>
+                </tr>
+                {
+                    orderData && orderData.map((ele) => {
+                        return <tr key={ele.id}>
+                            <td>{ele.count}</td>
+                            <td> {ele.price}</td>
+                            <td style={{ display: 'flex' }}>{ele.name}</td>
+                        </tr>
+                    })
+                }
+            </tbody>
         </table>
     );
 }

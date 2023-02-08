@@ -1,3 +1,4 @@
+import { compareAsc, format, newDate } from "date-fns-jalali";
 export const getAppTitle = () => {
   return process.env.REACT_APP_APLICATION_NAME;
 };
@@ -53,4 +54,13 @@ export function findWord(word, str) {
   return str.split(" ").some(function (w) {
     return w === word;
   });
+}
+
+export function getDateToJalaliFormat(timestamp) {
+  const date = new Date(timestamp);
+  const day = date.getDay();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  return format(new Date(year, month, day), "yyyy-MM-dd");
 }

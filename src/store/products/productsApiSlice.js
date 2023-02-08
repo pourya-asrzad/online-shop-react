@@ -24,6 +24,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           return `orders?delivered=${page.filter}&_page=${page.page}&_limit=7&_sort=createdAt&_order=desc`;
         }
       },
+      keepUnusedDataFor: 0.0001,
       providesTags: ["Posts"],
     }),
     fetchcategory: builder.query({
@@ -38,6 +39,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           return `orders?delivered=${page.filter}&_sort=createdAt&_order=desc`;
         }
       },
+      keepUnusedDataFor: 0.0001,
       transformResponse: (res) => {
         return res.length;
       },
@@ -71,6 +73,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 
       invalidatesTags: ["Posts"],
     }),
+    changeDelivery: builder.mutation({
+      query: (id) => ({
+        url: `orders/${id}`,
+        method: "PATCH",
+        body: { deliverytime: +new Date(), delivered: "true" },
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -84,4 +94,5 @@ export const {
   useDeleteProductMutation,
   useEditProductMutation,
   useGetProductQuery,
+  useChangeDeliveryMutation,
 } = productsApiSlice;

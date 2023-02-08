@@ -16,7 +16,7 @@ const TabelComponent = ({ orders, setModalShow }) => {
             </thead>
             <tbody>
                 {orders.map((element) => {
-                    return <TrComponent setModalShow={setModalShow} prices={element.prices}
+                    return <TrComponent id={element.id} setModalShow={setModalShow} prices={element.prices}
                         key={element.id} username={element.username}
                         OrderRegistrationTime={element.createdAt}
                         lastname={element.lastname}
