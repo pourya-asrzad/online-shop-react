@@ -57,10 +57,10 @@ export function findWord(word, str) {
 }
 
 export function getDateToJalaliFormat(timestamp) {
-  const date = new Date(timestamp);
-  const day = date.getDay();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-
-  return format(new Date(year, month, day), "yyyy-MM-dd");
+  let today = new Date(timestamp);
+  let dd = String(today.getDate());
+  let mm = String(today.getMonth());
+  let yyyy = today.getFullYear();
+  today = today.toLocaleDateString("fa-IR");
+  return today;
 }

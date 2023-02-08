@@ -42,6 +42,7 @@ const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
 
         setAddedToCart(true)
     }
+
     return (
         <div className={Styles.AddToCartSector}>
             <div>
@@ -95,7 +96,7 @@ const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
                     </div>
                 </div>
                 {quantity == 0 ? '' : <>
-                    {isInCart || addedToCart ? <CardCounter quantity={quantity} setAddedToCart={setAddedToCart} number={count} /> : <AddToCartBtn onclick={addToCartHandeling} className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
+                    {isInCart || addedToCart ? <CardCounter setIsInCart={setIsInCart} quantity={quantity} setAddedToCart={setAddedToCart} number={count} /> : <AddToCartBtn onclick={addToCartHandeling} className={Styles.addToCartBtn} >افزودن به سبد خرید</AddToCartBtn>
                     }
                 </>
                 }

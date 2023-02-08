@@ -3,17 +3,11 @@ import Button from 'react-bootstrap/Button';
 import { compareAsc, format, newDate } from 'date-fns-jalali'
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../../store/ui-slice';
+import { getDateToJalaliFormat } from '../../utils/functions.utils';
 
 const TrComponent = ({ username, OrderRegistrationTime, prices, lastname, setModalShow, id }) => {
     const dispatch = useDispatch()
-    const unix_timestamp = OrderRegistrationTime
-    const date = new Date(unix_timestamp);
-
-    const day = date.getDay();
-
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const jalaliDate = format(new Date(year, month, day), 'yyyy-MM-dd')
+    const jalaliDate = getDateToJalaliFormat(OrderRegistrationTime)
     function showModalHandeling(dataId) {
         dispatch(uiActions.showOrderMenu(dataId))
     }

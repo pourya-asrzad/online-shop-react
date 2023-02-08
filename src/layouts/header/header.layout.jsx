@@ -5,7 +5,15 @@ import { CategoryMenuComponent, HeaderSearchComponent, LodinOrRegister } from ".
 import { INTERNAL_PATHS } from "../../configs/routs.config";
 import Styles from './header.module.css'
 import CompanyName from '../../components/company-name/CompanyName.component';
+import { useEffect } from 'react';
+import { useState } from 'react';
 const Header = () => {
+    const [notification, setNotification] = useState()
+    useEffect(() => {
+        setNotification(localStorage.getItem('cartnoti') && localStorage.getItem('cartnoti'))
+
+    }, [localStorage.getItem('cartnoti')])
+
     return (
         <>
             <div className={Styles.headercontainer}>
@@ -14,6 +22,11 @@ const Header = () => {
                         <div className={Styles.headerleft}>
                             <Link className={Styles.cartlink} to={INTERNAL_PATHS.CART}>
                                 <span className={`${Styles.headerhref} ${Styles.dishref}`}>سبد خرید</span>
+                                <div className={Styles.noti}>
+                                    <span>
+                                        {notification}
+                                    </span>
+                                </div>
                                 <img style={{
                                     width: ' 28px'
                                     , margin: '5px'

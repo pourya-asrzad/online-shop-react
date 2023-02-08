@@ -6,7 +6,7 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import { useParams } from 'react-router-dom';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import Styles from './counter.module.scss'
-const CardCounter = ({ number = 1, setAddedToCart, quantity }) => {
+const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
     const [num, setNum] = useState(number);
     const productId = useParams()
     const increaseNum = async () => {
@@ -64,10 +64,12 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity }) => {
         })
 
         cartData.splice(productIndex, 1)
+
         await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
             cart: [...cartData]
         })
         setAddedToCart(false)
+        setIsInCart(false)
     }
     return (
         <div className={Styles.countercard}>

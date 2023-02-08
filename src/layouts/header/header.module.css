@@ -15,7 +15,7 @@ background-color: #285281;
     margin-right: 2rem;
 }
 .headerhref{
-
+position: relative;
     color:#e6e2c3 ;
     font-size:20px ;
 }
@@ -88,6 +88,7 @@ h2{
 @media(max-width:685px){
     .dishref{
         display: none;
+        position: relative;
     }
    
 }
@@ -96,4 +97,16 @@ h2{
         margin: 0;
     }
    
+}
+.noti{
+    background-color: #ff0000d6;
+    color: white;
+    min-width: 21px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    position: absolute;
+    top: 7px;
+    left: 111px;
 }
