@@ -7,7 +7,7 @@ import { useState } from 'react';
 const FileInput = ({ setFile, imageData, setImageData, fileIsTouched, setFileIsTouched }) => {
 
     function encodeImageFileAsURL(e) {
-        console.log(e.target.files)
+
         setFileIsTouched(true)
         const filesSelected = e.target.files;
         if (filesSelected.length > 0) {
@@ -17,8 +17,6 @@ const FileInput = ({ setFile, imageData, setImageData, fileIsTouched, setFileIsT
             fileReader.onload = function (fileLoadedEvent) {
                 const srcData = fileLoadedEvent.target.result; // <- data: base64
                 setImageData(srcData)
-                console.log(srcData)
-                console.log(imageData)
                 const imageSizeInByte = new Blob([srcData]).size
                 const imageSizeInMegeByte = imageSizeInByte / 1000000
             }

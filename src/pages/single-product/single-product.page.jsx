@@ -42,6 +42,7 @@ const SingleProduct = () => {
                             <AddToCartSector
                                 name={productObj.name}
                                 id={productId.id}
+                                discount={productObj.Discount}
                                 quantity={productObj.quantity} price={productObj.price} image={productObj.image[0]} />
                             <Rate fillStrip={fillStrip} />
                         </div>

@@ -9,13 +9,16 @@ import CartBill from "../../components/cart-bill/CartBill.component";
 import { useFetchCartProductQuery } from "../../store/products/cartproductApiSlice";
 import { useEffect } from "react";
 import { useState } from "react";
+import EmptyDataAnimation from "../../components/empty-data-animation/EmptyDataAnimation.component";
 const Cart = () => {
     const appTitle = getAppTitle()
     const [afterChange, setAfterChange] = useState()
-    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery(afterChange)
+    const [changeinCount, setChangeinCount] = useState()
+    const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery({ afterChange, changeinCount })
     // let userData = data && data[0].cart
     const [userData, setUserData] = useState()
     // let prices = 0;
+    const [cartSum, setCartSum] = useState()
     const [prices, setPrices] = useState(0);
     useEffect(() => {
         setUserData(state => {
@@ -24,16 +27,19 @@ const Cart = () => {
             })
 
         })
-    }, [data, afterChange])
+    }, [data, afterChange, changeinCount])
 
     useEffect(() => {
         let sum = 0
+        let cartsum = 0
         userData && userData.map((element) => {
-            sum += +element.price
+            cartsum += element.count
+            sum += +element.price * element.count
         })
+        setCartSum(cartsum)
         setPrices(sum)
 
-    }, [userData, afterChange])
+    }, [userData, afterChange, changeinCount])
 
     return (
         <>
@@ -45,7 +51,7 @@ const Cart = () => {
             <PageContainer>
                 <div style={{ minHeight: ' 69vh' }}>
                     <div className={Styles.carthead}>
-                        <DeleteAllBtn />
+                        {userData && userData.length > 0 ? <DeleteAllBtn /> : <div></div>}
                         <div className="flex " style={{ userSelect: 'none' }}>
                             <BsCart4 className={Styles.cart_icon} />
                             <h3>سبد خرید شما</h3>
@@ -53,13 +59,16 @@ const Cart = () => {
                     </div>
                     <main className={Styles.main}>
                         <section>
-                            <CartBill userData={userData} prices={prices} />
+                            <CartBill cartSum={cartSum} userData={userData} prices={prices} />
                         </section>
                         <section>
                             {
                                 userData && isSuccess ? userData.map((ele) => {
-                                    return <CartCard setAfterChange={setAfterChange} img={ele.image} count={ele.count} productprice={ele.price} name={ele.name} dataId={ele.id} key={ele.id} />
+                                    return <CartCard setChangeinCount={setChangeinCount} setAfterChange={setAfterChange} img={ele.image} count={ele.count} productprice={ele.price} name={ele.name} dataId={ele.id} key={ele.id} />
                                 }) : ''
+                            }
+                            {
+                                userData && userData.length > 0 ? '' : <EmptyDataAnimation />
                             }
                         </section>
                     </main>

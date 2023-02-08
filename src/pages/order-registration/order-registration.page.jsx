@@ -45,7 +45,6 @@ const OrderRegistrationPage = () => {
             address: Yup.string().required('ادرس حتما باید وارد شود').min(5, 'ورودی کمتر از حد مجاز است')
         }),
         onSubmit: async (value) => {
-            console.log(value)
             const expectAt = singleValue && singleValue.getTime()
             const createdAt = new Date()
             const orderData = {

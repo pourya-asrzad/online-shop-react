@@ -161,14 +161,14 @@ function EditModal(props) {
 
     useEffect(() => {
         const checkBase64 = imageData.split(':')[0]
-        console.log(checkBase64)
+
         if (productData && checkBase64 !== 'data') {
             const imageHasHttp = productData.image[0].includes('https')
             if (imageHasHttp) {
                 setImageData(productData.image[0])
             } else if (!imageHasHttp) {
                 setImageData(`http://localhost:3001/files/${productData.image[0]}`)
-                console.log('hi')
+
             }
         }
     });

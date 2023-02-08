@@ -10,7 +10,7 @@ import { MdDelete } from 'react-icons/md';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
-const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChange }) => {
+const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChange, setChangeinCount }) => {
     const price = numberWithCommas(productprice)
     const imageHasHttp = img.includes('https')
     const handelDeleteFromCart = async (productId) => {
@@ -71,7 +71,7 @@ const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChan
                             <span>{price}</span>
                         </div>
                         <div className={Styles.counter_container}>
-                            <Counter number={count} />
+                            <Counter setChangeinCount={setChangeinCount} setAfterChange={setAfterChange} dataId={dataId} number={count} />
                         </div>
                     </div>
                 </div>

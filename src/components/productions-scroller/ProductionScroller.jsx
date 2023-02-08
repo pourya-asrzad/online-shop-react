@@ -9,7 +9,7 @@ import { INTERNAL_PATHS } from '../../configs/routs.config';
 function ProductionScroller() {
     const { data: productsHasDiscount5 } = useProductsHasDiscountQuery(5)
     const { data: productsHasDiscount10 } = useProductsHasDiscountQuery(10)
-    console.log(productsHasDiscount5);
+
     const slideLeft = () => {
         const slider = document.getElementById('slider1');
         slider.scrollLeft = slider.scrollLeft - 400;
@@ -74,7 +74,7 @@ function ProductionScroller() {
                     className={Styles.scrollitemscontainet}
                 >
                     {productsHasDiscount10 && productsHasDiscount10.map((item, index) => {
-                        console.log(item.Discount)
+
                         return <Link key={item.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + `/${item.id}`}>
 
                             <HomeProductionsCard

@@ -13,17 +13,12 @@ const EditFormSelect = ({ pagenum, handelSelectChange, subcategory = null, place
         return sub.category == changeSubcategoryid
     })
     useEffect(() => {
-        console.log(subcategory);
         if (subcategory && changeSubcategoryid) {
             if (document.getElementById('filtercategory')) {
                 setSubcategory(subcategoryDataFilter[0].id)
-                console.log(subcategoryDataFilter[0].id)
             }
         }
     }, [changeSubcategoryid]);
-    // if (document.getElementById('filtercategory')) {
-    //     console.log(document.getElementById('filtercategory').value);
-    // }
     return (
 
         <form >

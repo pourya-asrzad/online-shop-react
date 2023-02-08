@@ -11,7 +11,7 @@ const PaymentPage = () => {
         if (answer) {
             const orderData = JSON.parse(localStorage.getItem('orderData'))
             const userId = JSON.parse(localStorage.getItem('userId'))
-            console.log(orderData)
+
             await axios.post(`${API_BASE_URL}orders`, orderData)
             await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
                 cart: []

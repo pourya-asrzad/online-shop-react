@@ -9,7 +9,6 @@ import Styles from './counter.module.scss'
 const CardCounter = ({ number = 1, setAddedToCart, quantity }) => {
     const [num, setNum] = useState(number);
     const productId = useParams()
-    console.log(quantity)
     const increaseNum = async () => {
         let cartData = null
         let userId = null
@@ -72,11 +71,11 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity }) => {
     }
     return (
         <div className={Styles.countercard}>
-            <button>
+            <button style={{ display: 'contents' }}>
                 {num === 1 ? <RiDeleteBinLine onClick={handelDeleteFromCart} className={Styles.icon} /> : <AiOutlineMinus onClick={decreaseNum} className={Styles.icon} />}
             </button>
             <span style={{ color: 'red', userSelect: 'none' }}>{num}</span>
-            <button>
+            <button style={{ display: 'contents' }}>
                 <AiOutlinePlus onClick={increaseNum} className={Styles.icon} />
             </button>
         </div>

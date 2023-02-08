@@ -12,8 +12,9 @@ import { API_BASE_URL, username } from '../../configs/variables.config';
 import axios from 'axios';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-const AddToCartSector = ({ price, quantity, id, name, image }) => {
-    const priceWithComma = numberWithCommas(price)
+const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
+    const lastPrice = discount ? price - price * discount / 100 : price
+    const priceWithComma = numberWithCommas(lastPrice)
     const productId = useParams()
     const [isInCart, setIsInCart] = useState()
     const [count, setCount] = useState()
@@ -30,16 +31,15 @@ const AddToCartSector = ({ price, quantity, id, name, image }) => {
 
 
 
-
     const addToCartHandeling = async () => {
         let cartData = null
         await axios.get(`${API_BASE_URL}mockusers?username=${username}`).then(res => {
             cartData = { cart: res.data[0].cart, id: res.data[0].id }
         })
         await axios.patch(`${API_BASE_URL}mockusers/${cartData.id}`, {
-            cart: [...cartData.cart, { name, id, image, price, count: 1 }]
+            cart: [...cartData.cart, { name, id, image, price: lastPrice, count: 1 }]
         })
-        // console.log(cartData)
+
         setAddedToCart(true)
     }
     return (
@@ -71,7 +71,7 @@ const AddToCartSector = ({ price, quantity, id, name, image }) => {
 
 
                 <div className={Styles.cardpricepart}>
-                    <div style={{ direction: 'rtl' }}>
+                    <div className={Styles.pricegroup} style={{ direction: 'rtl' }}>
                         {quantity == 0 ?
                             <span>ناموجود</span>
                             :
@@ -82,6 +82,8 @@ const AddToCartSector = ({ price, quantity, id, name, image }) => {
                                 <span>
                                     تومان
                                 </span>
+                                <div className={discount ? Styles.discount : ''}> <span>{discount ? discount + "%" : ''}</span></div>
+
                             </>
                         }
                     </div>

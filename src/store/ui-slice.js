@@ -9,6 +9,10 @@ const initialState = {
     price: null,
     inventory: null,
   },
+  showOrderMenu_id: {
+    id: null,
+    show: false,
+  },
 };
 const uiSlice = createSlice({
   name: "ui",

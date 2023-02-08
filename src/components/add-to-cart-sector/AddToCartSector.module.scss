@@ -71,3 +71,16 @@ color: black;
     margin: 10px 19px;
     justify-content: space-between;
 }
+
+.pricegroup{
+position: relative;
+}
+.discount{
+    background-color: #ef394e;
+    color: white;
+    padding: 2px 9px;
+    border-radius: 17px;
+    position: absolute;
+    top: -30px;
+    left: 2px;
+}
