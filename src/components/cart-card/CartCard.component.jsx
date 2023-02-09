@@ -10,9 +10,12 @@ import { MdDelete } from 'react-icons/md';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import { uiActions } from '../../store/ui-slice';
+import { useDispatch } from 'react-redux';
 const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChange, setChangeinCount }) => {
     const price = numberWithCommas(productprice)
     const imageHasHttp = img.includes('https')
+    const dispatch = useDispatch()
     const handelDeleteFromCart = async (productId) => {
         let cartData = null
         let userId = null
@@ -28,6 +31,7 @@ const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChan
         await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
             cart: [...cartData]
         })
+        dispatch(uiActions.changeNotification(+new Date()))
         toast.success('کالا با موفقیت حذف شد', {
             position: "top-right",
             autoClose: 5000,

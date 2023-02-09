@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { BsCheckLg } from 'react-icons/bs';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
 import { API_BASE_URL, username } from '../../configs/variables.config';
+import { uiActions } from '../../store/ui-slice';
 import Styles from './counter.module.scss'
 const Counter = ({ number = 1, dataId, setAfterChange, setChangeinCount }) => {
     // const [num, setNum] = useState(number);
+    const dispatch = useDispatch()
     const increaseNum = async () => {
         let cartData = null
         let userId = null
@@ -35,6 +38,7 @@ const Counter = ({ number = 1, dataId, setAfterChange, setChangeinCount }) => {
             })
             // setNum(state => state + 2)
         }
+        dispatch(uiActions.changeNotification(+new Date()))
     }
     const decreaseNum = async () => {
         let cartData = null
@@ -56,6 +60,8 @@ const Counter = ({ number = 1, dataId, setAfterChange, setChangeinCount }) => {
         })
         // setNum(state => state - 2)
         setChangeinCount(Math.random())
+        dispatch(uiActions.changeNotification(+new Date()))
+
 
     }
     const handelDeleteFromCart = async () => {
@@ -77,6 +83,8 @@ const Counter = ({ number = 1, dataId, setAfterChange, setChangeinCount }) => {
         })
         // setAddedToCart(false)
         setAfterChange(dataId)
+        dispatch(uiActions.changeNotification(+new Date()))
+
     }
 
     return (

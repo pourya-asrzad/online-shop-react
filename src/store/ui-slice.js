@@ -13,6 +13,7 @@ const initialState = {
     id: null,
     show: false,
   },
+  notificationChange: null,
 };
 const uiSlice = createSlice({
   name: "ui",
@@ -72,6 +73,9 @@ const uiSlice = createSlice({
         ...state.showOrderMenu_id,
         show: false,
       };
+    },
+    changeNotification(state, action) {
+      state.notificationChange = action.payload;
     },
   },
 });

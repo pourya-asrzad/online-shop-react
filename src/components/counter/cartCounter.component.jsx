@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { BsCheckLg } from 'react-icons/bs';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import Styles from './counter.module.scss'
+import { uiActions } from '../../store/ui-slice';
 const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
     const [num, setNum] = useState(number);
     const productId = useParams()
+    const dispatch = useDispatch()
     const increaseNum = async () => {
         let cartData = null
         let userId = null
@@ -29,6 +32,7 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
                 cart: [...cartData, productObj]
             })
             setNum(state => state + 1)
+            dispatch(uiActions.changeNotification(+new Date()))
         }
     }
     const decreaseNum = async () => {
@@ -49,6 +53,8 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
         await axios.patch(`${API_BASE_URL}mockusers/${userId}`, {
             cart: [...cartData, productObj]
         })
+        dispatch(uiActions.changeNotification(+new Date()))
+
         setNum(state => state - 1)
     }
     const handelDeleteFromCart = async () => {
@@ -70,6 +76,8 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
         })
         setAddedToCart(false)
         setIsInCart(false)
+        dispatch(uiActions.changeNotification(+new Date()))
+
     }
     return (
         <div className={Styles.countercard}>

@@ -7,12 +7,23 @@ import Styles from './header.module.css'
 import CompanyName from '../../components/company-name/CompanyName.component';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { API_BASE_URL, username } from '../../configs/variables.config';
 const Header = () => {
-    const [notification, setNotification] = useState()
+    const notificationChange = useSelector(state => state.ui.notificationChange)
+    const [notification, setNotification] = useState(0)
     useEffect(() => {
-        setNotification(localStorage.getItem('cartnoti') && localStorage.getItem('cartnoti'))
+        let cartSum = 0
+        console.log("I'm notification")
+        axios.get(`${API_BASE_URL}mockusers?username=${username}`).then((res) => {
+            res.data && res.data[0].cart.map((product) => {
+                cartSum += product.count
+            })
+            setNotification(cartSum)
+        })
 
-    }, [localStorage.getItem('cartnoti')])
+    }, [notificationChange])
 
     return (
         <>
@@ -24,7 +35,7 @@ const Header = () => {
                                 <span className={`${Styles.headerhref} ${Styles.dishref}`}>سبد خرید</span>
                                 <div className={Styles.noti}>
                                     <span>
-                                        {notification}
+                                        {notification !== 0 && notification && notification}
                                     </span>
                                 </div>
                                 <img style={{

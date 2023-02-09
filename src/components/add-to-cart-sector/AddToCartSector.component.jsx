@@ -12,6 +12,8 @@ import { API_BASE_URL, username } from '../../configs/variables.config';
 import axios from 'axios';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../../store/ui-slice';
 const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
     const lastPrice = discount ? price - price * discount / 100 : price
     const priceWithComma = numberWithCommas(lastPrice)
@@ -19,6 +21,7 @@ const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
     const [isInCart, setIsInCart] = useState()
     const [count, setCount] = useState()
     const [addedToCart, setAddedToCart] = useState(false)
+    const dispatch = useDispatch()
     useEffect(() => {
         axios.get(`${API_BASE_URL}mockusers?username=${username}`).then(res => {
             const hasId = res.data[0].cart.filter((ele) => {
@@ -39,7 +42,7 @@ const AddToCartSector = ({ price, quantity, id, name, image, discount }) => {
         await axios.patch(`${API_BASE_URL}mockusers/${cartData.id}`, {
             cart: [...cartData.cart, { name, id, image, price: lastPrice, count: 1 }]
         })
-
+        dispatch(uiActions.changeNotification(+new Date()))
         setAddedToCart(true)
     }
 

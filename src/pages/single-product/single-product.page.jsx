@@ -18,6 +18,7 @@ let fillStrip = {
 }
 const SingleProduct = () => {
     const productId = useParams()
+
     const { data: productData, isLoading, isSuccess } = useFetchSingleProductQuery(productId.id)
     const appTitle = getAppTitle()
     if (isSuccess) {
