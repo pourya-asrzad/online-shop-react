@@ -24,12 +24,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
           return `orders?delivered=${page.filter}&_page=${page.page}&_limit=7&_sort=createdAt&_order=desc`;
         }
       },
-      keepUnusedDataFor: 0.0001,
+      keepUnusedDataFor: 0.000001,
       providesTags: ["Posts"],
     }),
     fetchcategory: builder.query({
       query: () => "category",
       providesTags: ["Posts"],
+      keepUnusedDataFor: 0.0001,
     }),
     fetchOrdersLength: builder.query({
       query: (page) => {

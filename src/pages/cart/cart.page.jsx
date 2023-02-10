@@ -51,7 +51,8 @@ const Cart = () => {
             <PageContainer>
                 <div style={{ minHeight: ' 69vh' }}>
                     <div className={Styles.carthead}>
-                        {userData && userData.length > 0 ? <DeleteAllBtn /> : <div></div>}
+                        {/* {userData && userData.length > 0 ? <DeleteAllBtn /> : <div></div>} */}
+                        <div></div>
                         <div className="flex " style={{ userSelect: 'none' }}>
                             <BsCart4 className={Styles.cart_icon} />
                             <h3>سبد خرید شما</h3>
