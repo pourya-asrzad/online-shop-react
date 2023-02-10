@@ -22,7 +22,7 @@ function OrdersModal(props) {
                 setOrderData(res.data)
             })
         }
-    }, [id])
+    }, [id, props.show])
 
 
 
