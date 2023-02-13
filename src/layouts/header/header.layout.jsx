@@ -15,9 +15,8 @@ const Header = () => {
     const [notification, setNotification] = useState(0)
     useEffect(() => {
         let cartSum = 0
-        console.log("I'm notification")
         axios.get(`${API_BASE_URL}mockusers?username=${username}`).then((res) => {
-            res.data && res.data[0].cart.map((product) => {
+            res.data && res.data[0].cart && res.data[0].cart.map((product) => {
                 cartSum += product.count
             })
             setNotification(cartSum)

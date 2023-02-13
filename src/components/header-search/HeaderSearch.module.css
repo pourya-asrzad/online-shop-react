@@ -9,6 +9,7 @@
 }
 .headersearchinput:focus-visible{
 border: none;
+outline-color: #c5bfbf;
 }
 @media (max-width:795px){
 .headersearchinput{

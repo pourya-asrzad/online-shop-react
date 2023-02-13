@@ -7,6 +7,7 @@ import ProductionContainer from "./production-card-home-container/ProductionCont
 import { getAppTitle } from "../../utils/functions.utils";
 import SecondCategory from "./second-category/SecondCategory.component";
 import ProductionScroller from "../../components/productions-scroller/ProductionScroller";
+import { useEffect } from "react";
 
 
 
@@ -14,7 +15,14 @@ const Home = () => {
 
 
     const appTitle = getAppTitle()
-
+    useEffect(() => {
+        localStorage.setItem('userinfo',
+            JSON.stringify({
+                username: 'puria-asr',
+                id: 1
+            })
+        )
+    }, [])
 
     return (
         <>

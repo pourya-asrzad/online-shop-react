@@ -15,9 +15,9 @@ const Cart = () => {
     const [afterChange, setAfterChange] = useState()
     const [changeinCount, setChangeinCount] = useState()
     const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery({ afterChange, changeinCount })
-    // let userData = data && data[0].cart
+
     const [userData, setUserData] = useState()
-    // let prices = 0;
+
     const [cartSum, setCartSum] = useState()
     const [prices, setPrices] = useState(0);
     useEffect(() => {
