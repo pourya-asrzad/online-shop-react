@@ -48,7 +48,7 @@ const AdminLogin = () => {
         setShowPassword(false)
     }
     return (
-        <div>
+        <div className={Styles.adminlogin}>
             <div className={Styles.Login}>
                 <CompanyName className={Styles.CompanyName} style={{ color: '#0e62d5' }} />
                 <div className={Styles.wellcome}>

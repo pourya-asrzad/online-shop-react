@@ -1,18 +1,22 @@
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FormInput from '../form-input/FormInput.component';
 import Styles from './modals.module.scss'
+import { EditorState } from 'draft-js';
 import FileInput from './FileInput.component';
 import FormSelect from '../Form-select/FormSelect.component';
 import { BiCategory } from 'react-icons/bi'
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { API_BASE_URL } from '../../configs/variables.config';
 import axios from 'axios';
 import { useCreateProductMutation } from '../../store/products/productsApiSlice';
 import { useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import { useRef } from "react";
 function GoodsModal(props) {
 
     const [file, setFile] = useState(false)
@@ -23,6 +27,10 @@ function GoodsModal(props) {
     const REQUIRED_MASSEGE = 'این فیلد نباید خالی باشد'
     const [addproduct, { isLoading }] = useCreateProductMutation()
     const [changeSubcategory, setchangeSubcategory] = useState(null);
+    const [description, setDescription] = useState(EditorState.createEmpty())
+    const [descriptionVaue, setDescriptionValue] = useState(null)
+    const [descriptionError, setDescriptionError] = useState(false)
+    const [editorIstouched, setEditorIsTouched] = useState(false)
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -30,24 +38,23 @@ function GoodsModal(props) {
             price: "",
             quantity: "",
             Discount: '',
-            description: ""
         }, validationSchema: Yup.object({
             name: Yup.string().required(REQUIRED_MASSEGE).min(3, 'ورودی کمتر از حد مجاز است'),
-            description: Yup.string().required('این فیلد نباید خالی باشد').min(20, 'ورودی کمتر از حد مجاز است'),
             price: Yup.string().required(REQUIRED_MASSEGE),
             quantity: Yup.string().required(REQUIRED_MASSEGE)
 
         }),
         onSubmit: async (value) => {
+
             try {
-                if (imageIds.length > 0 && category !== 'null' && subcategory !== 'null' && category !== undefined && subcategory !== undefined) {
+                if (imageIds.length > 0 && category !== 'null' && subcategory !== 'null' && category !== undefined && subcategory !== undefined && descriptionError) {
                     const res = await addproduct({
                         category: category,
                         subcategory: subcategory,
                         Discount: value.Discount,
                         name: value.name,
                         image: imageIds,
-                        description: value.description,
+                        description: descriptionVaue,
                         createdAt: Date.now(),
                         price: value.price,
                         quantity: value.quantity,
@@ -123,6 +130,16 @@ function GoodsModal(props) {
         setSubcategory(value)
 
     }
+    function descriptionChange(value) {
+        setDescription(value)
+        setDescriptionError(false)
+        setDescriptionValue(value.getCurrentContent().getPlainText())
+
+        if (value.getCurrentContent().getPlainText().trim().length !== 0) {
+            setDescriptionError(true)
+        }
+    }
+
     return (
         <>
             <Modal
@@ -199,15 +216,19 @@ function GoodsModal(props) {
                                     <label htmlFor="price">: قیمت</label>
                                 </div>
                             </div>
-                            {formik.touched.description && formik.errors.description ? <span style={{
+                            {!descriptionError && editorIstouched ? <span style={{
                                 right: ' 62px',
                                 bottom: '-9px',
-                            }} className={Styles.validation_message}>{formik.errors.description}</span> : ''}
+                            }} className={Styles.validation_message}>قسمت توضیحات نباید خالی باشد</span> : ''}
                             <label htmlFor="descrption" style={{ marginRight: '9px ' }}>:توضیحات</label>
-                            <textarea placeholder={' توضیحات لازم درباره محصول تان را وارد کنید'} onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.description}
-                                className={formik.touched.description && formik.errors.description ? Styles.textareahasError : Styles.textarea} name="description" id="description" cols="40" rows="5"></textarea>
+                            <Editor
+                                onBlur={() => setEditorIsTouched(true)}
+                                editorState={description}
+                                toolbarClassName="toolbarClassName"
+                                wrapperClassName="wrapperClassName"
+                                editorClassName="editorClassName"
+                                onEditorStateChange={descriptionChange}
+                            />;
                         </section>
                     </Modal.Body>
                     <Modal.Footer>

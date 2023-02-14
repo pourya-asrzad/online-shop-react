@@ -12,6 +12,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { uiActions } from '../../store/ui-slice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { INTERNAL_PATHS } from '../../configs/routs.config';
 const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChange, setChangeinCount }) => {
     const price = numberWithCommas(productprice)
     const imageHasHttp = img.includes('https')
@@ -44,6 +46,7 @@ const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChan
         });
         setAfterChange(productId)
     }
+
     return (
         <>
             <div className={Styles.cartcard}>
@@ -65,9 +68,11 @@ const CartCard = ({ img, name, count, productprice = 12000, dataId, setAfterChan
 
                             </div>
                         </div>
-                        <div className={Styles.imageContainer}>
-                            <img className={Styles.image} src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} />
-                        </div>
+                        <Link to={INTERNAL_PATHS.SINGLEPRODUCT + `/${dataId}`}>
+                            <div className={Styles.imageContainer}>
+                                <img className={Styles.image} src={imageHasHttp ? img : `http://localhost:3001/files/${img}`} />
+                            </div>
+                        </Link>
                     </div>
                     <div className={Styles.cardfooter}>
                         <div className={Styles.pricecou}>

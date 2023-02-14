@@ -8,6 +8,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
+background-color: rgb(251, 249, 249);
 }
 .input:focus-visible{
 outline:none;
@@ -93,3 +94,27 @@ outline:none;
     width: 25px;
     height: 25px;
 }
+.adminlogin{
+ 
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: 300% 300%;
+        background-image: linear-gradient(
+              -45deg, 
+              rgba(59,173,227,1) 0%, 
+              rgba(87,111,230,1) 25%, 
+              rgb(80, 183, 68) 51%, 
+              rgb(53, 205, 255) 100%
+        );  
+        animation: AnimateBG 20s ease infinite;
+      
+      
+    }
+    @keyframes AnimateBG { 
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
