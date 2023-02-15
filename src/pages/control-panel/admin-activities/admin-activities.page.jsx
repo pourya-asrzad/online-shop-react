@@ -3,6 +3,7 @@ import LineChartCM from '../../../components/charts/LineChart.component';
 import { useGetAllOrdersQuery } from '../../../store/products/productsApiSlice';
 import Styles from './admin-activities.module.scss'
 import { countSameElement, getDateToJalaliFormat } from '../../../utils/functions.utils'
+import BarChart from '../../../components/charts/BarChart.component';
 const data = [
     {
         name: '1شهریور',
@@ -62,6 +63,9 @@ const AdminActivitiesPage = () => {
             <h4 className={Styles.title}>عملکرد فروشگاه</h4>
             <div className={Styles.chartContainer}>
                 <LineChartCM chartData={chartData} />
+            </div>
+            <div className={Styles.chartContainer}>
+                <BarChart chartData={chartData} />
             </div>
         </div>
     );
