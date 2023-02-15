@@ -67,7 +67,7 @@ function LineChartCM({ chartData }) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="تعدادسفارش" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="تعدادسفارش" stroke="#82ca9d" activeDot={{ r: 8 }} />
         </LineChart>
     </ResponsiveContainer>
 }

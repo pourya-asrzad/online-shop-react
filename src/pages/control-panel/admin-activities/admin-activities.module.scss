@@ -1,9 +1,28 @@
 .title{
-    text-align: center;
-padding-top: 1rem;
+display: flex;
+justify-content: center;
+width: 100%;
+margin: auto;
+padding :1rem 0;
 }
 .chartContainer{
-    width: 47rem;
-    height: 36rem;
+    width: 44rem;
+    height: 33rem;
     padding: 15px;
+}
+.chartsContainer{
+    display: flex;
+    padding-top: 60px;
+
+}
+.orderheader{
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 20px;
+    background-color: white; 
+    box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(0 0 0 / 5%);
+position: fixed;
+right: 0;
+left: 0;
+z-index: 100;
 }
