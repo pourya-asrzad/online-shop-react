@@ -12,11 +12,13 @@
 }
 .ExistFilter{
   
-        background-color: rgb(232 243 255);
+        background-color: rgba(255, 255, 255, 0.8);
         padding: 23px;
         box-shadow: rgb(99 99 99 / 22%) 1px 1px 8px 1px;
     margin-bottom: 1rem;
     margin-top: 1rem;
+    border-radius: 8px;
+    border: 0.2px solid #80808059;
 }
 .radiosParent{
     display: flex;

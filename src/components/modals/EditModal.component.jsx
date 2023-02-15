@@ -72,7 +72,7 @@ function EditModal(props) {
                             show: false,
                         }
                     })
-                    toast.success('کالا با موفقیت ادیت شد', {
+                    toast.success('کالا با موفقیت ویرایش شد', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -259,7 +259,7 @@ function EditModal(props) {
                         </section>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant='success' type='submit' >افزودن</Button>
+                        <Button variant='success' type='submit' >ویرایش</Button>
                     </Modal.Footer>
                 </form>
             </Modal>

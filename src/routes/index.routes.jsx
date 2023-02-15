@@ -15,6 +15,7 @@ import SearchPage from '../pages/search/search.page'
 import PaymentPage from '../pages/payment/payment.page'
 import OrderRegistrationPage from '../pages/order-registration/order-registration.page'
 import PaymentResultPage from '../pages/payment-result/payment-result.page'
+import AdminActivitiesPage from '../pages/control-panel/admin-activities/admin-activities.page'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
 const LazyCart = React.lazy(() => import('../pages/cart/cart.page'))
 const LazyNotFound = React.lazy(() => import('../pages/Error/not-found.page'))
@@ -49,6 +50,7 @@ export const AppRouting = () => {
                         <Route index element={<Goods />} />
                         <Route path={INTERNAL_PATHS.ORDERS} element={<Orders />} />
                         <Route path={INTERNAL_PATHS.INVENTORY_PRICE} element={<InventoryPrice />} />
+                        <Route path={INTERNAL_PATHS.ADMIN_ACTIVITIES_PAGE} element={<AdminActivitiesPage />} />
                     </Route>
                 </Route>
             </Routes>

@@ -12,9 +12,9 @@ const ControlPanelHeader = () => {
             <header className={Styles.controllpanelheadertag}>
 
                 <Nav className={Styles.controlpanelheader} variant="tabs" defaultActiveKey={location.pathname}>
-                    <div className='flex a-c j-ar' style={{ width: '  34rem' }}>
+                    <div className='flex a-c j-ar' >
 
-                        <NavLink style={{ textDecoration: 'none' }} to={INTERNAL_PATHS.HOME} >
+                        <NavLink className={Styles.backToHome} style={{ textDecoration: 'none' }} to={INTERNAL_PATHS.HOME} >
                             بازگشت به سایت
                         </NavLink>
                         <div className='flex'>
@@ -27,6 +27,11 @@ const ControlPanelHeader = () => {
                             <Nav.Item>
                                 <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.ORDERS} >
                                     سفارش ها
+                                </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.ADMIN_ACTIVITIES_PAGE} >
+                                    عملکرد من
                                 </Nav.Link>
                             </Nav.Item>
                         </div>
