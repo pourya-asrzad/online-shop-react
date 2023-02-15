@@ -4,6 +4,7 @@ import Styles from './header.module.css'
 import { INTERNAL_PATHS } from '../../configs/routs.config';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import { HiBuildingStorefront } from 'react-icons/hi2'
 const ControlPanelHeader = () => {
     const location = useLocation()
 
@@ -37,7 +38,7 @@ const ControlPanelHeader = () => {
                         </div>
                     </div>
                     <div>
-                        <h1 className={Styles.panel_header_text}>پنل مدیریت فروشگاه</h1>
+                        <h1 className={Styles.panel_header_text}><HiBuildingStorefront /> پنل مدیریت فروشگاه</h1>
                     </div>
                 </Nav>
             </header>
