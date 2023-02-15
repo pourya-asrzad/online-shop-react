@@ -82,6 +82,10 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Posts"],
     }),
+    getAllOrders: builder.query({
+      query: () => "orders",
+      providesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -96,4 +100,5 @@ export const {
   useEditProductMutation,
   useGetProductQuery,
   useChangeDeliveryMutation,
+  useGetAllOrdersQuery,
 } = productsApiSlice;

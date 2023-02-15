@@ -64,3 +64,25 @@ export function getDateToJalaliFormat(timestamp) {
   today = today.toLocaleDateString("fa-IR");
   return today;
 }
+
+export function countSameElement(array) {
+  array.sort();
+  var current = null;
+  let newArray = [];
+  var cnt = 0;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] != current) {
+      if (cnt > 0) {
+        newArray.push({ date: current, تعدادسفارش: cnt });
+      }
+      current = array[i];
+      cnt = 1;
+    } else {
+      cnt++;
+    }
+  }
+  if (cnt > 0) {
+    newArray.push({ date: current, تعدادسفارش: cnt });
+  }
+  return newArray;
+}

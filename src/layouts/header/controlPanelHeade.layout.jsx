@@ -31,7 +31,7 @@ const ControlPanelHeader = () => {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.ADMIN_ACTIVITIES_PAGE} >
-                                    عملکرد من
+                                    عملکرد فروشگاه
                                 </Nav.Link>
                             </Nav.Item>
                         </div>
