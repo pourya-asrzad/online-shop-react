@@ -15,6 +15,7 @@ export const INTERNAL_PATHS = {
   ORDER_REGISTRATIONPAGE: "/order-registration",
   PAYMENT_RESULT: "/payment-result",
   ADMIN_ACTIVITIES_PAGE: "admin-activities",
+  GOODS: "goods",
 };
 export const EXTERNAL_PATHS = {
   LINKEDIN: "https://www.linkedin.com/in/pouria-asrzad-70a679253/",

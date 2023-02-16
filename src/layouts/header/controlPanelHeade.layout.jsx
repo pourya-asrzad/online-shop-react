@@ -20,7 +20,12 @@ const ControlPanelHeader = () => {
                         </NavLink>
                         <div className='flex'>
                             <Nav.Item>
-                                <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL}>کالا ها</Nav.Link>
+                                <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL} >
+                                    عملکرد فروشگاه
+                                </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.GOODS}>کالا ها</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.INVENTORY_PRICE} > موجودی و قیمت ها</Nav.Link>
@@ -30,11 +35,7 @@ const ControlPanelHeader = () => {
                                     سفارش ها
                                 </Nav.Link>
                             </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href={'/' + INTERNAL_PATHS.CONTROLPANEL + '/' + INTERNAL_PATHS.ADMIN_ACTIVITIES_PAGE} >
-                                    عملکرد فروشگاه
-                                </Nav.Link>
-                            </Nav.Item>
+
                         </div>
                     </div>
                     <div>

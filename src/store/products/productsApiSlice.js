@@ -46,6 +46,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: ["Posts"],
     }),
+    fetchProductsLength: builder.query({
+      query: (page) => `products`,
+      keepUnusedDataFor: 0.0001,
+      transformResponse: (res) => {
+        return res.length;
+      },
+      providesTags: ["Posts"],
+    }),
     createProduct: builder.mutation({
       query: (post) => ({
         url: "products",
@@ -101,4 +109,5 @@ export const {
   useGetProductQuery,
   useChangeDeliveryMutation,
   useGetAllOrdersQuery,
+  useFetchProductsLengthQuery,
 } = productsApiSlice;

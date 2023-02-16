@@ -1,10 +1,11 @@
 import React from 'react';
 import LineChartCM from '../../../components/charts/LineChart.component';
-import { useGetAllOrdersQuery } from '../../../store/products/productsApiSlice';
+import { useFetchOrdersLengthQuery, useFetchProductsLengthQuery, useGetAllOrdersQuery } from '../../../store/products/productsApiSlice';
 import Styles from './admin-activities.module.scss'
 import { countSameElement, getDateToJalaliFormat } from '../../../utils/functions.utils'
 import BarChart from '../../../components/charts/BarChart.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
+import Typed from "react-typed";
 
 const AdminActivitiesPage = () => {
     const { data: allOrder = [] } = useGetAllOrdersQuery()
@@ -14,15 +15,34 @@ const AdminActivitiesPage = () => {
         orderData.push(orderCreatedDate)
     })
     const chartData = countSameElement(orderData)
+    const { data: orderLength } = useFetchProductsLengthQuery()
+
     return (
         <div>
             <div className={Styles.orderheader}>
                 <div></div>
-                <div>😉همیشه عملکرد فروشگاهتان را تحت نظر قرار دهید </div>
+                <div> سعی کنید همیشه عملکرد فروشگاهتان را تحت نظر قرار دهید </div>
                 <PanelTopTitle color={'#00f500'}>
                     عملکرد فروشگاه
                 </PanelTopTitle>
             </div>
+            <div className={Styles.textsContainer}>
+                <div>
+                    {
+                        orderLength && <Typed
+                            strings={[`تعداد همه کالا ها :${orderLength}`]}
+                            typeSpeed={40}
+                        />
+                    }
+                </div>
+                <div>
+                    {allOrder && orderData.length !== 0 && <Typed
+                        strings={[`میزان کل سفارشات :${orderData.length}`]}
+                        typeSpeed={40}
+                    />}
+                </div>
+            </div>
+            <h4 className={Styles.middleText}>نمودار های سفارشات </h4>
             <div className={Styles.chartsContainer}>
                 <div className={Styles.chartContainer}>
                     <LineChartCM chartData={chartData} />

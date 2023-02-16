@@ -47,10 +47,10 @@ export const AppRouting = () => {
                 </Route>
                 <Route element={<ProtectedRoutes />}>
                     <Route path={INTERNAL_PATHS.CONTROLPANEL} >
-                        <Route index element={<Goods />} />
+                        <Route index element={<AdminActivitiesPage />} />
+                        <Route path={INTERNAL_PATHS.GOODS} element={<Goods />} />
                         <Route path={INTERNAL_PATHS.ORDERS} element={<Orders />} />
                         <Route path={INTERNAL_PATHS.INVENTORY_PRICE} element={<InventoryPrice />} />
-                        <Route path={INTERNAL_PATHS.ADMIN_ACTIVITIES_PAGE} element={<AdminActivitiesPage />} />
                     </Route>
                 </Route>
             </Routes>

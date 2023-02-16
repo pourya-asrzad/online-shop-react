@@ -8,11 +8,11 @@ padding :1rem 0;
 .chartContainer{
     width: 44rem;
     height: 33rem;
-    padding: 15px;
+  
 }
 .chartsContainer{
     display: flex;
-    padding-top: 60px;
+    padding-top: 30px;
 
 }
 .orderheader{
@@ -25,4 +25,24 @@ position: fixed;
 right: 0;
 left: 0;
 z-index: 100;
+}
+.textsContainer{
+    padding-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 22px;
+    font-weight: 600;
+    div{
+        span{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+    }
+}
+.middleText{
+    text-align: center;
+    padding: 10px;
+    padding-top: 10px;
+    color: rgb(255, 115, 0);
+    
 }
