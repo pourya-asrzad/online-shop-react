@@ -15,12 +15,12 @@ import SearchPage from '../pages/search/search.page'
 import PaymentPage from '../pages/payment/payment.page'
 import OrderRegistrationPage from '../pages/order-registration/order-registration.page'
 import PaymentResultPage from '../pages/payment-result/payment-result.page'
-import AdminActivitiesPage from '../pages/control-panel/admin-activities/admin-activities.page'
 const LazyHome = React.lazy(() => import('../pages/home/home.page'))
 const LazyCart = React.lazy(() => import('../pages/cart/cart.page'))
 const LazyNotFound = React.lazy(() => import('../pages/Error/not-found.page'))
 const Category = React.lazy(() => import('../pages/category/category.page'))
 const SingleProduct = React.lazy(() => import('../pages/single-product/single-product.page'))
+const AdminActivities = React.lazy(() => import('../pages/control-panel/admin-activities/admin-activities.page'))
 export const AppRouting = () => {
     return (
         <BrowserRouter>
@@ -47,7 +47,7 @@ export const AppRouting = () => {
                 </Route>
                 <Route element={<ProtectedRoutes />}>
                     <Route path={INTERNAL_PATHS.CONTROLPANEL} >
-                        <Route index element={<AdminActivitiesPage />} />
+                        <Route index element={<AdminActivities />} />
                         <Route path={INTERNAL_PATHS.GOODS} element={<Goods />} />
                         <Route path={INTERNAL_PATHS.ORDERS} element={<Orders />} />
                         <Route path={INTERNAL_PATHS.INVENTORY_PRICE} element={<InventoryPrice />} />

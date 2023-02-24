@@ -15,9 +15,7 @@ const Cart = () => {
     const [afterChange, setAfterChange] = useState()
     const [changeinCount, setChangeinCount] = useState()
     const { data, isLoading, isError, isSuccess } = useFetchCartProductQuery({ afterChange, changeinCount })
-
     const [userData, setUserData] = useState()
-
     const [cartSum, setCartSum] = useState()
     const [prices, setPrices] = useState(0);
     useEffect(() => {
@@ -69,7 +67,7 @@ const Cart = () => {
                                 }) : ''
                             }
                             {
-                                userData && userData.length > 0 ? '' : <EmptyDataAnimation />
+                                userData && userData.length > 0 && isSuccess ? '' : <EmptyDataAnimation />
                             }
                         </section>
                     </main>

@@ -6,6 +6,7 @@ import { countSameElement, getDateToJalaliFormat } from '../../../utils/function
 import BarChart from '../../../components/charts/BarChart.component';
 import PanelTopTitle from '../../../components/panel-top-title/PanelTopTitle.component';
 import Typed from "react-typed";
+import { useLogoutadmin } from '../../../hooks/logoutadmin';
 
 const AdminActivitiesPage = () => {
     const { data: allOrder = [] } = useGetAllOrdersQuery()
@@ -15,8 +16,8 @@ const AdminActivitiesPage = () => {
         orderData.push(orderCreatedDate)
     })
     const chartData = countSameElement(orderData)
-    const { data: orderLength } = useFetchProductsLengthQuery()
-
+    const { data: orderLength, error } = useFetchProductsLengthQuery()
+    const goodsError = useLogoutadmin(error)
     return (
         <div>
             <div className={Styles.orderheader}>

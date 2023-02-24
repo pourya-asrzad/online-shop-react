@@ -34,7 +34,7 @@ const SearchPage = () => {
                                 {
                                     searchAnswer.length > 0 ? searchAnswer.map((product) => {
                                         return <Link key={product.id} className='link-route' to={INTERNAL_PATHS.SINGLEPRODUCT + "/" + product.id}>
-                                            <MainCard quantity={product.quantity} title={product.name}
+                                            <MainCard fillStrip={product.fillStrip} quantity={product.quantity} title={product.name}
                                                 discount={product.Discount} price={product.price} image={product.image[0]} key={product.id} />
                                         </Link>
                                     })

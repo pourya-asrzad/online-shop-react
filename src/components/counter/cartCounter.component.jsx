@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { API_BASE_URL, username } from '../../configs/variables.config';
 import Styles from './counter.module.scss'
 import { uiActions } from '../../store/ui-slice';
+import { toast, ToastContainer } from 'react-toastify';
 const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
     const [num, setNum] = useState(number);
     const productId = useParams()
@@ -33,6 +34,17 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
             })
             setNum(state => state + 1)
             dispatch(uiActions.changeNotification(+new Date()))
+        } else {
+            toast.error('موجودی انبار کافی نیست!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
     const decreaseNum = async () => {
@@ -80,15 +92,31 @@ const CardCounter = ({ number = 1, setAddedToCart, quantity, setIsInCart }) => {
 
     }
     return (
-        <div className={Styles.countercard}>
-            <button style={{ display: 'contents' }}>
-                {num === 1 ? <RiDeleteBinLine onClick={handelDeleteFromCart} className={Styles.icon} /> : <AiOutlineMinus onClick={decreaseNum} className={Styles.icon} />}
-            </button>
-            <span style={{ color: 'red', userSelect: 'none' }}>{num}</span>
-            <button style={{ display: 'contents' }}>
-                <AiOutlinePlus onClick={increaseNum} className={Styles.icon} />
-            </button>
-        </div>
+        <>
+            <div className={Styles.countercard}>
+                <button style={{ display: 'contents' }}>
+                    {num === 1 ? <RiDeleteBinLine onClick={handelDeleteFromCart} className={Styles.icon} /> : <AiOutlineMinus onClick={decreaseNum} className={Styles.icon} />}
+                </button>
+                <span style={{ color: 'red', userSelect: 'none' }}>{num}</span>
+                <button style={{ display: 'contents' }}>
+                    <AiOutlinePlus onClick={increaseNum} className={Styles.icon} />
+                </button>
+            </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+
+            <ToastContainer />
+        </>
     );
 }
 

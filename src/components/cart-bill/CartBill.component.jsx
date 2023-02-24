@@ -21,11 +21,11 @@ const CartBill = ({ prices = 0, userData, cartSum }) => {
         <>
             {price != 0 && userData.length > 0 ? <div className={isEnd ? Styles.cartbillEnded : Styles.cartbill}>
                 <div className={`flex a-c ${Styles.pricetot}`}>
-                    <span>{price && price}</span>
+                    <span style={{ direction: 'rtl' }}>{price && price}تومان</span>
                     <span>قیمت کالاها({cartSum})</span>
                 </div>
                 <div className={`flex a-c ${Styles.pricetot}`}>
-                    <span>{price && price}</span>
+                    <span style={{ direction: 'rtl' }}>{price && price}تومان</span>
                     <span>جمع سبد خرید</span>
                 </div>
                 <BaseBtn onclick={() => navigate(INTERNAL_PATHS.ORDER_REGISTRATIONPAGE)}>
