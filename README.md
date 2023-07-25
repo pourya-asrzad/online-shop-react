@@ -71,4 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <h1>you have to run this " <a href="https://github.com/puria-asr/online-shop-server">https://github.com/puria-asr/online-shop-server</a>" backend too </h1>
 
-last you can contact with here: <a href="mailto:poriaasrzad@gmail.com"> poriaasrzad@gmail.com</a>
+last you can contact with here: <a href="mailto:poriaasrzad@gmail.com">
+
+poriaasrzad@gmail.com</a>
