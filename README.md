@@ -1,76 +1,118 @@
-# Getting Started with Create React App
+# Pourya Kala (پوریا کالا)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Pourya Kala Logo](put-your-logo-url-here) <!-- If you have a logo, add the URL here -->
 
-## Available Scripts
+A web application developed using React and Redux, providing a platform for [describe your project's main purpose here].
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Pourya Kala is a web application [briefly describe your project's main goals and objectives here].
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [List the key features of your project here]
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project locally, make sure you have Node.js and npm installed. Then, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd pourya-kala
+```
+1.Install the required dependencies.
+npm install
 
-### `npm run eject`
+## Usage
+To start the development server, use the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm run custom-start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open your browser and go to http://localhost:3000 to access the application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Pourya Kala is built using the following technologies:
 
-## Learn More
+- React
+- Redux
+- @formkit/auto-animate
+- @mantine/core
+- @mantine/hooks
+- @react-spring/web
+- @reduxjs/toolkit
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
+- axios
+- bootstrap
+- date-fns-jalali
+- draft-js
+- env-cmd
+- formik
+- mantine-datepicker-jalali
+- react-bootstrap
+- react-dom
+- react-draft-wysiwyg
+- react-helmet
+- react-horizontal-scrolling-menu
+- react-icons
+- react-image-magnify
+- react-redux
+- recharts
+- sass
+- web-vitals
+- yup
+- react-toastify
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+We welcome contributions from the community. To contribute to Pourya Kala, please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes and commit them.
+4. Push the changes to your fork.
+5. Submit a pull request with a detailed description of your changes.
 
-### Analyzing the Bundle Size
+Please ensure your pull request adheres to the following guidelines:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Explain the purpose and scope of your changes.
+- Keep your changes concise and focused.
+- Ensure your code follows the project's coding conventions and style guidelines.
+- Write clear and descriptive commit messages.
+- Include any necessary tests for your changes.
+- Update the project documentation if applicable.
 
-### Making a Progressive Web App
+Our team will review your contribution as soon as possible and merge it if it meets our guidelines and standards. We appreciate your support in making Pourya Kala better.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If you have any questions or need assistance with the contribution process, feel free to reach out to us via email or open an issue for discussion.
 
-### Advanced Configuration
+We look forward to your contributions!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
+[Include information about the project's license here]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contact
 
-### `npm run build` fails to minify
+For any questions or inquiries, feel free to reach out to us:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email: poriaasrzad@gmail.com
+- [Add any other relevant contact information]
 
-<h1>you have to run this " <a href="https://github.com/puria-asr/online-shop-server">https://github.com/puria-asr/online-shop-server</a>" backend too </h1>
-
-
-last you can contact with here:<a href="mailto:poriaasrzad@gmail.com"> poriaasrzad@gmail.com</a>
 
