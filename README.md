@@ -2,7 +2,7 @@
 
 ![Pourya Kala Logo](https://github.com/pourya-asrzad/online-shop-react-/blob/main/src/assets/images/logo.jpeg?raw=true) <!-- If you have a logo, add the URL here -->
 
-A web application developed using React and Redux, providing a platform for [describe your project's main purpose here].
+A web application developed using React and Redux, providing a platform for online shop.
 
 ## Table of Contents
 
