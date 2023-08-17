@@ -48,6 +48,7 @@ Open your browser and go to http://localhost:3000 to access the application.
 Pourya Kala is built using the following technologies:
 
 - React
+
 - Redux
 - @formkit/auto-animate
 - @mantine/core
