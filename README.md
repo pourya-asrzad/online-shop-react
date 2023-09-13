@@ -50,14 +50,14 @@ Pourya Kala is built using the following technologies:
 - React
 
 - Redux
-- @formkit/auto-animate
-- @mantine/core
-- @mantine/hooks
-- @react-spring/web
-- @reduxjs/toolkit
-- @testing-library/jest-dom
-- @testing-library/react
-- @testing-library/user-event
+- formkit/auto-animate
+- mantine/core
+- mantine/hooks
+- react-spring/web
+- reduxjs/toolkit
+- testing-library/jest-dom
+- testing-library/react
+- testing-library/user-event
 - axios
 - bootstrap
 - date-fns-jalali
