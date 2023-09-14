@@ -1,4 +1,4 @@
-# Pourya Kala (پوریا کالا)
+# Pourya Kala ( پوریا کالا )
 
 ![Pourya Kala Logo](https://github.com/pourya-asrzad/online-shop-react-/blob/main/src/assets/images/logo.jpeg?raw=true) <!-- If you have a logo, add the URL here -->
 
