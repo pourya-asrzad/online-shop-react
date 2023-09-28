@@ -1,6 +1,6 @@
 # Pourya Kala ( پوریا کالا )
 
-![Pourya Kala Logo](https://github.com/pourya-asrzad/online-shop-react-/blob/main/src/assets/images/logo.jpeg?raw=true) <!-- If you have a logo, add the URL here -->
+ <!-- If you have a logo, add the URL here -->
 
 Experience the ultimate online shopping destination with our cutting-edge web application built using React and Redux. Our platform redefines the way you shop by offering a seamless and intuitive experience. Browse through a wide array of products, effortlessly manage your shopping cart, and enjoy the convenience of secure online transactions. Elevate your shopping journey with our innovative React and Redux-powered app and discover the future of online retail 
 
